@@ -2,10 +2,7 @@
 
 import influxdb
 import tools
-
-# ======================= Defines =============================================
-
-SITE = "FRA_evalab"
+import context
 
 # ======================= Main ================================================
 
@@ -21,7 +18,10 @@ influxClient = influxdb.client.InfluxDBClient(
 
 # query influxDB
 query       =   "SELECT * FROM SOL_TYPE_DUST_SNAPSHOT"
-query       +=  " WHERE site='" + SITE + "' GROUP BY mac"
+query       +=  " WHERE site='" + context.SITE + "'"
+query       +=  " AND time > '" + context.STARTDATE + "'"
+query       +=  " AND time < '" + context.STOPDATE + "'"
+query       +=  " GROUP BY mac"
 json_list   = tools.influxdb_to_json(influxClient.query(query).raw)
 
 # write json to file
@@ -35,7 +35,7 @@ for obj in json_list:
         query   = "SELECT temperature,latitude,longitude,board FROM SOL_TYPE_DUST_OAP_TEMPSAMPLE"
         query  += " WHERE time < '" + obj["timestamp"] + "'"
         query  += " and mac='" + mote["macAddress"] + "'"
-        query  += " and site='" + SITE + "'"
+        query  += " and site='" + context.SITE + "'"
         query  += " GROUP by mac"
         query  += " ORDER BY time DESC LIMIT 1"
         res     = influxClient.query(query).raw

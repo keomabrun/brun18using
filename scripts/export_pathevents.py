@@ -1,10 +1,7 @@
 import json
 import influxdb
 import tools
-
-# ======================= Defines =============================================
-
-SITE = "FRA_evalab"
+import context
 
 # ======================= Helpers =============================================
 
@@ -37,13 +34,16 @@ influxClient = influxdb.client.InfluxDBClient(
 
 # query influxDB
 query       =   "SELECT * FROM SOL_TYPE_DUST_EVENTPATHCREATE"
-query       +=  " WHERE site='" + SITE + "'"
+query       +=  " WHERE site='" + context.SITE + "'"
+query       +=  " AND time > '" + context.STARTDATE + "'"
+query       +=  " AND time < '" + context.STOPDATE + "'"
 query       +=  " GROUP BY mac"
 json_list   = tools.influxdb_to_json(influxClient.query(query).raw)
 write_to_file(path_create_file, json_list)
 
 query       =   "SELECT * FROM SOL_TYPE_DUST_EVENTPATHDELETE"
-query       +=  " WHERE site='" + SITE + "'"
+query       +=  " AND time > '" + context.STARTDATE + "'"
+query       +=  " AND time < '" + context.STOPDATE + "'"
 query       +=  " GROUP BY mac"
 json_list   = tools.influxdb_to_json(influxClient.query(query).raw)
 write_to_file(path_delete_file, json_list)

@@ -1,6 +1,7 @@
 import json
 import influxdb
 import tools
+import context
 
 # open output file
 out_file = open('../data/hr_discovered.csv','w')
@@ -14,7 +15,10 @@ influxClient = influxdb.client.InfluxDBClient(
 
 # query influxDB
 query       =   "SELECT * FROM SOL_TYPE_DUST_NOTIF_HRDISCOVERED"
-query       +=  " WHERE site='ARG_junin' GROUP BY mac"
+query       +=  " WHERE site='" + context.SITE + "'"
+query       +=  " AND time > '" + context.STARTDATE + "'"
+query       +=  " AND time < '" + context.STOPDATE + "'"
+query       +=  " GROUP BY mac"
 json_list   = tools.influxdb_to_json(influxClient.query(query).raw)
 
 # write json to file

@@ -1,11 +1,10 @@
 import json
 import influxdb
-import time
-import calendar
 import tools
+import context
 
 # open output file
-out_file = open('../data/motecreate.csv','w')
+out_file = open('../data/motecreate.csv', 'w')
 
 # configure influxDB
 influxClient = influxdb.client.InfluxDBClient(
@@ -16,7 +15,10 @@ influxClient = influxdb.client.InfluxDBClient(
 
 # query influxDB
 query       =   "SELECT * FROM SOL_TYPE_DUST_EVENTMOTECREATE"
-query       +=  " WHERE site='FRA_evalab' GROUP BY mac"
+query       +=  " WHERE site='" + context.SITE + "'"
+query       +=  " AND time > '" + context.STARTDATE + "'"
+query       +=  " AND time < '" + context.STOPDATE + "'"
+query       +=  " GROUP BY mac"
 json_list   = tools.influxdb_to_json(influxClient.query(query).raw)
 
 # write json to file

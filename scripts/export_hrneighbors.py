@@ -1,10 +1,7 @@
 import json
 import influxdb
 import tools
-
-# ======================= Defines =============================================
-
-SITE = "FRA_evalab"
+import context
 
 # ======================= Main ================================================
 
@@ -20,8 +17,9 @@ influxClient = influxdb.client.InfluxDBClient(
 
 # query influxDB
 query       =   "SELECT * FROM SOL_TYPE_DUST_NOTIF_HRNEIGHBORS"
-query       +=  " WHERE site='" + SITE + "'"
-query       +=  " AND time > '2016-06-18T18:30:00Z' GROUP BY mac"
+query       +=  " WHERE site='" + context.SITE + "'"
+query       +=  " AND time > '" + context.STARTDATE + "'"
+query       +=  " AND time < '" + context.STOPDATE + "' GROUP BY mac"
 print query
 json_list   = tools.influxdb_to_json(influxClient.query(query).raw)
 
