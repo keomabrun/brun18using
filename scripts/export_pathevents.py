@@ -42,6 +42,7 @@ json_list   = tools.influxdb_to_json(influxClient.query(query).raw)
 write_to_file(path_create_file, json_list)
 
 query       =   "SELECT * FROM SOL_TYPE_DUST_EVENTPATHDELETE"
+query       +=  " WHERE site='" + context.SITE + "'"
 query       +=  " AND time > '" + context.STARTDATE + "'"
 query       +=  " AND time < '" + context.STOPDATE + "'"
 query       +=  " GROUP BY mac"
