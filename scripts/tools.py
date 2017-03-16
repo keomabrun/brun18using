@@ -5,6 +5,7 @@ import time
 import calendar
 import csv
 import math
+import pandas as pd
 
 # external
 import flatdict
@@ -108,69 +109,28 @@ def mac_to_id(mac, time):
             line += 1
     return moteid
 
-def id_to_mac(mote_id, time, safe=False):
-    mote_mac = None
-    mote_board = None
-    infile = MOTECREATE_PATH
-
-    if safe:
-        infile = SNAPSHOT_PATH
-
-    with open(infile) as csvfile:
-        createmote_reader = csv.reader(csvfile, delimiter=',', quotechar='|')
-        event_list = list(createmote_reader)[1:]
-
-        for event in reversed(event_list):
-            if int(event[2]) == mote_id:
-                if int(event[0]) < time:
-                    mote_mac = event[1]
-                    if event[5] != "":
-                        mote_board = event[5]
-                    break
-    return mote_mac, mote_board
-
-def mac_to_position(mote_mac, time, safe=False):
+def get_mote_info(df_snapshot, mote_name, time):
     mote_lat    = None
     mote_long   = None
-    infile      = MOTECREATE_PATH
-
-    if safe:
-        infile = SNAPSHOT_PATH
-
-    with open(infile) as csvfile:
-        createmote_reader = csv.reader(csvfile, delimiter=',', quotechar='|')
-        event_list = list(createmote_reader)[1:]
-
-        for event in reversed(event_list):
-            if event[1] == mote_mac:
-                if int(event[0]) < time:
-                    if event[3] != "":
-                        mote_lat = float(event[3])
-                    if event[4] != "":
-                        mote_long = float(event[4])
-                    break
-
-    return mote_lat, mote_long
-
-def mac_to_board(mote_mac, time, safe=False):
     mote_board = None
-    infile = MOTECREATE_PATH
+    mote_name_type = ""
 
-    if safe:
-        infile = SNAPSHOT_PATH
+    if isinstance(mote_name, int):
+        mote_name_type = "id"
+    else:
+        mote_name_type = "mac"
 
-    with open(infile) as csvfile:
-        createmote_reader = csv.reader(csvfile, delimiter=',', quotechar='|')
-        event_list = list(createmote_reader)[1:]
+    res = df_snapshot[(df_snapshot[mote_name_type] == mote_name) & (df_snapshot["time"] < time)]
+    if not res.empty:
+        last_row = res.iloc[-1]
+        if pd.notnull(last_row["lat"]):
+            mote_lat = last_row["lat"]
+        if pd.notnull(last_row["long"]):
+            mote_long = last_row["long"]
+        if pd.notnull(last_row["board"]):
+            mote_board = last_row["board"]
 
-        for event in reversed(event_list):
-            if event[1] == mote_mac:
-                if int(event[0]) < time:
-                    if event[5] != "":
-                        mote_board = event[5]
-                    break
-
-    return mote_board
+    return mote_lat, mote_long, mote_board
 
 def distance_on_unit_sphere(lat1, long1, lat2, long2):
     """
