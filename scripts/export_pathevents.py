@@ -1,21 +1,21 @@
-import json
 import influxdb
 import tools
 import context
 
 # ======================= Helpers =============================================
 
-def write_to_file(out_file, json_list):
+
+def write_to_file(out_file, j_list):
     # write json to file
     out_file.write("time,source,dest,direction,\n")
-    for obj in json_list:
+    for obj in j_list:
         time = tools.iso_to_epoch(obj["timestamp"])
 
         out_file.write(
-            str(time)+','+\
-            str(obj["value"]["source"])+','+\
-            str(obj["value"]["dest"])+','+\
-            str(obj["value"]["direction"])+','+\
+            str(time) + ',' +
+            str(obj["value"]["source"]) + ',' +
+            str(obj["value"]["dest"]) + ',' +
+            str(obj["value"]["direction"]) + ',' +
             '\n'
         )
 

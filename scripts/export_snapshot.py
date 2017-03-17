@@ -50,14 +50,13 @@ for obj in json_list:
             if "board" in res_json["value"] and res_json["value"]["board"] is not None:
                 board = res_json["value"]["board"]
 
-        if board:
-            timestamp = tools.iso_to_epoch(obj["timestamp"])
-            out_file.write(
-                str(timestamp)+','+\
-                mote["macAddress"]+','+\
-                str(mote["moteId"])+','+\
-                str(latitude)+','+\
-                str(longitude)+','+\
-                board+
-                '\n'
-            )
+        timestamp = tools.iso_to_epoch(obj["timestamp"])
+        out_file.write(
+            str(timestamp) + ',' +
+            mote["macAddress"] + ',' +
+            str(mote["moteId"]) + ',' +
+            str(latitude) + ',' +
+            str(longitude) + ',' +
+            board +
+            '\n'
+        )

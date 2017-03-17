@@ -1,7 +1,10 @@
-import json
 import influxdb
 import tools
 import context
+import pandas as pd
+
+# open input file
+df_snapshot = pd.read_csv("../data/snapshot.csv")
 
 # open output file
 out_file = open('../data/hr_device.csv', 'w')
@@ -24,16 +27,16 @@ json_list   = tools.influxdb_to_json(influxClient.query(query).raw)
 # write json to file
 out_file.write("time,mac,charge,queueOcc,numTxOk,lat,long\n")
 for obj in json_list:
-    time                = tools.iso_to_epoch(obj["timestamp"])
-    mote_lat, mote_long = tools.mac_to_position(obj["mac"], time)
+    time = tools.iso_to_epoch(obj["timestamp"])
+    mote_info = tools.get_mote_info(df_snapshot, obj["mac"], time)
 
     out_file.write(
-        str(time)+','+\
-        str(obj["mac"])+','+\
-        str(obj["value"]["charge"])+','+\
-        str(obj["value"]["queueOcc"])+','+\
-        str(obj["value"]["numTxOk"])+','+\
-        str(mote_lat)+','+\
-        str(mote_long)+\
+        str(time)+',' +
+        str(obj["mac"]) + ',' +
+        str(obj["value"]["charge"]) + ',' +
+        str(obj["value"]["queueOcc"]) + ',' +
+        str(obj["value"]["numTxOk"]) + ',' +
+        str(mote_info["lat"]) + ',' +
+        str(mote_info["long"]) +
         '\n'
     )

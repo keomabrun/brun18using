@@ -3,7 +3,6 @@
 # standard
 import time
 import calendar
-import csv
 import math
 import pandas as pd
 
@@ -12,16 +11,16 @@ import flatdict
 
 # ======================= Defines =============================================
 
-MOTECREATE_PATH = "../data/motecreate.csv"
 SNAPSHOT_PATH   = "../data/snapshot.csv"
 
 # ======================= Main ================================================
+
 
 def influxdb_to_json(sol_influxdb):
     """
     Converts an Influxdb query reply into a list of dicts.
 
-    :param sol_influxdb dict: the result of a database query (sush as SELECT * FROM)
+    :param dict sol_influxdb: the result of a database query (such as SELECT * FROM)
     :return: a list of JSON SOL objects
     :rtype: list
 
@@ -35,10 +34,10 @@ def influxdb_to_json(sol_influxdb):
     json_list = []
 
     # remove unused headers
-    for serie in sol_influxdb["series"]:
-        for val in serie['values']:
+    for series in sol_influxdb["series"]:
+        for val in series['values']:
             # convert to dict
-            d_influxdb = dict(zip(serie['columns'], val))
+            d_influxdb = dict(zip(series['columns'], val))
 
             # remove null values
             for key in d_influxdb.keys():
@@ -49,10 +48,10 @@ def influxdb_to_json(sol_influxdb):
             obj_value = flatdict.FlatDict(d_influxdb).as_dict()
 
             # parse specific objects
-            if serie['name'] == "SOL_TYPE_DUST_NOTIF_HRNEIGHBORS":
+            if series['name'] == "SOL_TYPE_DUST_NOTIF_HRNEIGHBORS":
                 if "neighbors" not in obj_value:
                     continue
-                for i in range(0,len(obj_value["neighbors"])+1):
+                for i in range(0, len(obj_value["neighbors"])+1):
                     ngbr_id = str(i)
 
                     # new HR_NGBR parsing
@@ -66,11 +65,11 @@ def influxdb_to_json(sol_influxdb):
                             obj_value["neighbors"][ngbr_id] = obj_value[ngbr_id]
                         del obj_value[ngbr_id]
 
-            if serie['name'] == "SOL_TYPE_DUST_SNAPSHOT":
+            if series['name'] == "SOL_TYPE_DUST_SNAPSHOT":
                 if "mote" not in obj_value:
                     continue
                 obj_value["motes"] = []
-                for i in range(0,len(obj_value["mote"])+1):
+                for i in range(0, len(obj_value["mote"])+1):
                     mote_id = str(i)
 
                     if mote_id in obj_value["mote"]:
@@ -82,45 +81,35 @@ def influxdb_to_json(sol_influxdb):
 
             # create final dict
             jdic = {
-                'type'      : serie['name'],
-                'mac'       : serie['tags']['mac'],
+                'type'      : series['name'],
+                'mac'       : series['tags']['mac'],
                 'value'     : obj_value,
                 'timestamp' : d_influxdb['time'],
             }
             json_list.append(jdic)
     return json_list
 
+
 def iso_to_epoch(iso_time):
     return calendar.timegm(time.strptime(iso_time, '%Y-%m-%dT%H:%M:%SZ'))
 
-def mac_to_id(mac, time):
-    line = 1
-    moteid = None
-    with open(MOTECREATE_PATH) as csvfile:
-        createmote_reader = csv.reader(csvfile, delimiter=',', quotechar='|')
-        event_list = list(createmote_reader)
 
-        while line < len(event_list):
-            event = event_list[line]
-            if int(event[0]) > time or line == len(event_list)-1:
-                break
-            if event[1] == mac:
-                moteid = int(event[2])
-            line += 1
-    return moteid
-
-def get_mote_info(df_snapshot, mote_name, time):
-    mote_lat    = None
-    mote_long   = None
-    mote_board = None
+def get_mote_info(df_snapshot, mote_name, timestamp):
+    mote_id = ""
+    mote_mac = ""
+    mote_lat = -1
+    mote_long = -1
+    mote_board = ""
     mote_name_type = ""
 
     if isinstance(mote_name, int):
         mote_name_type = "id"
+        mote_id = mote_name
     else:
         mote_name_type = "mac"
+        mote_mac = mote_name
 
-    res = df_snapshot[(df_snapshot[mote_name_type] == mote_name) & (df_snapshot["time"] < time)]
+    res = df_snapshot[(df_snapshot[mote_name_type] == mote_name) & (df_snapshot["time"] < timestamp)]
     if not res.empty:
         last_row = res.iloc[-1]
         if pd.notnull(last_row["lat"]):
@@ -129,8 +118,21 @@ def get_mote_info(df_snapshot, mote_name, time):
             mote_long = last_row["long"]
         if pd.notnull(last_row["board"]):
             mote_board = last_row["board"]
+        if pd.notnull(last_row["id"]):
+            mote_id = last_row["id"]
+        if pd.notnull(last_row["mac"]):
+            mote_mac = last_row["mac"]
 
-    return mote_lat, mote_long, mote_board
+    mote = {
+        "id": mote_id,
+        "mac": mote_mac,
+        "lat": mote_lat,
+        "long": mote_long,
+        "board": mote_board
+    }
+
+    return mote
+
 
 def distance_on_unit_sphere(lat1, long1, lat2, long2):
     """
@@ -158,4 +160,4 @@ def distance_on_unit_sphere(lat1, long1, lat2, long2):
 
     # Remember to multiply arc by the radius of the earth
     # in your favorite set of units to get length.
-    return arc*6371*1000 # in meters
+    return arc*6371*1000  # in meters
