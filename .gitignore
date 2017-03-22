@@ -3,3 +3,5 @@
 *.spl
 *.gz
 *converted-to.pdf
+
+notebooks/.ipynb_checkpoints/
