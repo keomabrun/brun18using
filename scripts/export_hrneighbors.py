@@ -49,7 +49,7 @@ for obj in json_list:
             )
 
         # write event
-        if nghbr_info["mac"] is not None:
+        if nghbr_info["mac"] != "":
             out_file.write(
                 str(evt_time) + ',' +
                 str(obj["mac"]) + ',' +
