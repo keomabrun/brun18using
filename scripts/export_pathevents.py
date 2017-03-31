@@ -22,8 +22,8 @@ def write_to_file(out_file, j_list):
 # ======================= Main ================================================
 
 # open output file
-path_create_file = open('../data/event_pathcreate.csv', 'w')
-path_delete_file = open('../data/event_pathdelete.csv', 'w')
+path_create_file = open(context.DATA_FOLDER + 'event_pathcreate.csv', 'w')
+path_delete_file = open(context.DATA_FOLDER + 'event_pathdelete.csv', 'w')
 
 # configure influxDB
 influxClient = influxdb.client.InfluxDBClient(

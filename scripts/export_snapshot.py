@@ -7,7 +7,7 @@ import context_PEACH as context
 # ======================= Main ================================================
 
 # open output file
-out_file = open('../data/PEACH/snapshot.csv', 'w')
+out_file = open(context.DATA_FOLDER + 'snapshot.csv', 'w')
 
 # configure influxDB
 influxClient = influxdb.client.InfluxDBClient(

@@ -4,10 +4,10 @@ import context
 import pandas as pd
 
 # open input file
-df_snapshot = pd.read_csv("../data/snapshot.csv")
+df_snapshot = pd.read_csv(context.DATA_FOLDER + "snapshot.csv")
 
 # open output file
-out_file = open('../data/hr_device.csv', 'w')
+out_file = open(context.DATA_FOLDER + 'hr_device.csv', 'w')
 
 # configure influxDB
 influxClient = influxdb.client.InfluxDBClient(
