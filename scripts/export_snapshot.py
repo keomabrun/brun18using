@@ -2,12 +2,12 @@
 
 import influxdb
 import tools
-import context
+import context_PEACH as context
 
 # ======================= Main ================================================
 
 # open output file
-out_file = open('../data/snapshot.csv', 'w')
+out_file = open('../data/PEACH/snapshot.csv', 'w')
 
 # configure influxDB
 influxClient = influxdb.client.InfluxDBClient(
@@ -32,23 +32,29 @@ for obj in json_list:
         latitude = ""
         longitude = ""
         board = ""
-        query   = "SELECT temperature,latitude,longitude,board FROM SOL_TYPE_DUST_OAP_TEMPSAMPLE"
-        query  += " WHERE time < '" + obj["timestamp"] + "'"
-        query  += " and mac='" + mote["macAddress"] + "'"
-        query  += " and site='" + context.SITE + "'"
-        query  += " GROUP by mac"
-        query  += " ORDER BY time DESC LIMIT 1"
-        res     = influxClient.query(query).raw
 
-        if len(res) > 0:
-            res_json = tools.influxdb_to_json(influxClient.query(query).raw)[0]
+        if mote["macAddress"] == obj["mac"]:
+            latitude = obj["value"]["latitude"]
+            longitude = obj["value"]["longitude"]
+            board = obj["value"]["board"]
+        else:
+            query   = "SELECT temperature,latitude,longitude,board FROM SOL_TYPE_DUST_OAP_TEMPSAMPLE"
+            query  += " WHERE time < '" + obj["timestamp"] + "'"
+            query  += " and mac='" + mote["macAddress"] + "'"
+            query  += " and site='" + context.SITE + "'"
+            query  += " GROUP by mac"
+            query  += " ORDER BY time DESC LIMIT 1"
+            res     = influxClient.query(query).raw
 
-            if "latitude" in res_json["value"] and res_json["value"]["latitude"] is not None:
-                latitude = res_json["value"]["latitude"]
-                longitude = res_json["value"]["longitude"]
+            if len(res) > 0:
+                res_json = tools.influxdb_to_json(influxClient.query(query).raw)[0]
 
-            if "board" in res_json["value"] and res_json["value"]["board"] is not None:
-                board = res_json["value"]["board"]
+                if "latitude" in res_json["value"] and res_json["value"]["latitude"] is not None:
+                    latitude = res_json["value"]["latitude"]
+                    longitude = res_json["value"]["longitude"]
+
+                if "board" in res_json["value"] and res_json["value"]["board"] is not None:
+                    board = res_json["value"]["board"]
 
         timestamp = tools.iso_to_epoch(obj["timestamp"])
         out_file.write(
