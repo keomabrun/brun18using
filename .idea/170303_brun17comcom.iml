@@ -6,6 +6,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="160624_chants" />
   </component>
   <component name="TestRunnerService">
     <option name="projectConfiguration" value="py.test" />
