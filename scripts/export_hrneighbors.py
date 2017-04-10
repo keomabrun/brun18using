@@ -49,18 +49,17 @@ for obj in json_list:
             )
 
         # write event
-        if nghbr_info["mac"] != "":
-            out_file.write(
-                str(evt_time) + ',' +
-                str(obj["mac"]) + ',' +
-                str(nghbr_info["mac"]) + ',' +
-                str(nghbr["neighborFlag"]) + ',' +
-                str(nghbr["rssi"]) + ',' +
-                str(nghbr["numTxPackets"]) + ',' +
-                str(nghbr["numTxFailures"]) + ',' +
-                str(nghbr["numRxPackets"]) + ',' +
-                str(mote_info["board"]) + ',' +
-                str(nghbr_info["board"]) + ',' +
-                str(distance) +
-                '\n'
-            )
+        out_file.write(
+            str(evt_time) + ',' +
+            str(obj["mac"]) + ',' +
+            str(nghbr_info["mac"]) + ',' +
+            str(nghbr["neighborFlag"]) + ',' +
+            str(nghbr["rssi"]) + ',' +
+            str(nghbr["numTxPackets"]) + ',' +
+            str(nghbr["numTxFailures"]) + ',' +
+            str(nghbr["numRxPackets"]) + ',' +
+            str(mote_info["board"]) + ',' +
+            str(nghbr_info["board"]) + ',' +
+            str(distance) +
+            '\n'
+        )
