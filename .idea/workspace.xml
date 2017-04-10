@@ -2,28 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f165b4de-f736-445b-a8fa-126a03a2e669" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PEACH/snapshot.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PEACH/hr_device.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/PEACH/hr_discovered.csv" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/notebooks/charge_stats.ipynb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/figures/net_churn-eps-converted-to.pdf" afterPath="$PROJECT_DIR$/figures/net_churn-eps-converted-to.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/figures/pister_hack-eps-converted-to.pdf" afterPath="$PROJECT_DIR$/figures/pister_hack-eps-converted-to.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/figures/waterfall-eps-converted-to.pdf" afterPath="$PROJECT_DIR$/figures/waterfall-eps-converted-to.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/170303_brun17comcom.iml" afterPath="$PROJECT_DIR$/.idea/170303_brun17comcom.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/brun17comcom.tex" afterPath="$PROJECT_DIR$/brun17comcom.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/figures/asymmetry.eps" afterPath="$PROJECT_DIR$/figures/asymmetry.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/figures/net_churn.eps" afterPath="$PROJECT_DIR$/figures/net_churn.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/figures/pister_hack.eps" afterPath="$PROJECT_DIR$/figures/pister_hack.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/figures/waterfall.eps" afterPath="$PROJECT_DIR$/figures/waterfall.eps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notebooks/Pister_Hack.ipynb" afterPath="$PROJECT_DIR$/notebooks/Pister_Hack.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/hr_discovered.csv" afterPath="$PROJECT_DIR$/data/hr_discovered.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notebooks/PEACH/asymmetry.ipynb" afterPath="$PROJECT_DIR$/notebooks/PEACH/asymmetry.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notebooks/PEACH/global_stats.ipynb" afterPath="$PROJECT_DIR$/notebooks/PEACH/global_stats.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notebooks/PEACH/net_churn.ipynb" afterPath="$PROJECT_DIR$/notebooks/PEACH/net_churn.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notebooks/asymmetry.ipynb" afterPath="$PROJECT_DIR$/notebooks/asymmetry.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notebooks/charge.ipynb" afterPath="$PROJECT_DIR$/notebooks/charge.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notebooks/charge_stats.ipynb" afterPath="$PROJECT_DIR$/notebooks/charge_stats.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notebooks/global_stats.ipynb" afterPath="$PROJECT_DIR$/notebooks/global_stats.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notebooks/net_churn.ipynb" afterPath="$PROJECT_DIR$/notebooks/net_churn.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notebooks/waterfall.ipynb" afterPath="$PROJECT_DIR$/notebooks/waterfall.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/context_PEACH.py" afterPath="$PROJECT_DIR$/scripts/context_PEACH.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/export_hrneighbors.py" afterPath="$PROJECT_DIR$/scripts/export_hrneighbors.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/export_pathevents.py" afterPath="$PROJECT_DIR$/scripts/export_pathevents.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,56 +33,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="net_churn.ipynb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notebooks/PEACH/net_churn.ipynb">
+      <file leaf-file-name="charge.ipynb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/notebooks/charge.ipynb">
           <provider selected="true" editor-type-id="ipnb-editor">
             <state>
               <selected id="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="asymmetry.ipynb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notebooks/PEACH/asymmetry.ipynb">
-          <provider selected="true" editor-type-id="ipnb-editor">
-            <state>
-              <selected id="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="asymmetry.ipynb" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/notebooks/asymmetry.ipynb">
-          <provider selected="true" editor-type-id="ipnb-editor">
-            <state>
-              <selected id="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="waterfall.ipynb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notebooks/PEACH/waterfall.ipynb">
-          <provider selected="true" editor-type-id="ipnb-editor">
-            <state>
-              <selected id="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Pister_Hack.ipynb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notebooks/PEACH/Pister_Hack.ipynb">
-          <provider selected="true" editor-type-id="ipnb-editor">
-            <state>
-              <selected id="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="net_churn.ipynb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notebooks/net_churn.ipynb">
-          <provider selected="true" editor-type-id="ipnb-editor">
-            <state>
-              <selected id="3" />
             </state>
           </provider>
         </entry>
@@ -115,29 +65,30 @@
       <list>
         <option value="$PROJECT_DIR$/scripts/test_unit.py" />
         <option value="$PROJECT_DIR$/scripts/toto.py" />
-        <option value="$PROJECT_DIR$/notebooks/global_stats.ipynb" />
         <option value="$PROJECT_DIR$/notebooks/reliability.ipynb" />
         <option value="$PROJECT_DIR$/notebooks/charge_stats.ipynb" />
         <option value="$PROJECT_DIR$/notebooks/pdr_distance.ipynb" />
-        <option value="$PROJECT_DIR$/notebooks/net_churn.ipynb" />
         <option value="$PROJECT_DIR$/scripts/influx_snapshot_to_json.py" />
         <option value="$PROJECT_DIR$/notebooks/charge.ipynb" />
         <option value="$PROJECT_DIR$/notebooks/pdr_links.ipynb" />
         <option value="$PROJECT_DIR$/notebooks/pdr_link.ipynb" />
-        <option value="$PROJECT_DIR$/scripts/tools.py" />
         <option value="$PROJECT_DIR$/../160624_chants/notebooks/waterfall.ipynb" />
-        <option value="$PROJECT_DIR$/notebooks/waterfall.ipynb" />
-        <option value="$PROJECT_DIR$/scripts/export_snapshot.py" />
-        <option value="$PROJECT_DIR$/notebooks/PEACH/waterfall.ipynb" />
-        <option value="$PROJECT_DIR$/scripts/export_hrdiscovered.py" />
-        <option value="$PROJECT_DIR$/scripts/export_hrdevice.py" />
-        <option value="$PROJECT_DIR$/scripts/export_hrneighbors.py" />
-        <option value="$PROJECT_DIR$/notebooks/Pister_Hack.ipynb" />
         <option value="$PROJECT_DIR$/scripts/export_pathevents.py" />
+        <option value="$PROJECT_DIR$/notebooks/Pister_Hack.ipynb" />
         <option value="$PROJECT_DIR$/notebooks/PEACH/Pister_Hack.ipynb" />
-        <option value="$PROJECT_DIR$/notebooks/PEACH/net_churn.ipynb" />
+        <option value="$PROJECT_DIR$/notebooks/waterfall.ipynb" />
+        <option value="$PROJECT_DIR$/notebooks/PEACH/waterfall.ipynb" />
+        <option value="$PROJECT_DIR$/scripts/export_snapshot.py" />
+        <option value="$PROJECT_DIR$/scripts/tools.py" />
         <option value="$PROJECT_DIR$/notebooks/PEACH/asymmetry.ipynb" />
         <option value="$PROJECT_DIR$/notebooks/asymmetry.ipynb" />
+        <option value="$PROJECT_DIR$/scripts/export_hrneighbors.py" />
+        <option value="$PROJECT_DIR$/notebooks/PEACH/global_stats.ipynb" />
+        <option value="$PROJECT_DIR$/scripts/export_hrdevice.py" />
+        <option value="$PROJECT_DIR$/scripts/export_hrdiscovered.py" />
+        <option value="$PROJECT_DIR$/notebooks/PEACH/net_churn.ipynb" />
+        <option value="$PROJECT_DIR$/notebooks/net_churn.ipynb" />
+        <option value="$PROJECT_DIR$/notebooks/global_stats.ipynb" />
       </list>
     </option>
   </component>
@@ -165,36 +116,6 @@
       <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="External Dependencies">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="/">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="usr">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="lib">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="python2.7">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="dist-packages">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
           <PATH>
             <PATH_ELEMENT USER_OBJECT="Root">
               <option name="myItemId" value="" />
@@ -302,6 +223,7 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../160624_chants" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -458,10 +380,10 @@
     <frame x="1366" y="0" width="1920" height="1200" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15471092" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.119379014" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931355" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922202" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827324" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931355" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931355" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -474,7 +396,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931355" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931355" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -483,24 +405,12 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scripts/export_snapshot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="59" column="18" lean-forward="false" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/export_hrneighbors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/export_pathevents.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -673,6 +583,145 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/influx_snapshot_to_json.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="913">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notebooks/pdr_links.ipynb" />
+    <entry file="file://$PROJECT_DIR$/../160624_chants/notebooks/waterfall.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/export_pathevents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="36" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../160624_chants/notebooks/asymmetry.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notebooks/PEACH/waterfall.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notebooks/Pister_Hack.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notebooks/PEACH/Pister_Hack.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notebooks/waterfall.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1596">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/export_snapshot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-228">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/export_hrneighbors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="14" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notebooks/asymmetry.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notebooks/PEACH/asymmetry.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notebooks/pdr_link.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notebooks/PEACH/global_stats.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notebooks/PEACH/net_churn.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notebooks/net_churn.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/export_hrdevice.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/export_hrdiscovered.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="14" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/notebooks/global_stats.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -687,135 +736,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/influx_snapshot_to_json.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="913">
-          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/notebooks/charge.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="5" />
-        </state>
-      </provider>
       <provider editor-type-id="LargeFileEditor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notebooks/pdr_link.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notebooks/pdr_links.ipynb" />
-    <entry file="file://$PROJECT_DIR$/scripts/tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="805">
-          <caret line="133" column="15" lean-forward="false" selection-start-line="133" selection-start-column="15" selection-end-line="133" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../160624_chants/notebooks/waterfall.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/export_hrdiscovered.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="48" lean-forward="false" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notebooks/waterfall.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notebooks/Pister_Hack.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notebooks/PEACH/waterfall.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notebooks/net_churn.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notebooks/PEACH/Pister_Hack.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/export_pathevents.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="36" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/export_hrneighbors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-167">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/export_snapshot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="37" column="46" lean-forward="false" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/export_hrdevice.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notebooks/PEACH/net_churn.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notebooks/PEACH/asymmetry.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notebooks/asymmetry.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="6" />
         </state>
       </provider>
     </entry>
