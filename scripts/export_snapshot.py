@@ -2,7 +2,7 @@
 
 import influxdb
 import tools
-import context_PEACH as context
+import context
 
 # ======================= Main ================================================
 
@@ -36,7 +36,8 @@ for obj in json_list:
         if mote["macAddress"] == obj["mac"]:
             latitude = obj["value"]["latitude"]
             longitude = obj["value"]["longitude"]
-            board = obj["value"]["board"]
+            if board in obj["value"]:
+                board = obj["value"]["board"]
         else:
             query   = "SELECT temperature,latitude,longitude,board FROM SOL_TYPE_DUST_OAP_TEMPSAMPLE"
             query  += " WHERE time < '" + obj["timestamp"] + "'"
