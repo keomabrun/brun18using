@@ -5,3 +5,5 @@
 *converted-to.pdf
 
 notebooks/.ipynb_checkpoints/
+
+.idea/workspace.xml
