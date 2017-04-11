@@ -3,11 +3,13 @@
 \usepackage{amsmath}
 \usepackage{graphics}
 \usepackage{graphicx}
-\usepackage{subfigure}
+%\usepackage{subfigure}
 \usepackage{color}
 \usepackage{xspace}
 \usepackage{url}
 \usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{subcaption}
 
 % reviews
 \newcommand{\todo}[1]        {\textcolor{red}{[TODO] #1}}
@@ -210,32 +212,56 @@
 \lorem
 
 \begin{table}
+\begin{subtable}{.4\textwidth}
     \begin{tabular}{|c|c|r|}
-        \hline
-        MAC address    & charge consumed           &   lifetime \\
-        \hline
-        \tt{30-60-ef}  & 227,847~C (2.2\% battery) & 10.8~years \\
-        \tt{38-0f-66}  & 252,356~C (2.5\% battery) &  9.8~years \\
-        \tt{3f-f8-20}  & 291,312~C (2.9\% battery) &  8.4~years \\
-        \tt{3f-fe-87}  & 392,606~C (3.9\% battery) &  6.3~years \\
-        \tt{3f-fe-88}  & 458,459~C (4.5\% battery) &  5.3~years \\
-        \tt{58-32-36}  & 327,634~C (3.2\% battery) &  7.5~years \\
-        \tt{60-01-f8}  & 252,454~C (2.5\% battery) &  9.8~years \\
-        \tt{60-02-1b}  & 222,253~C (2.2\% battery) & 10.1~years \\
-        \tt{60-02-4b}  & 146,068~C (1.4\% battery) & 16.8~years \\
-        \tt{60-03-82}  & 494,841~C (4.9\% battery) &  5.0~years \\
-        \tt{60-05-5f}  & 274,502~C (2.7\% battery) &  9.0~years \\
-        \tt{60-05-69}  & 437,136~C (4.3\% battery) &  5.7~years \\
-        \tt{60-05-78}  & 304,145~C (3.0\% battery) &  8.1~years \\
-        \tt{60-05-ab}  & 284,764~C (2.8\% battery) &  8.7~years \\
-        \tt{60-06-27}  & 321,879~C (3.2\% battery) &  7.7~years \\
-        \tt{60-08-d5}  & 263,120~C (2.6\% battery) &  9.3~years \\
-        \hline
+        \toprule
+        MAC    & charge consumed           &   lifetime \\
+        \midrule
+        \tt{30-60-ef}  & 227,847~C (2.2\%) & 11~years \\
+        \tt{38-0f-66}  & 252,356~C (2.5\%) & 10~years \\
+        \tt{3f-f8-20}  & 291,312~C (2.9\%) & 8~years \\
+        \tt{3f-fe-87}  & 392,606~C (3.9\%) & 6~years \\
+        \tt{3f-fe-88}  & 458,459~C (4.5\%) & 5~years \\
+        \tt{58-32-36}  & 327,634~C (3.2\%) & 8~years \\
+        \tt{60-01-f8}  & 252,454~C (2.5\%) & 10~years \\
+        \tt{60-02-1b}  & 222,253~C (2.2\%) & 10~years \\
+        \tt{60-02-4b}  & 146,068~C (1.4\%) & 17~years \\
+        \tt{60-03-82}  & 494,841~C (4.9\%) & 5~years \\
+        \tt{60-05-5f}  & 274,502~C (2.7\%) & 9~years \\
+        \tt{60-05-69}  & 437,136~C (4.3\%) & 6~years \\
+        \tt{60-05-78}  & 304,145~C (3.0\%) & 8~years \\
+        \tt{60-05-ab}  & 284,764~C (2.8\%) & 9~years \\
+        \tt{60-06-27}  & 321,879~C (3.2\%) & 8~years \\
+        \tt{60-08-d5}  & 263,120~C (2.6\%) & 9~years \\
+        \bottomrule
     \end{tabular}
-    \caption{Per-node power consumption and associated expected lifetime when powered by a pair of AA batteries.}
-    \label{tab:stats_charge}
+    \caption{PEACH}
+\end{subtable}\hfill
+\begin{subtable}{.45\textwidth}
+\begin{tabular}{|c|c|c|}
+    \toprule
+    MAC &  charge consumed & lifetime \\
+    \midrule
+    \tt{38-03-dd} &  565,552 C (7.1\%)  &  4 years \\
+    \tt{58-e9-ca} &  439,811 C (5.6\%)  &  5 years \\
+    \tt{58-e9-cb} &  457,318 C (5.8\%)  &  5 years \\
+    \tt{58-eb-5b} &  471,838 C (6.0\%)  &  4 years \\
+    \tt{58-eb-64} &  361,830 C (4.6\%)  &  6 years \\
+    \tt{58-eb-67} &  497,978 C (6.3\%)  &  4 years \\
+    \tt{58-f3-17} &  383,552 C (4.8\%)  &  5 years \\
+    \tt{58-f4-f8} &  428,316 C (5.4\%)  &  5 years \\
+    \tt{58-f5-23} &  464,164 C (5.9\%)  &  4 years \\
+    \tt{58-f5-3c} &  463,003 C (5.8\%)  &  4 years \\
+    \tt{58-f5-58} &  428,718 C (5.4\%)  &  5 years \\
+    \tt{58-f8-8f} &  468,257 C (5.9\%)  &  4 years \\
+    \tt{58-f9-c4} &  347,970 C (4.4\%)  &  6 years \\
+    \bottomrule
+\end{tabular}
+\caption{EVAlab}
+\end{subtable}\hfill
+\caption{Per-node power consumption and associated expected lifetime when powered by a pair of AA batteries.}
+\label{tab:stats_charge}
 \end{table}
-
 %==============================================================================
 \section{Not so Intuitive Results}
 \label{sec:notsointuitive}
