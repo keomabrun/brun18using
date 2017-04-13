@@ -340,17 +340,17 @@ Those results correspond to the environment described in Section~\ref{sec:intro}
 
 We expect the \smip network to offer wire-like reliability.
 Table~\ref{tab:net_stats} confirms that this is the case.
-It presents statistics gathered over July 15-25 2016 period.
+It presents statistics gathered over July 15-25 2016 period in the PEACH orchard and from the 2nd of November 2016 to the 16th of February 2017 in the EVAlab	.
 
 \begin{table}
     \begin{tabular}{|l|l|l|}
-        \hline
-        {}	 							& PEACH 				  & EVALAB \\
-        \hline
+        \toprule
+        {}	 							& PEACH 				  & EVAlab \\
+        \midrule
         reliability (Arrived/Lost) 		& 100\% (693,844/0) 	  & (419,612/not measured)\\ \hline
-        average PDR (Transmit/Fails) 	& 95\% (4,405,569/258778) & 85\% (22,869,461/3,412,059)\\ \hline
+        average PDR (Transmit/Fails) 	& 95\% (4,405,569/258778) & 87\% (19,807,535/2,488,149)\\ \hline
         latency     					& 700~msec 				  & Not measured\\
-        \hline
+        \bottomrule
     \end{tabular}
     \caption{The overall network performance in the 15-25 July 2016 period.}
     \label{tab:net_stats}
@@ -367,11 +367,21 @@ These results are very similar to the very initial results presented in~\cite{wa
 
 % description
 
-\lorem
+Each device is powered by a pair of Energizer L-91 AA batteries.
+These contain a nominal 3134~mAh of charge, or 2821~mAh when accounting for a 10\% decrease due to manufacturing differences.
+A \smip node contains a ``charge accounting'' feature in which it tracks the amount of charge is has been drawing from the battery.
+Each mote reports this number every 15~min as a field in its \HRDEVICE health report.
+This number allows us to predict the lifetime of the device.
 
 % results
 
-\lorem
+Table~\ref{tab:stats_charge} shows charge consumed by the motesover the two 3~month periods, as well as the portion of the battery this represents.
+Assuming the same energy consumption rate, we can extrapolate the lifetime.
+The node with the longest lifetime is {\tt 60-02-4b}.
+From Fig.~\ref{fig:map}, we can see that this is a leaf node.
+Since it does not have to relay data from any children, it is normal that this node consumes very little.
+The node with the shortest lifetime is {\tt 60-03-82} and has 5~years of lifetime.
+This shows the ultra-low power consumption of the \smip network.
 
 \begin{table}
 \begin{subtable}{.4\textwidth}
@@ -407,16 +417,16 @@ These results are very similar to the very initial results presented in~\cite{wa
         \tt{38-03-dd} &  566~KC (7.1\%)  &  4 years \\
         \tt{58-e9-ca} &  440~KC (5.6\%)  &  5 years \\
         \tt{58-e9-cb} &  457~KC (5.8\%)  &  5 years \\
-        \tt{58-eb-5b} &  472~KC (6.0\%)  &  4 years \\
+        \tt{58-eb-5b} &  472~KC (6.0\%)  &  5 years \\
         \tt{58-eb-64} &  362~KC (4.6\%)  &  6 years \\
-        \tt{58-eb-67} &  498~KC (6.3\%)  &  4 years \\
-        \tt{58-f3-17} &  384~KC (4.8\%)  &  5 years \\
+        \tt{58-eb-67} &  498~KC (6.3\%)  &  5 years \\
+        \tt{58-f3-17} &  384~KC (4.8\%)  &  6 years \\
         \tt{58-f4-f8} &  428~KC (5.4\%)  &  5 years \\
-        \tt{58-f5-23} &  464~KC (5.9\%)  &  4 years \\
-        \tt{58-f5-3c} &  463~KC (5.8\%)  &  4 years \\
+        \tt{58-f5-23} &  464~KC (5.9\%)  &  5 years \\
+        \tt{58-f5-3c} &  463~KC (5.8\%)  &  5 years \\
         \tt{58-f5-58} &  429~KC (5.4\%)  &  5 years \\
-        \tt{58-f8-8f} &  468~KC (5.9\%)  &  4 years \\
-        \tt{58-f9-c4} &  348~KC (4.4\%)  &  6 years \\
+        \tt{58-f8-8f} &  468~KC (5.9\%)  &  5 years \\
+        \tt{58-f9-c4} &  348~KC (4.4\%)  &  7 years \\
         \bottomrule
     \end{tabular}
     \caption{EVAlab}
