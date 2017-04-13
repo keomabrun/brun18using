@@ -3,12 +3,12 @@
 \usepackage{amsmath}
 \usepackage{graphics}
 \usepackage{graphicx}
-%\usepackage{subfigure}
 \usepackage{color}
 \usepackage{xspace}
 \usepackage{url}
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs}
+\usepackage{caption}
 \usepackage{subcaption}
 
 % reviews
@@ -30,14 +30,16 @@
 \newcommand{\pathdelete}          {{\tt path\_delete}\xspace}
 \newcommand{\motecreate}          {{\tt mote\_create}\xspace}
 \newcommand{\moteId}              {{\tt moteId}\xspace}
-\newcommand{\NUMHRNEIGHBORS}      {140,897\xspace}
-\newcommand{\NUMSTATS}            {369,276\xspace}
+\newcommand{\PEACHNUMHRNEIGHBORS}      {140,897\xspace}
+\newcommand{\PEACHNUMSTATS}            {369,276\xspace}
 
 \graphicspath{{figures/}}
 
 \begin{document}
 	
 \begin{frontmatter}
+    
+\date{}
 	
 \title{(Not so) Intuitive Results from a Smart Agriculture\\Low-Power Wireless Mesh Deployment}
 
@@ -53,7 +55,7 @@
 \address[inria]{Inria, EVA team, Paris, France}
 \address[uoc]{Univ. Oberta de Catalunya, Barcelona, Catalonia, Spain}
 
-\end{frontmatter}
+
 
 \begin{abstract}
 Two wireless network sensors are deployed.
@@ -64,6 +66,12 @@ Nodes in the network exhibit an expected lifetime between 4 and 16~years, with a
 We show how -- contrary to popular belief -- wireless links are symmetric.
 Thanks to the use of Time Slotted Channel Hopping (TSCH), the network topology is very stable, with $\leq$5 link changes per day in the entire network.
 \end{abstract}
+
+\begin{keyword}
+    WSN, SmartAgriculture, SmartBuilding
+\end{keyword}
+
+\end{frontmatter}
 
 %==============================================================================
 \section{Introduction}
@@ -79,9 +87,16 @@ Thanks to the use of Time Slotted Channel Hopping (TSCH), the network topology i
 
 %======== front-page figure, do not move
 \begin{figure}
-    \centering
-    \includegraphics[width=0.5\columnwidth]{evalab_map_annotated}
-    \caption{The wireless motes deployed in the peach orchard in Mendoza, Argentina.}
+    \begin{minipage}[b]{0.66\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{map_annotated}
+        \caption{The wireless motes deployed in the peach orchard in Mendoza, Argentina.\newline}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{evalab_map_annotated.eps}
+        \caption{The wireless motes deployed in the Inria office building, France.}
+    \end{minipage}
     \label{fig:orchard}
 \end{figure}
 
