@@ -25,7 +25,7 @@ query       +=  " GROUP BY mac"
 json_list   = tools.influxdb_to_json(influxClient.query(query).raw)
 
 # write json to file
-out_file.write("time,mac,charge,queueOcc,numTxOk,lat,long\n")
+out_file.write("time,mac,charge,queueOcc,numTxOk,numTxBad,lat,long\n")
 for obj in json_list:
     time = tools.iso_to_epoch(obj["timestamp"])
     mote_info = tools.get_mote_info(df_snapshot, obj["mac"], time)
@@ -36,6 +36,7 @@ for obj in json_list:
         str(obj["value"]["charge"]) + ',' +
         str(obj["value"]["queueOcc"]) + ',' +
         str(obj["value"]["numTxOk"]) + ',' +
+        str(obj["value"]["numTxBad"]) + ',' +
         str(mote_info["lat"]) + ',' +
         str(mote_info["long"]) +
         '\n'
