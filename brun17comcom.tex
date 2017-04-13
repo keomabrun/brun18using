@@ -494,33 +494,49 @@ That being said, discussions on link symmetry at the routing layer is largely ar
 
 % unreliability
 
-\lorem
+Wireless in unreliable in nature.
+It is normal that some wireless links interconnecting motes ``come and go''.
+That is, links that have been performing well (e.g.~PDR>90\%) can suddenly disappear (e.g.~PDR<10\%).
+Similarly, nodes that were not able to communicate can suddenly hear one another perfectly.
 
 % time scale
 
-\lorem
+The question, however, is what time scale is considered.
+Early academic work on low-power wireless~\cite{srinivasan08beta} has looked at the ``burtiness'' of the wireless links, i.e.~changes over the course of 10-1000's~ms.
+Some follow-up work has taken the assumption that wireless links are so unstable that only a reactive routing approach works.
+In this section, we infirm this statement by looking at the stability of the network.
 
 % dataset
 
-\lorem
+In particular, we look at the \pathdelete and \pathcreate events.
+These are generated each time a node adds/deletes a neighbor to communicate with, which happens for example when the routing topology changes (see Section~\ref{sec:collected}).
+The number of \pathdelete and \pathcreate events is a direct measurement of the network stability.
+Note that we removed the nodes that does not respect the Dust requirement of having at least two parents to associate with (one node in the PEACH deployment and three in the EVAlab one).
+Due to the lack of second parent, the nodes were producing over 20 times the amount of messages than all the other nodes assembled.
 
 % results
 
-\lorem
+Fig.~\ref{fig:net_churn} shows the number of \pathdelete and \pathcreate events per day, over a 16 days (PEACH) and 55 days (EVAlab).
+For reference, the total number of links in the network is also depicted.
+There are less than 5 \pathdelete or \pathcreate events \textit{per day} in the entire PEACH network and less than 14  \pathdelete or \pathcreate events in the EVAlab. 
+This means that links, once established, remain useful for days/weeks at a time, and that the network is extremely stable.
+The reason why there are more events per day in the EVAlab deployment is not studied here.
 
 \begin{figure}
     \includegraphics[width=0.5\columnwidth]{net_churn_peach.eps}
     \includegraphics[width=0.5\columnwidth]{net_churn.eps}
     \caption{
-        Network stability: the number of \pathcreate and \pathdelete events generated per day over a 16-day period.
-        The top portion shows the total number of links.
+        Network stability: the number of \pathcreate and \pathdelete events generated per day over a 16 days (PEACH) and 55 days (EVAlab).
+        The top line shows the total number of links.
     }
     \label{fig:net_churn}
 \end{figure}
 
 % discussion
 
-\lorem
+This stability can largely be attributed to the use of channel hopping.
+Changing frequency for each packet is known to efficiently combat multi-path fading and external interference~\cite{watteyne09reliability}, the major causes of instability.
+It does not contradict the findings of~\cite{srinivasan08beta}, it just means that link-layer retransmissions can efficiently cope with link burstiness, and that the multi-hop topology can remain very stable.
 
 %==============================================================================
 \section{Conclusion}
