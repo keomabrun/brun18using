@@ -33,6 +33,7 @@
 \newcommand{\PEACHNUMHRNEIGHBORS} {140,897\xspace}
 \newcommand{\PEACHNUMSTATS}       {369,276\xspace}
 \newcommand{\EVANUMHRNEIGHBORS}   {144,217\xspace}
+\newcommand{\EVANUMSTATS}   	  {408,880\xspace}
 
 \graphicspath{{figures/}}
 
@@ -516,7 +517,7 @@ Due to the lack of second parent, the nodes were producing over 20 times the amo
 
 % results
 
-Fig.~\ref{fig:net_churn} shows the number of \pathdelete and \pathcreate events per day, over a 16 days (PEACH) and 55 days (EVAlab).
+Fig.~\ref{fig:net_churn} shows the number of \pathdelete and \pathcreate events per day, over a 16 days (PEACH) and 2 months (EVAlab).
 For reference, the total number of links in the network is also depicted.
 There are less than 5 \pathdelete or \pathcreate events \textit{per day} in the entire PEACH network and less than 14  \pathdelete or \pathcreate events in the EVAlab. 
 This means that links, once established, remain useful for days/weeks at a time, and that the network is extremely stable.
@@ -526,7 +527,7 @@ The reason why there are more events per day in the EVAlab deployment is not stu
     \includegraphics[width=0.5\columnwidth]{net_churn_peach.eps}
     \includegraphics[width=0.5\columnwidth]{net_churn.eps}
     \caption{
-        Network stability: the number of \pathcreate and \pathdelete events generated per day over a 16 days (PEACH) and 55 days (EVAlab).
+        Network stability: the number of \pathcreate and \pathdelete events generated per day over a 16 days (PEACH) and two months (EVAlab).
         The top line shows the total number of links.
     }
     \label{fig:net_churn}
