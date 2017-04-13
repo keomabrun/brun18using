@@ -30,8 +30,9 @@
 \newcommand{\pathdelete}          {{\tt path\_delete}\xspace}
 \newcommand{\motecreate}          {{\tt mote\_create}\xspace}
 \newcommand{\moteId}              {{\tt moteId}\xspace}
-\newcommand{\PEACHNUMHRNEIGHBORS}      {140,897\xspace}
-\newcommand{\PEACHNUMSTATS}            {369,276\xspace}
+\newcommand{\PEACHNUMHRNEIGHBORS} {140,897\xspace}
+\newcommand{\PEACHNUMSTATS}       {369,276\xspace}
+\newcommand{\EVANUMHRNEIGHBORS}   {144,217\xspace}
 
 \graphicspath{{figures/}}
 
@@ -122,13 +123,13 @@ Each mote is placed in a water-tight box that is fixed on a 4~m high pole (see F
         \centering
         \includegraphics[width=\textwidth]{map_annotated}
         \caption{The wireless motes deployed in the peach orchard in Mendoza, Argentina.\newline}
+        \label{fig:map}
     \end{minipage}
     \hfill
     \begin{minipage}[b]{0.3\textwidth}
         \includegraphics[width=\textwidth]{evalab_map_annotated.eps}
         \caption{The wireless motes deployed in the Inria office building, France.}
     \end{minipage}
-    \label{fig:map}
 \end{figure}
 
 % hardware
@@ -152,7 +153,8 @@ In 3~months of operation, we gathered over 4~million temperature values, and mor
 % the goal of this paper
 
 The goal of this paper is to analyze the network statistics over a 3-month period, and precisely assess the performance of the network.
-\newpage
+\\
+
 This paper makes the following contributions:
 \begin{itemize}
     \item We confirm that the \smip network exhibits years of battery lifetime and wire-like reliability;
@@ -190,7 +192,7 @@ HRs are used to assess the overall health of the network.
 
 % number received and remainder
 
-Table~\ref{tab:msg_stats} summarizes the number of events and HRs gathered during the 3~month period.
+Table~\ref{tab:msg_stats} summarizes the number of events and HRs gathered during the two periods of 3~month.
 In the remainder of this section, we detail the meaning of each of the statistics.
 
 \begin{table}
@@ -204,31 +206,81 @@ In the remainder of this section, we detail the meaning of each of the statistic
         \pathdelete     &   3,653     &   2,070 \\ \hline
         \HRDEVICE       & 132,758     &   144,270 \\ \hline
         \HRDISCOVERED   &  87,737     &   126,906 \\ \hline
-        \HRNEIGHBORS    & \PEACHNUMHRNEIGHBORS & 144,217\\ \hline
+        \HRNEIGHBORS    & \PEACHNUMHRNEIGHBORS & \EVANUMHRNEIGHBORS\\ \hline
     \end{tabular}
     \caption{The number of statistics collected over the 3~month period.}
     \label{tab:msg_stats}
 \end{table}
 
+% - - - - - - - - - - - - - -
+\textbf{\motecreate.}
+Each node in a \smip network can periodically send beacons to announce the presence of the network.
+When a mote wants to join a network, it listens for those beacons.
+Once it has heard a number of those, it starts a security handshake with the network.
+During that handshake, the \smip manager sends a \motecreate event notification over its serial port.
+This is the event we log\footnote{Normally, each mote generates a single \motecreate event. Due to power issues at the manager side, the network restarted a couple of times and new events were created.}.
+It contains, among other information, the association between the newly-joined device's 8-byte MAC address and its 2-byte \moteId.
+
+% - - - - - - - - - - - - - -
+\textbf{\pathcreate and \pathdelete.}
+In \smip terminology, a ``path'' is the link-layer resource that allows two neighbor nodes to communicate\footnote{~In more classical networking terminology, this is often referred to as a ``link''. We use the terms ``path'' and ``link'' interchangeably in this paper.}.
+Each time a mote starts communicating with a new neighbor (e.g.~its routing parent), a \pathcreate event is produced.
+Similarly, each time a mote \textit{stops} communicating with a neighbor (e.g.~it changes routing parent), a \pathdelete event is produced.
+We log both messages.
+
+% - - - - - - - - - - - - - -
+\textbf{\HRDEVICE.}
+Each network device produces a \HRDEVICE every 15~min.
+This health report contains counters/statistics internal to the mote, such as its current battery voltage, temperature, or total number of messages sent.
+
+% - - - - - - - - - - - - - -
+\textbf{\HRDISCOVERED.}
+\smip nodes continuously monitor their surroundings to discover neighbor nodes.
+Every 15~min, each node produces an \HRDISCOVERED health report that contains the list of ``discovered'' neighbors, and the associate signal strength it heard them at.
+These discovered neighbors can potentially be used in the future as neighbors the node communicates with.
+
+% - - - - - - - - - - - - - -
+\textbf{\HRNEIGHBORS.}
+Two nodes are neighbors when link-layer resources are installed for them to communicate.
+The neighbors of a node are a subset of the discovered neighbors.
+Every 15~min, each note generates an \HRNEIGHBORS health report that contains its list of neighbors.
+These messages also specifies per-neighbor counters, such as the number of link-layer retransmissions.
+
 % analysis
 
-\lorem
+After 3~months of operation, we have collected \PEACHNUMSTATS~network statistics (see Table~\ref{tab:msg_stats}).
+The goal of the next section is to present the main results from analyzing this information.
+We group these results in two categories.
+``Intuitive'' results (Section~\ref{sec:intuitive}) are results that confirm the performance expected from a \smip network.
+``Not so intuitive'' results (Section~\ref{sec:notsointuitive}) are results that we believe go against popular belief.
+This classification is necessarily subjective.
+
+Possibly due to power line failure at the network manager side, the network experienced some restarting.
+For this reason, some analysis presented in the next sections are done in shorter period.
+As a side effect, this allows us to verify the network formation and joining process.
 
 %==============================================================================
 \section{Intuitive Results}
 \label{sec:intuitive}
 
-\lorem
+Previous publications~\cite{watteyne16peach,watteyne10mitigating,watteyne09reliability,watteyne15industrial} underline the performance of TSCH networks in general, and \smip in particular.
+Standardization work in the IETF 6TiSCH working group\footnote{~\url{https://tools.ietf.org/wg/6tisch/charters}} around TSCH networks further illustrates the move of the industry towards this type of networking technology.
+So while we expect good performance from the network, this section verifies that this is indeed the case.
+We start by looking at two physical-layer metrics: RSSI vs Distance (Section~\ref{sec:rssi_distance}) and PDR vs. RSSI (Section~\ref{sec:waterfall}).
+While these have no dependency on TSCH (the type of medium access), they allow us to verify the overall connectivity in the network.
+We then look at key performance indicators of \smip networks: end-to-end reliability (Section~\ref{sec:net_reliability}) and network lifetime (Section~\ref{sec:lifetime}).
 
 %------------------------------------------------------------------------------
 \subsection{RSSI vs. Distance}
 \label{sec:rssi_distance}
 
-\lorem
+The Friis transmission model~\cite{saunders07antennas} gives the relationship between the Received Signal Strength (RSSI)\footnote{~Strictly speaking, the RSSI is the Received Signal Strength \textit{Indicator}, a value returned by radio chip. Because of its prevalence in low-power wireless literature, we use it RSS and RSSI interchangeably.} in free space.
+While it does \textit{not} apply directly to our real-world deployment, we note in Fig.~\ref{fig:pister_hack} that the individual RSSI values are located between the Friis model, and the Friis model offset by $-$40~dB.
+This corroborates the results from~\cite{zats10wireless}.
 
 \begin{figure}[h]
-    \includegraphics[width=0.5\columnwidth]{pister_hack_peach.eps}
-    \includegraphics[width=0.5\columnwidth]{pister_hack.eps}
+    \includegraphics[width=0.5\textwidth]{pister_hack_peach.eps}
+    \includegraphics[width=0.5\textwidth]{pister_hack.eps}
     \caption{RSSI measurements are roughly located between the Friis model and the Friis model shifted by $-$40~dB.}
     \label{fig:pister_hack}
 \end{figure}
@@ -239,24 +291,46 @@ In the remainder of this section, we detail the meaning of each of the statistic
 
 % sample presentation
 
-\lorem
+Due to the inherent physical unreliability of the radio medium, it is impossible to know if a future transmission will be successful or not.
+The Packet Delivery Ratio (PDR) is the portion of successful link-layer transmissions over the total number of link-layer transmission attempts.
+A failed attempt means that the link-layer frame needs to be re-transmitted; it does \textit{not} mean the packet is lost.
+Over a period of 3~months, \PEACHNUMHRNEIGHBORS~\HRNEIGHBORS messages are collected in the PEACH deployment and \EVANUMHRNEIGHBORS in the EVAlab deployment.
+These contain, for a given node, the number of link-layer transmission attempts and successes to each of its neighbors.
+We remove the portion of neighbors with no transmission and keep only the DC9003 motes, resulting in a total of 88,284 messages (approx. 37\% from the total number of \HRNEIGHBORS) for the PEACH deployment and a total of 144,187 messages (approx. 32\%) for the EVAlab deployment.
 
 % plot
+
+Fig.~\ref{fig:waterfall} plots the PDR and the RSSI of these 88,284 and 144,187 messages.
+For readability, we also plot the average/deviation of the data for a given RSSI value.
+Because of its shape, this is known as the ``waterfall plot''.
 
 \begin{figure}
     \includegraphics[width=0.5\columnwidth]{waterfall_peach.eps}
     \includegraphics[width=0.5\columnwidth]{waterfall.eps}  
     \caption{
-        The PDR/RSSI ``waterfall'' plot.
+        The PDR/RSSI ``waterfall'' plot. The EVAlab curve is shift right indicating an interference-prone environment.
     }
     \label{fig:waterfall}
 \end{figure}
 
-\lorem
+For the PEACH deployment, above $-85~dBm$, the PDR of the link is very good~($>95$\%).
+Below that value, the PDR rapidly degrades, indicating that, on these links, frequent retransmissions happen.
+For the EVAlab deployment, the PDR starts to degrade at $-60~dBm$.
+The device manufacturer documentation~\cite{smip_app_note} indicates that a path is considered as ``bad'' when:
+
+\begin{itemize}
+    \item RSSI$>-80~dBm$ and PDR$<50$\%
+    \item RSSI$>-70~dBm$ and PDR<70\%
+\end{itemize}
+
+This is not the case in any of the two deployments.\\
 
 % interferences
 
-\lorem
+A \textit{waterfall plot} either shifted right with very few paths below $-70~dBm$, or with a non-constantly decreasing curve would be an example of interference-prone environment.
+This is not the case for the PEACH deployment, meaning that the \smip network is not experiencing high levels of interferences from co-located wireless devices.
+This is the case for the EVAlab deployment, meaning that the \smip network is experiencing external interferences.
+Those results correspond to the environment described in Section~\ref{sec:intro}. 
 
 %------------------------------------------------------------------------------
 \subsection{End-to-End Reliability}
@@ -264,7 +338,9 @@ In the remainder of this section, we detail the meaning of each of the statistic
 
 % steady state results
 
-\lorem
+We expect the \smip network to offer wire-like reliability.
+Table~\ref{tab:net_stats} confirms that this is the case.
+It presents statistics gathered over July 15-25 2016 period.
 
 \begin{table}
     \begin{tabular}{|l|l|l|}
@@ -277,10 +353,13 @@ In the remainder of this section, we detail the meaning of each of the statistic
         \hline
     \end{tabular}
     \caption{The overall network performance in the 15-25 July 2016 period.}
-    \label{tab:net_stats_peach}
+    \label{tab:net_stats}
 \end{table}
 
-\lorem
+It shows that, as none of the 693,844 packets generated in the network was lost, the end-to-end reliability is 100\%.
+The average PDR over all the links is very high (95\%), indicating that the nodes are deployed close enough to one another.
+Finally, the average latency over all nodes is 700~ms.
+These results are very similar to the very initial results presented in~\cite{watteyne16peach}, indicating no degradation in performance of the \smip network over the 3~month operation.
 
 %------------------------------------------------------------------------------
 \subsection{Network Lifetime}
@@ -300,47 +379,47 @@ In the remainder of this section, we detail the meaning of each of the statistic
         \toprule
         MAC    & charge consumed           &   lifetime \\
         \midrule
-        \tt{30-60-ef}  & 227,847~C (2.2\%) & 11~years \\
-        \tt{38-0f-66}  & 252,356~C (2.5\%) & 10~years \\
-        \tt{3f-f8-20}  & 291,312~C (2.9\%) & 8~years \\
-        \tt{3f-fe-87}  & 392,606~C (3.9\%) & 6~years \\
-        \tt{3f-fe-88}  & 458,459~C (4.5\%) & 5~years \\
-        \tt{58-32-36}  & 327,634~C (3.2\%) & 8~years \\
-        \tt{60-01-f8}  & 252,454~C (2.5\%) & 10~years \\
-        \tt{60-02-1b}  & 222,253~C (2.2\%) & 10~years \\
-        \tt{60-02-4b}  & 146,068~C (1.4\%) & 17~years \\
-        \tt{60-03-82}  & 494,841~C (4.9\%) & 5~years \\
-        \tt{60-05-5f}  & 274,502~C (2.7\%) & 9~years \\
-        \tt{60-05-69}  & 437,136~C (4.3\%) & 6~years \\
-        \tt{60-05-78}  & 304,145~C (3.0\%) & 8~years \\
-        \tt{60-05-ab}  & 284,764~C (2.8\%) & 9~years \\
-        \tt{60-06-27}  & 321,879~C (3.2\%) & 8~years \\
-        \tt{60-08-d5}  & 263,120~C (2.6\%) & 9~years \\
+        \tt{30-60-ef}  & 228~KC (2.2\%) & 11~years \\
+        \tt{38-0f-66}  & 252~KC (2.5\%) & 10~years \\
+        \tt{3f-f8-20}  & 291~KC (2.9\%) & 8~years \\
+        \tt{3f-fe-87}  & 393~KC (3.9\%) & 6~years \\
+        \tt{3f-fe-88}  & 458~KC (4.5\%) & 5~years \\
+        \tt{58-32-36}  & 328~KC (3.2\%) & 8~years \\
+        \tt{60-01-f8}  & 252~KC (2.5\%) & 10~years \\
+        \tt{60-02-1b}  & 222~KC (2.2\%) & 10~years \\
+        \tt{60-02-4b}  & 146~KC (1.4\%) & 17~years \\
+        \tt{60-03-82}  & 495~KC (4.9\%) & 5~years \\
+        \tt{60-05-5f}  & 275~KC (2.7\%) & 9~years \\
+        \tt{60-05-69}  & 437~KC (4.3\%) & 6~years \\
+        \tt{60-05-78}  & 304~KC (3.0\%) & 8~years \\
+        \tt{60-05-ab}  & 285~KC (2.8\%) & 9~years \\
+        \tt{60-06-27}  & 322~KC (3.2\%) & 8~years \\
+        \tt{60-08-d5}  & 263~KC (2.6\%) & 9~years \\
         \bottomrule
     \end{tabular}
     \caption{PEACH}
 \end{subtable}\hfill
 \begin{subtable}{.45\textwidth}
-\begin{tabular}{|c|c|c|}
-    \toprule
-    MAC &  charge consumed & lifetime \\
-    \midrule
-    \tt{38-03-dd} &  565,552 C (7.1\%)  &  4 years \\
-    \tt{58-e9-ca} &  439,811 C (5.6\%)  &  5 years \\
-    \tt{58-e9-cb} &  457,318 C (5.8\%)  &  5 years \\
-    \tt{58-eb-5b} &  471,838 C (6.0\%)  &  4 years \\
-    \tt{58-eb-64} &  361,830 C (4.6\%)  &  6 years \\
-    \tt{58-eb-67} &  497,978 C (6.3\%)  &  4 years \\
-    \tt{58-f3-17} &  383,552 C (4.8\%)  &  5 years \\
-    \tt{58-f4-f8} &  428,316 C (5.4\%)  &  5 years \\
-    \tt{58-f5-23} &  464,164 C (5.9\%)  &  4 years \\
-    \tt{58-f5-3c} &  463,003 C (5.8\%)  &  4 years \\
-    \tt{58-f5-58} &  428,718 C (5.4\%)  &  5 years \\
-    \tt{58-f8-8f} &  468,257 C (5.9\%)  &  4 years \\
-    \tt{58-f9-c4} &  347,970 C (4.4\%)  &  6 years \\
-    \bottomrule
-\end{tabular}
-\caption{EVAlab}
+    \begin{tabular}{|c|c|c|}
+        \toprule
+        MAC &  charge consumed & lifetime \\
+        \midrule
+        \tt{38-03-dd} &  566~KC (7.1\%)  &  4 years \\
+        \tt{58-e9-ca} &  440~KC (5.6\%)  &  5 years \\
+        \tt{58-e9-cb} &  457~KC (5.8\%)  &  5 years \\
+        \tt{58-eb-5b} &  472~KC (6.0\%)  &  4 years \\
+        \tt{58-eb-64} &  362~KC (4.6\%)  &  6 years \\
+        \tt{58-eb-67} &  498~KC (6.3\%)  &  4 years \\
+        \tt{58-f3-17} &  384~KC (4.8\%)  &  5 years \\
+        \tt{58-f4-f8} &  428~KC (5.4\%)  &  5 years \\
+        \tt{58-f5-23} &  464~KC (5.9\%)  &  4 years \\
+        \tt{58-f5-3c} &  463~KC (5.8\%)  &  4 years \\
+        \tt{58-f5-58} &  429~KC (5.4\%)  &  5 years \\
+        \tt{58-f8-8f} &  468~KC (5.9\%)  &  4 years \\
+        \tt{58-f9-c4} &  348~KC (4.4\%)  &  6 years \\
+        \bottomrule
+    \end{tabular}
+    \caption{EVAlab}
 \end{subtable}\hfill
 \caption{Per-node power consumption and associated expected lifetime when powered by a pair of AA batteries.}
 \label{tab:stats_charge}
