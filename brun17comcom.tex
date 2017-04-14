@@ -33,22 +33,22 @@
 \newcommand{\PEACHNUMHRNEIGHBORS} {140,897\xspace}
 \newcommand{\PEACHNUMSTATS}       {369,276\xspace}
 \newcommand{\PEACHNUMPCKTS}       {693,844\xspace}
-\newcommand{\EVANUMHRNEIGHBORS}   {117,350\xspace}
-\newcommand{\EVANUMSTATS}   	  {376,470\xspace}
-\newcommand{\EVANUMPCKTS}         {420,734\xspace}
+\newcommand{\EVANUMHRNEIGHBORS}   {128,072\xspace}
+\newcommand{\EVANUMSTATS}         {386,929\xspace}
+\newcommand{\EVANUMPCKTS}         {431,193\xspace}
 
 \graphicspath{{figures/}}
 
 \begin{document}
-	
+
 \begin{frontmatter}
-    
+
 \date{}
-	
+
 \title{(Not so) Intuitive Results from two Real-World\\Low-Power Wireless Mesh Deployments}
 
 \author[inria]{Keoma~Brun-Laguna}
-	\ead{keoma.brun@inria.fr}
+    \ead{keoma.brun@inria.fr}
 \author[inria]{R\'emy~L\'eone}
     \ead{remy.leone@inria.fr}
 \author[uoc]{Xavier~Vilajosana}
@@ -63,12 +63,12 @@
 
 \begin{abstract}
 Two wireless network sensors are deployed.
-One in a peach orchard and one in a office building.
+One in a peach orchard and one in an office building.
 The two networks are collecting sensor values and network statistics.
-This paper presents an in-depth analysis of the statistics, in order to precisely understand the performance of the network.
-Nodes in the network exhibit an expected lifetime between 4 and 16~years, with an end-to-end reliability of 100\%.
+This paper presents an in-depth analysis of the statistics, in order to precisely understand the performance of the networks.
+Nodes in the networks exhibit an expected lifetime between 4 and 8~years, with an end-to-end reliability of 100\%.
 We show how -- contrary to popular belief -- wireless links are symmetric.
-Thanks to the use of Time Slotted Channel Hopping (TSCH), the network topology is very stable, with $\leq$15 link changes per day in the entire network.
+Thanks to the use of Time Slotted Channel Hopping (TSCH), the network topology is very stable, with $\leq$5 link changes on average per day in the entire network.
 \end{abstract}
 
 \begin{keyword}
@@ -138,9 +138,9 @@ Each mote is placed in a water-tight box that is fixed on a 4~m high pole (see F
 
 % the deployment EVAlab
 
-To better understand and compare the network analysis gathered from the PEACH deployment, we deployed a second wireless network inside an office building.
+To better understand and compare the network statistics gathered from the PEACH deployment, we deployed a second wireless network inside an office building.
 14~motes are placed on the ceiling of one floor of the building and 3 nodes are placed outside on street lamps poles (shown in Fig.~\ref{fig:evalab_map}).
-The inside motes are fixed to the ceiling with magnets and the 3 outside one are placed in a water-tight box.
+The 14 inside motes are fixed to the ceiling with magnets and the 3 outside ones are placed in a water-tight box.
 
 % hardware
 
@@ -149,7 +149,7 @@ The 2 DC9018 boards feature an external antenna; the 16~DC9003 boards a chip ant
 These are deployed inside the orchard.
 We deploy 3 repeaters outside the orchards to connect the orchard to the gateway.
 In the office building we use 2 types of \smip devices.
-The 11 DC9003 boards are the same as the one used in the PEACH deployment.
+The 11 DC9003 boards are the same as the ones used in the PEACH deployment.
 We use 1 DC9018 board with an external antenna.
 For the two deployments, the gateway is composed of a Raspberry~Pi single-board computer, and a DC2274 \smip manager.
 
@@ -166,13 +166,13 @@ We gathered over 4~million temperature values, and more than 350,000~network sta
 
 % the goal of this paper
 
-The goal of this paper is to analyze the network statistics over the two 3-month periods, and precisely assess the performance of the network.
+The goal of this paper is to analyze the network statistics over the two 3-month periods, and precisely assess the performance of the networks.
 \\
 
 This paper makes the following contributions:
 \begin{itemize}
     \item We confirm that the \smip network exhibits years of battery lifetime and wire-like reliability;
-    \item We show that channel hopping causes the network topology to be very stable, with $\leq$15 link changes per day;
+    \item We show that channel hopping causes the network topology to be very stable, with $\leq$5 link changes on average per day;
     \item Contrary to popular belief, we show that links in the network are symmetric, i.e.~they exhibit the same signal strength in both directions of the same link.
 \end{itemize}
 
@@ -221,10 +221,10 @@ In the remainder of this section, we detail the meaning of each of the statistic
         \multicolumn{1}{|c|}{type} & \multicolumn{1}{|c|}{PEACH} & \multicolumn{1}{|c|}{EVAlab} \\ \hline
         \hline
         \motecreate     &     133     &   85 \\ \hline
-        \pathcreate     &   4,098     &   2,149 \\ \hline
-        \pathdelete     &   3,653     &   2,070 \\ \hline
-        \HRDEVICE       & 132,758     &   117,371 \\ \hline
-        \HRDISCOVERED   &  87,737     &   101,958 \\ \hline
+        \pathcreate     &   4,098     &   1,403 \\ \hline
+        \pathdelete     &   3,653     &   1,325 \\ \hline
+        \HRDEVICE       & 132,758     &   154,698 \\ \hline
+        \HRDISCOVERED   &  87,737     &   152,641 \\ \hline
         \HRNEIGHBORS    & \PEACHNUMHRNEIGHBORS & \EVANUMHRNEIGHBORS\\ \hline
     \end{tabular}
     \caption{The number of statistics collected over the 3~month period.}
@@ -315,19 +315,19 @@ The Packet Delivery Ratio (PDR) is the portion of successful link-layer transmis
 A failed attempt means that the link-layer frame needs to be re-transmitted; it does \textit{not} mean the packet is lost.
 Over a period of 3~months, \PEACHNUMHRNEIGHBORS~\HRNEIGHBORS messages are collected in the PEACH deployment and \EVANUMHRNEIGHBORS in the EVAlab deployment.
 These contain, for a given node, the number of link-layer transmission attempts and successes to each of its neighbors.
-We remove the portion of neighbors with no transmission and keep only the DC9003 motes, resulting in a total of 88,284 messages (approx. 37\% from the total number of \HRNEIGHBORS) for the PEACH deployment and a total of 117,326 messages (approx. 32\%) for the EVAlab deployment.
+We remove the portion of neighbors with no transmission and keep only the DC9003 motes, resulting in a total of 69,643 messages (approx. 49\% from the total number of \HRNEIGHBORS) for the PEACH deployment and a total of 93,135 messages (approx. 73\%) for the EVAlab deployment.
 
 % plot
 
-Fig.~\ref{fig:waterfall} plots the PDR and the RSSI of these 88,284 and 117,326 messages.
+Fig.~\ref{fig:waterfall} plots the PDR and the RSSI of these 69,643 and 93,135 messages.
 For readability, we also plot the average/deviation of the data for a given RSSI value.
 Because of its shape, this is known as the ``waterfall plot''.
 
 \begin{figure}
     \includegraphics[width=0.5\columnwidth]{waterfall_peach.eps}
-    \includegraphics[width=0.5\columnwidth]{waterfall.eps}  
+    \includegraphics[width=0.5\columnwidth]{waterfall.eps}
     \caption{
-        The PDR/RSSI ``waterfall'' plot. The EVAlab curve is shift right indicating an interference-prone environment.
+        The PDR/RSSI ``waterfall'' plot. The EVAlab curve is shifted right indicating an interference-prone environment.
     }
     \label{fig:waterfall}
 \end{figure}
@@ -339,7 +339,7 @@ The device manufacturer documentation~\cite{smip_app_note} indicates that a path
 
 \begin{itemize}
     \item RSSI$>-80~dBm$ and PDR$<50$\%
-    \item RSSI$>-70~dBm$ and PDR<70\%
+    \item RSSI$>-70~dBm$ and PDR$<70$\%
 \end{itemize}
 
 This is not the case in any of the two deployments.\\
@@ -349,7 +349,7 @@ This is not the case in any of the two deployments.\\
 A \textit{waterfall plot} either shifted right with very few paths below $-70~dBm$, or with a non-constantly decreasing curve would be an example of interference-prone environment.
 This is not the case for the PEACH deployment, meaning that the \smip network is not experiencing high levels of interferences from co-located wireless devices.
 This is the case for the EVAlab deployment, meaning that the \smip network is experiencing external interferences.
-Those results correspond to the environment described in Section~\ref{sec:intro}. 
+Those results correspond to the environment described in Section~\ref{sec:intro} as other concurrent technologies are present in the building.
 
 %------------------------------------------------------------------------------
 \subsection{End-to-End Reliability}
@@ -359,25 +359,25 @@ Those results correspond to the environment described in Section~\ref{sec:intro}
 
 We expect the \smip network to offer wire-like reliability.
 Table~\ref{tab:net_stats} confirms that this is the case.
-It presents statistics gathered over July 15-25 2016 period in the PEACH orchard and from the 2nd of November 2016 to the 16th of February 2017 in the EVAlab	.
+It presents statistics gathered over July 15-25 2016 period in the PEACH orchard and from the 12th of November 2016 to the 12th of February 2017 in the EVAlab.
 
 \begin{table}
     \begin{tabular}{|l|l|l|}
         \toprule
-        {}	 							& PEACH 				  & EVAlab \\
+        {}                              & PEACH                     & EVAlab \\
         \midrule
-        reliability (Arrived/Lost) 		& 100\% (\PEACHNUMPCKTS/0) 	  & 100\% (\EVANUMPCKTS/0)\\ \hline
-        average PDR (Transmit/Fails) 	& 95\% (4,405,569/258778) & 87\% (19,807,535/2,488,149)\\ \hline
-        latency     					& 700~msec 				  & Not measured\\
+        reliability (Arrived/Lost)      & 100\% (\PEACHNUMPCKTS/0)  & 100\% (\EVANUMPCKTS/0)\\ \hline
+        average PDR (Transmit/Fails)    & 95\% (4,405,569/258778)   & 87\% (19,807,535/2,488,149)\\ \hline
+        latency                         & 700~msec                  & Not measured\\
         \bottomrule
     \end{tabular}
-    \caption{The overall network performance in the 15-25 July 2016 period.}
+    \caption{The overall network performance in the 15-25 July 2016 period (PEACH) and the 12/11/16 and the 12/02/17 (EVAlab).}
     \label{tab:net_stats}
 \end{table}
 
-It shows that, as none of the \PEACHNUMPCKTS packets generated in the network was lost, the end-to-end reliability is 100\%.
-The average PDR over all the links is very high (95\%), indicating that the nodes are deployed close enough to one another.
-Finally, the average latency over all nodes is 700~ms.
+It shows that, as none of the \PEACHNUMPCKTS and \EVANUMPCKTS packets generated in the networks was lost, the end-to-end reliability is 100\%.
+The average PDR over all the links is very high (95\% and 87\%), indicating that the nodes are deployed close enough to one another.
+Finally, the average latency over all nodes is 700~ms for the PEACH deployment.
 These results are very similar to the very initial results presented in~\cite{watteyne16peach}, indicating no degradation in performance of the \smip network over the 3~month operation.
 
 %------------------------------------------------------------------------------
@@ -403,49 +403,52 @@ The node with the shortest lifetime is {\tt 60-03-82} and has 5~years of lifetim
 This shows the ultra-low power consumption of the \smip network.
 
 \begin{table}
-\begin{subtable}{.4\textwidth}
+\begin{subtable}{.5\textwidth}
     \begin{tabular}{|c|c|r|}
         \toprule
-        MAC    & charge consumed           &   lifetime \\
+        MAC           & charge consumed  &   lifetime \\
         \midrule
-        \tt{30-60-ef}  & 228~KC (2.2\%) & 11~years \\
-        \tt{38-0f-66}  & 252~KC (2.5\%) & 10~years \\
-        \tt{3f-f8-20}  & 291~KC (2.9\%) & 8~years \\
-        \tt{3f-fe-87}  & 393~KC (3.9\%) & 6~years \\
-        \tt{3f-fe-88}  & 458~KC (4.5\%) & 5~years \\
-        \tt{58-32-36}  & 328~KC (3.2\%) & 8~years \\
-        \tt{60-01-f8}  & 252~KC (2.5\%) & 10~years \\
-        \tt{60-02-1b}  & 222~KC (2.2\%) & 10~years \\
-        \tt{60-02-4b}  & 146~KC (1.4\%) & 17~years \\
-        \tt{60-03-82}  & 495~KC (4.9\%) & 5~years \\
-        \tt{60-05-5f}  & 275~KC (2.7\%) & 9~years \\
-        \tt{60-05-69}  & 437~KC (4.3\%) & 6~years \\
-        \tt{60-05-78}  & 304~KC (3.0\%) & 8~years \\
-        \tt{60-05-ab}  & 285~KC (2.8\%) & 9~years \\
-        \tt{60-06-27}  & 322~KC (3.2\%) & 8~years \\
-        \tt{60-08-d5}  & 263~KC (2.6\%) & 9~years \\
+        \tt{30-60-ef} &  695 KC (6.8\%)  &  4 years \\
+        \tt{38-0f-66} &  461 KC (4.5\%)  &  6 years \\
+        \tt{3f-f8-20} &  380 KC (3.7\%)  &  8 years \\
+        \tt{3f-fe-87} &  549 KC (5.4\%)  &  5 years \\
+        \tt{3f-fe-88} &  718 KC (7.1\%)  &  4 years \\
+        \tt{58-32-36} &  311 KC (3.1\%)  &  7 years \\
+        \tt{60-01-f8} &  387 KC (3.8\%)  &  8 years \\
+        \tt{60-02-1b} &  371 KC (3.7\%)  &  8 years \\
+        \tt{60-02-4b} &  406 KC (4.0\%)  &  7 years \\
+        \tt{60-03-82} &  395 KC (3.9\%)  &  8 years \\
+        \tt{60-05-5f} &  386 KC (3.8\%)  &  8 years \\
+        \tt{60-05-69} &  509 KC (5.0\%)  &  6 years \\
+        \tt{60-05-78} &  364 KC (3.6\%)  &  8 years \\
+        \tt{60-05-ab} &  381 KC (3.8\%)  &  8 years \\
+        \tt{60-06-27} &  422 KC (4.2\%)  &  7 years \\
+        \tt{60-08-d5} &  432 KC (4.3\%)  &  7 years \\
         \bottomrule
     \end{tabular}
     \caption{PEACH}
 \end{subtable}\hfill
-\begin{subtable}{.45\textwidth}
+\begin{subtable}{.43\textwidth}
     \begin{tabular}{|c|c|c|}
         \toprule
-        MAC &  charge consumed & lifetime \\
+        MAC           &  charge consumed & lifetime \\
         \midrule
-        \tt{38-03-dd} &  566~KC (7.1\%)  &  4 years \\
-        \tt{58-e9-ca} &  440~KC (5.6\%)  &  5 years \\
-        \tt{58-e9-cb} &  457~KC (5.8\%)  &  5 years \\
-        \tt{58-eb-5b} &  472~KC (6.0\%)  &  5 years \\
-        \tt{58-eb-64} &  362~KC (4.6\%)  &  6 years \\
-        \tt{58-eb-67} &  498~KC (6.3\%)  &  5 years \\
-        \tt{58-f3-17} &  384~KC (4.8\%)  &  6 years \\
-        \tt{58-f4-f8} &  428~KC (5.4\%)  &  5 years \\
-        \tt{58-f5-23} &  464~KC (5.9\%)  &  5 years \\
-        \tt{58-f5-3c} &  463~KC (5.8\%)  &  5 years \\
-        \tt{58-f5-58} &  429~KC (5.4\%)  &  5 years \\
-        \tt{58-f8-8f} &  468~KC (5.9\%)  &  5 years \\
-        \tt{58-f9-c4} &  348~KC (4.4\%)  &  7 years \\
+        \tt{38-03-dd} &  459 KC (5.8\%)  &  4 years \\
+        \tt{58-e9-ca} &  411 KC (5.2\%)  &  5 years \\
+        \tt{58-e9-cb} &  407 KC (5.1\%)  &  5 years \\
+        \tt{58-eb-5b} &  423 KC (5.3\%)  &  5 years \\
+        \tt{58-eb-64} &  322 KC (4.1\%)  &  6 years \\
+        \tt{58-eb-67} &  468 KC (5.9\%)  &  4 years \\
+        \tt{58-eb-69} &  243 KC (3.1\%)  &  6 years \\
+        \tt{58-f3-17} &  357 KC (4.5\%)  &  5 years \\
+        \tt{58-f4-f8} &  402 KC (5.1\%)  &  5 years \\
+        \tt{58-f5-23} &  416 KC (5.3\%)  &  5 years \\
+        \tt{58-f5-3c} &  412 KC (5.2\%)  &  5 years \\
+        \tt{58-f5-58} &  387 KC (4.9\%)  &  5 years \\
+        \tt{58-f8-63} &  198 KC (2.5\%)  &  7 years \\
+        \tt{58-f8-78} &  233 KC (2.9\%)  &  6 years \\
+        \tt{58-f8-8f} &  439 KC (5.5\%)  &  4 years \\
+        \tt{58-f9-c4} &  325 KC (4.1\%)  &  6 years \\
         \bottomrule
     \end{tabular}
     \caption{EVAlab}
@@ -537,7 +540,7 @@ Due to the lack of second parent, the nodes were producing over 20 times the amo
 
 Fig.~\ref{fig:net_churn} shows the number of \pathdelete and \pathcreate events per day, over a 16 days (PEACH) and 2 months (EVAlab).
 For reference, the total number of links in the network is also depicted.
-There are less than 5 \pathdelete or \pathcreate events \textit{per day} in the entire PEACH network and less than 14  \pathdelete or \pathcreate events in the EVAlab. 
+There are less than 5 \pathdelete or \pathcreate events \textit{per day} in the entire PEACH network and less than 14  \pathdelete or \pathcreate events in the EVAlab.
 This means that links, once established, remain useful for days/weeks at a time, and that the network is extremely stable.
 The reason why there are more events per day in the EVAlab deployment is not studied here.
 
