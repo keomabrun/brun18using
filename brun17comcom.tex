@@ -68,7 +68,7 @@ The two networks are collecting sensor values and network statistics.
 This paper presents an in-depth analysis of the statistics, in order to precisely understand the performance of the networks.
 Nodes in the networks exhibit an expected lifetime between 4 and 8~years, with an end-to-end reliability of 100\%.
 We show how -- contrary to popular belief -- wireless links are symmetric.
-Thanks to the use of Time Slotted Channel Hopping (TSCH), the network topology is very stable, with $\leq$5 link changes on average per day in the entire network.
+Thanks to the use of Time Slotted Channel Hopping (TSCH), the network topology is very stable, with $\leq$15 link changes on average per day in the entire network.
 \end{abstract}
 
 \begin{keyword}
@@ -172,7 +172,7 @@ The goal of this paper is to analyze the network statistics over the two 3-month
 This paper makes the following contributions:
 \begin{itemize}
     \item We confirm that the \smip network exhibits years of battery lifetime and wire-like reliability;
-    \item We show that channel hopping causes the network topology to be very stable, with $\leq$5 link changes on average per day;
+    \item We show that channel hopping causes the network topology to be very stable, with $\leq$15 link changes on average per day;
     \item Contrary to popular belief, we show that links in the network are symmetric, i.e.~they exhibit the same signal strength in both directions of the same link.
 \end{itemize}
 
@@ -517,7 +517,7 @@ That being said, discussions on link symmetry at the routing layer is largely ar
 
 Wireless in unreliable in nature.
 It is normal that some wireless links interconnecting motes ``come and go''.
-That is, links that have been performing well (e.g.~PDR>90\%) can suddenly disappear (e.g.~PDR<10\%).
+That is, links that have been performing well (e.g.~PDR>90\%) can suddenly disappear (e.g.$~PDR<10$\%).
 Similarly, nodes that were not able to communicate can suddenly hear one another perfectly.
 
 % time scale
@@ -539,7 +539,7 @@ Due to the lack of second parent, the nodes were producing over 20 times the amo
 
 Fig.~\ref{fig:net_churn} shows the number of \pathdelete and \pathcreate events per day, over a 16 days (PEACH) and 2 months (EVAlab).
 For reference, the total number of links in the network is also depicted.
-There are less than 5 \pathdelete or \pathcreate events \textit{per day} in the entire PEACH network and less than 14  \pathdelete or \pathcreate events in the EVAlab.
+There are less than 5 \pathdelete or \pathcreate events \textit{per day} in the entire PEACH network and less than 15 \pathdelete or \pathcreate events \textit{per day} in the EVAlab.
 This means that links, once established, remain useful for days/weeks at a time, and that the network is extremely stable.
 The reason why there are more events per day in the EVAlab deployment is not studied here.
 
@@ -548,7 +548,7 @@ The reason why there are more events per day in the EVAlab deployment is not stu
     \includegraphics[width=0.5\columnwidth]{net_churn.eps}
     \caption{
         Network stability: the number of \pathcreate and \pathdelete events generated per day over a 16 days (PEACH) and two months (EVAlab).
-        The top line shows the total number of links.
+        The top line shows the total number of active links.
     }
     \label{fig:net_churn}
 \end{figure}
