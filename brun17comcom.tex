@@ -598,10 +598,17 @@ This means that links, once established, remain useful for days/weeks at a time,
 We attribute the higher churn in the \building deployment to the presence of interfering technology and movement.
 
 \begin{figure}
-    \includegraphics[width=0.5\columnwidth]{net_churn_peach.eps}
-    \includegraphics[width=0.5\columnwidth]{net_churn.eps}
+    \centering
+    \begin{subfigure}[h]{0.49\textwidth}
+        \includegraphics[width=\columnwidth]{net_churn_agri.eps}
+        \caption{\agri}
+    \end{subfigure}
+    \begin{subfigure}[h]{0.49\textwidth}
+        \includegraphics[width=\columnwidth]{net_churn_building.eps}
+        \caption{\agri}
+    \end{subfigure}    
     \caption{
-        Network stability: the number of \pathcreate and \pathdelete events generated per day over a 16 days (PEACH) and two months (EVAlab).
+        Network stability: the number of \pathcreate and \pathdelete events generated per day over a 16 days (\agri) and two months (\building).
         The top line shows the total number of active links.
     }
     \label{fig:net_churn}
