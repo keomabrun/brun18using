@@ -341,9 +341,9 @@ This corroborates the results from~\cite{zats10wireless}.
 Due to the inherent physical unreliability of the radio medium, it is impossible to know if a future transmission will be successful or not.
 The Packet Delivery Ratio (PDR) is the portion of successful link-layer transmissions over the total number of link-layer transmission attempts.
 A failed attempt means that the link-layer frame needs to be re-transmitted; it does \textit{not} mean the packet is lost.
-Over a period of 3~months, \PEACHNUMHRNEIGHBORS~\HRNEIGHBORS messages are collected in the PEACH deployment and \EVANUMHRNEIGHBORS in the EVAlab deployment.
+Over a period of 3~months, \PEACHNUMHRNEIGHBORS~\HRNEIGHBORS messages are collected in the \agri deployment and \EVANUMHRNEIGHBORS in the \building deployment.
 These contain, for a given node, the number of link-layer transmission attempts and successes to each of its neighbors.
-We remove the portion of neighbors with no transmission and keep only the DC9003 motes, resulting in a total of 69,643 messages (approx. 49\% from the total number of \HRNEIGHBORS) for the PEACH deployment and a total of 93,135 messages (approx. 73\%) for the EVAlab deployment.
+We remove the portion of neighbors with no transmission and keep only the DC9003 motes, resulting in a total of 69,643 messages (approx. 49\% from the total number of \HRNEIGHBORS) for the \agri deployment and a total of 93,135 messages (approx. 73\%) for the \building deployment.
 
 % plot
 
@@ -355,14 +355,15 @@ Because of its shape, this is known as the ``waterfall plot''.
     \includegraphics[width=0.5\columnwidth]{waterfall_peach.eps}
     \includegraphics[width=0.5\columnwidth]{waterfall.eps}
     \caption{
-        The PDR/RSSI ``waterfall'' plot. The EVAlab curve is shifted right indicating an interference-prone environment.
+        The PDR/RSSI ``waterfall'' plot.
+        The \building plot is shifted right compared to the \agri plot, indicating an environment where external interference is present.
     }
     \label{fig:waterfall}
 \end{figure}
 
-For the PEACH deployment, above $-85~dBm$, the PDR of the link is very good~($>95$\%).
+For the \agri deployment, above $-85~dBm$, the PDR of the link is very good~($>95$\%).
 Below that value, the PDR rapidly degrades, indicating that, on these links, frequent retransmissions happen.
-For the EVAlab deployment, the PDR starts to degrade at $-60~dBm$.
+For the \building deployment, the PDR starts to degrade at $-60~dBm$.
 The device manufacturer documentation~\cite{smip_app_note} indicates that a path is considered as ``bad'' when:
 
 \begin{itemize}
@@ -370,14 +371,15 @@ The device manufacturer documentation~\cite{smip_app_note} indicates that a path
     \item RSSI$>-70~dBm$ and PDR$<70$\%
 \end{itemize}
 
-This is not the case in any of the two deployments.\\
+This is not the case in any of the two deployments.
 
 % interferences
 
-A \textit{waterfall plot} either shifted right with very few paths below $-70~dBm$, or with a non-constantly decreasing curve would be an example of interference-prone environment.
-This is not the case for the PEACH deployment, meaning that the \smip network is not experiencing high levels of interferences from co-located wireless devices.
-This is the case for the EVAlab deployment, meaning that the \smip network is experiencing external interferences.
+A \textit{waterfall plot} which is either shifted right with very few paths below $-70~dBm$, or which exhibits a non-constantly decreasing curve, indicates an environment in which there is external interference.
+This is not the case for the \agri deployment, meaning that the \smip network is not experiencing high levels of interferences from co-located wireless devices.
+This is, however, the case for the \building deployment, meaning that the \smip network is experiencing external interferences.
 Those results correspond to the environment described in Section~\ref{sec:intro} as other concurrent technologies are present in the building.
+Despite the external interfere, the \building deployment exhibits 100\% end-to-end reliability, as presented in Section~\ref{sec:net_reliability}.
 
 %------------------------------------------------------------------------------
 \subsection{End-to-End Reliability}
@@ -387,26 +389,31 @@ Those results correspond to the environment described in Section~\ref{sec:intro}
 
 We expect the \smip network to offer wire-like reliability.
 Table~\ref{tab:net_stats} confirms that this is the case.
-It presents statistics gathered over July 15-25 2016 period in the PEACH orchard and from the 12th of November 2016 to the 12th of February 2017 in the EVAlab.
+It presents statistics gathered over the July 15-25 2016 period in the \agri deployment, and from 12 November 2016 to 12 February 2017 in the \building deployment.
 
 \begin{table}
-    \begin{tabular}{|l|l|l|}
+    \centering
+    \begin{tabular}{|l|r|r|}
         \toprule
-        {}                              & PEACH                     & EVAlab \\
+        {}                              & \agri                     & \building                    \\
         \midrule
-        reliability (Arrived/Lost)      & 100\% (\PEACHNUMPCKTS/0)  & 100\% (\EVANUMPCKTS/0)\\ \hline
-        average PDR (Transmit/Fails)    & 95\% (4,405,569/258778)   & 87\% (19,807,535/2,488,149)\\ \hline
-        latency                         & 700~msec                  & Not measured\\
+        reliability                     & \textbf{100\%}            & \textbf{100\%}               \\
+        (Arrived/Lost)                  & (\PEACHNUMPCKTS~/~0)      & (\EVANUMPCKTS~/~0)           \\
+        \hline
+        average PDR                     & 95\%                      &  87\%                        \\
+        (Transmit/Fails)                & (4,405,569~/~258778)      &  (19,807,535~/~2,488,149)    \\
+        \hline
+        latency                         & 700~msec                  &  \textit{not measured.}      \\
         \bottomrule
     \end{tabular}
-    \caption{The overall network performance in the 15-25 July 2016 period (PEACH) and the 12/11/16 and the 12/02/17 (EVAlab).}
+    \caption{The overall network performance in the 15-25 July 2016 period (\agri) and the 12 Nov. 2016 - 12 Feb. 2017 period (\building).}
     \label{tab:net_stats}
 \end{table}
 
 It shows that, as none of the \PEACHNUMPCKTS and \EVANUMPCKTS packets generated in the networks was lost, the end-to-end reliability is 100\%.
-The average PDR over all the links is very high (95\% and 87\%), indicating that the nodes are deployed close enough to one another.
-Finally, the average latency over all nodes is 700~ms for the PEACH deployment.
-These results are very similar to the very initial results presented in~\cite{watteyne16peach}, indicating no degradation in performance of the \smip network over the 3~month operation.
+The average PDR over all links is very high (95\% and 87\%), indicating that the nodes are deployed close enough to one another.
+Finally, the average latency over all nodes is 700~ms for the \agri deployment.
+These results are very similar to the very initial results presented in~\cite{watteyne16peach}, indicating \textit{no} degradation in performance of the \smip network over the 3~month operation.
 
 %------------------------------------------------------------------------------
 \subsection{Network Lifetime}
@@ -416,7 +423,7 @@ These results are very similar to the very initial results presented in~\cite{wa
 
 Each device is powered by a pair of Energizer L-91 AA batteries.
 These contain a nominal 3134~mAh of charge, or 2821~mAh when accounting for a 10\% decrease due to manufacturing differences.
-A \smip node contains a ``charge accounting'' feature in which it tracks the amount of charge is has been drawing from the battery.
+A \smip node contains a ``charge accounting'' feature in which it tracks the amount of charge it has been drawing from the battery.
 Each mote reports this number every 15~min as a field in its \HRDEVICE health report.
 This number allows us to predict the lifetime of the device.
 
@@ -424,65 +431,69 @@ This number allows us to predict the lifetime of the device.
 
 Table~\ref{tab:stats_charge} shows charge consumed by the motes over the two 3~month periods, as well as the portion of the battery this represents.
 Assuming the same energy consumption rate, we can extrapolate the lifetime.
-The nodes with the longest lifetime (8 years) are all leaf nodes as we can see from Fig.~\ref{fig:peach_map}.
-Since it does not have to relay data from any children, it is normal that this node consumes very little.
-The node with the shortest lifetime is {\tt 30-60-ef} and has 4~years of lifetime, it is normal as this node has an external antenna and relays a lot of data.
-This shows the ultra-low power consumption of the \smip network.
+The nodes with the longest lifetime (8~years) are all leaf nodes as we can see from Fig.~\ref{fig:peach_map}.
+Since it does not have to relay data from any children, it is normal for these mote to consume very little.
+The mote with the shortest lifetime is {\tt 30-60-ef}, with a 4~year battery lifetime.
+This is normal as this mote has an external antenna and relays a lot of data.
+This confirms the ultra-low power consumption of the \smip network.
 
 \begin{table}
 \begin{subtable}{.5\textwidth}
     \begin{tabular}{|c|c|r|}
         \toprule
-        MAC           & charge consumed  &   lifetime \\
+        MAC           &  charge  & lifetime \\
+                      & consumed &          \\
         \midrule
-        \tt{30-60-ef} &  695 KC (6.8\%)  &  4 years \\
-        \tt{38-0f-66} &  461 KC (4.5\%)  &  6 years \\
-        \tt{3f-f8-20} &  380 KC (3.7\%)  &  8 years \\
-        \tt{3f-fe-87} &  549 KC (5.4\%)  &  5 years \\
-        \tt{3f-fe-88} &  718 KC (7.1\%)  &  4 years \\
-        \tt{58-32-36} &  311 KC (3.1\%)  &  7 years \\
-        \tt{60-01-f8} &  387 KC (3.8\%)  &  8 years \\
-        \tt{60-02-1b} &  371 KC (3.7\%)  &  8 years \\
-        \tt{60-02-4b} &  406 KC (4.0\%)  &  7 years \\
-        \tt{60-03-82} &  395 KC (3.9\%)  &  8 years \\
-        \tt{60-05-5f} &  386 KC (3.8\%)  &  8 years \\
-        \tt{60-05-69} &  509 KC (5.0\%)  &  6 years \\
-        \tt{60-05-78} &  364 KC (3.6\%)  &  8 years \\
-        \tt{60-05-ab} &  381 KC (3.8\%)  &  8 years \\
-        \tt{60-06-27} &  422 KC (4.2\%)  &  7 years \\
-        \tt{60-08-d5} &  432 KC (4.3\%)  &  7 years \\
+        \tt{30-60-ef} &   695 kC &  4 years \\
+        \tt{38-0f-66} &   461 kC &  6 years \\
+        \tt{3f-f8-20} &   380 kC &  8 years \\
+        \tt{3f-fe-87} &   549 kC &  5 years \\
+        \tt{3f-fe-88} &   718 kC &  4 years \\
+        \tt{58-32-36} &   311 kC &  7 years \\
+        \tt{60-01-f8} &   387 kC &  8 years \\
+        \tt{60-02-1b} &   371 kC &  8 years \\
+        \tt{60-02-4b} &   406 kC &  7 years \\
+        \tt{60-03-82} &   395 kC &  8 years \\
+        \tt{60-05-5f} &   386 kC &  8 years \\
+        \tt{60-05-69} &   509 kC &  6 years \\
+        \tt{60-05-78} &   364 kC &  8 years \\
+        \tt{60-05-ab} &   381 kC &  8 years \\
+        \tt{60-06-27} &   422 kC &  7 years \\
+        \tt{60-08-d5} &   432 kC &  7 years \\
         \bottomrule
     \end{tabular}
-    \caption{PEACH}
+    \caption{\agri}
 \end{subtable}\hfill
 \begin{subtable}{.43\textwidth}
     \begin{tabular}{|c|c|c|}
         \toprule
-        MAC           &  charge consumed & lifetime \\
+        MAC           &  charge  & lifetime \\
+                      & consumed &          \\
         \midrule
-        \tt{38-03-dd} &  459 KC (5.8\%)  &  4 years \\
-        \tt{58-e9-ca} &  411 KC (5.2\%)  &  5 years \\
-        \tt{58-e9-cb} &  407 KC (5.1\%)  &  5 years \\
-        \tt{58-eb-5b} &  423 KC (5.3\%)  &  5 years \\
-        \tt{58-eb-64} &  322 KC (4.1\%)  &  6 years \\
-        \tt{58-eb-67} &  468 KC (5.9\%)  &  4 years \\
-        \tt{58-eb-69} &  243 KC (3.1\%)  &  6 years \\
-        \tt{58-f3-17} &  357 KC (4.5\%)  &  5 years \\
-        \tt{58-f4-f8} &  402 KC (5.1\%)  &  5 years \\
-        \tt{58-f5-23} &  416 KC (5.3\%)  &  5 years \\
-        \tt{58-f5-3c} &  412 KC (5.2\%)  &  5 years \\
-        \tt{58-f5-58} &  387 KC (4.9\%)  &  5 years \\
-        \tt{58-f8-63} &  198 KC (2.5\%)  &  7 years \\
-        \tt{58-f8-78} &  233 KC (2.9\%)  &  6 years \\
-        \tt{58-f8-8f} &  439 KC (5.5\%)  &  4 years \\
-        \tt{58-f9-c4} &  325 KC (4.1\%)  &  6 years \\
+        \tt{38-03-dd} &   459 kC &  4 years \\
+        \tt{58-e9-ca} &   411 kC &  5 years \\
+        \tt{58-e9-cb} &   407 kC &  5 years \\
+        \tt{58-eb-5b} &   423 kC &  5 years \\
+        \tt{58-eb-64} &   322 kC &  6 years \\
+        \tt{58-eb-67} &   468 kC &  4 years \\
+        \tt{58-eb-69} &   243 kC &  6 years \\
+        \tt{58-f3-17} &   357 kC &  5 years \\
+        \tt{58-f4-f8} &   402 kC &  5 years \\
+        \tt{58-f5-23} &   416 kC &  5 years \\
+        \tt{58-f5-3c} &   412 kC &  5 years \\
+        \tt{58-f5-58} &   387 kC &  5 years \\
+        \tt{58-f8-63} &   198 kC &  7 years \\
+        \tt{58-f8-78} &   233 kC &  6 years \\
+        \tt{58-f8-8f} &   439 kC &  4 years \\
+        \tt{58-f9-c4} &   325 kC &  6 years \\
         \bottomrule
     \end{tabular}
-    \caption{EVAlab}
+    \caption{\building}
 \end{subtable}\hfill
 \caption{Per-node power consumption and associated expected lifetime when powered by a pair of AA batteries.}
 \label{tab:stats_charge}
 \end{table}
+
 %==============================================================================
 \section{Not so Intuitive Results}
 \label{sec:notsointuitive}
@@ -501,7 +512,7 @@ In Section~\ref{sec:net_stability}, we show that, through the use of TSCH, the l
 % what is reported
 
 Motes report the average RSSI value of the packets received from each neighbor in their \HRNEIGHBORS health reports.
-Because the network uses channel hopping, these reported RSSI values are also averaged over 15 IEEE802.15.4 frequencies~\cite{std_ieee802154_2011}.
+Because the network uses channel hopping, these reported RSSI values are also averaged over 15~IEEE802.15.4 frequencies~\cite{std_ieee802154_2011}.
 In this section, we use the term ``RSSI'' to denote the average RSSI over 15 frequencies.
 
 % what is asymmetry
@@ -512,8 +523,8 @@ Numerous routing protocols (often standardized~\cite{rfc3626}) reuse that assump
 
 % what we measure
 
-We look at the link statistics between the 18th of June 2016 and the 4th of July 2016 (16 days) in the PEACH deployment and between the 12th of N.
-The sample contains 411,132 \HRNEIGHBORS messages received from 14 DC9003 nodes (same hardware).
+We look at the link statistics between 18 June 2016 and 4 July 2016 (16 days) in the \agri deployment, and between the 12th of N.\thomas{missing}
+The sample contains 411,132 \HRNEIGHBORS messages received from 14~DC9003 nodes (same hardware).
 During that period, 21~links are active with at least 250~transmissions for each link.
 For each of those links, we compute the difference between average RSSI in each directions.
 Results are presented in Fig.~\ref{fig:tab_symmetry}.
@@ -522,7 +533,8 @@ Results are presented in Fig.~\ref{fig:tab_symmetry}.
     \includegraphics[width=0.5\columnwidth]{asymmetry_peach.eps}
     \includegraphics[width=0.5\columnwidth]{asymmetry.eps}
     \caption{
-        The difference in RSSI between the two directions of 7/12~wireless links in the PEACH/EVAlab deployment.
+        The difference in RSSI between the two directions of 7/12~wireless links.
+        \thomas{what does 7/12 mean?}
         The violin plots show the distribution of the value and the standard deviation.
     }
     \label{fig:tab_symmetry}
@@ -560,16 +572,16 @@ In this section, we infirm this statement by looking at the stability of the net
 In particular, we look at the \pathdelete and \pathcreate events.
 These are generated each time a node adds/deletes a neighbor to communicate with, which happens for example when the routing topology changes (see Section~\ref{sec:collected}).
 The number of \pathdelete and \pathcreate events is a direct measurement of the network stability.
-Note that we removed the nodes that does not respect the Dust requirement of having at least two parents to associate with (one node in the PEACH deployment and three in the EVAlab one).
-Due to the lack of second parent, the nodes were producing over 20 times the amount of messages than all the other nodes assembled.
+Note that we removed the nodes that does not respect the deployment requirement of having at least two parents to associate with (one node in the \agri deployment and three in the \building one).
+Due to the lack of second parent, the nodes were producing over 20~times the amount of messages than all the other nodes assembled.
 
 % results
 
-Fig.~\ref{fig:net_churn} shows the number of \pathdelete and \pathcreate events per day, over a 16 days (PEACH) and 2 months (EVAlab).
+Fig.~\ref{fig:net_churn} shows the number of \pathdelete and \pathcreate events per day, over a 16~days (\agri) and 2~months (\building).
 For reference, the total number of links in the network is also depicted.
-There are less than 5 \pathdelete or \pathcreate events \textit{per day} in the entire PEACH network and less than 15 \pathdelete or \pathcreate events \textit{per day} in the EVAlab.
+There are less than 5~\pathdelete or \pathcreate events \textit{per day} in the entire \agri network and less than 15 in the \building network.
 This means that links, once established, remain useful for days/weeks at a time, and that the network is extremely stable.
-The reason why there are more events per day in the EVAlab deployment is not studied here.
+We attribute the higher churn in the \building deployment to the presence of interfering technology and movement.
 
 \begin{figure}
     \includegraphics[width=0.5\columnwidth]{net_churn_peach.eps}
@@ -584,7 +596,7 @@ The reason why there are more events per day in the EVAlab deployment is not stu
 % discussion
 
 This stability can largely be attributed to the use of channel hopping.
-Changing frequency for each packet is known to efficiently combat multi-path fading and external interference~\cite{watteyne09reliability}, the major causes of instability.
+Changing frequency for each frame is known to efficiently combat multi-path fading and external interference~\cite{watteyne09reliability}, the major causes of instability.
 It does not contradict the findings of~\cite{srinivasan08beta}, it just means that link-layer retransmissions can efficiently cope with link burstiness, and that the multi-hop topology can remain very stable.
 
 %==============================================================================
@@ -594,22 +606,25 @@ It does not contradict the findings of~\cite{srinivasan08beta}, it just means th
 % intro
 
 This article analyzes the network statistics generated by two low-power wireless mesh networks deployed in real-world conditions.
-The first deployment in peach orchard in Argentina of 21 nodes produced \PEACHNUMSTATS~statistics over the course of 3~months.
-The second deployment in an office building in Paris of 17 nodes produced \EVANUMSTATS~statistics over the course of 3~months
+The first network is deployed in peach orchard in Argentina, in a \agri scenario.
+Its 21~motes have produced \PEACHNUMSTATS~statistics over the course of 3~months.
+The first network is deployed in an office building in Paris , in a \building scenario.
+Its 17~motes have produced \EVANUMSTATS~statistics over the course of 3~months.
 
 % intuitive
 
-We use a ``waterfall'' plot to show that the two networks are subject to different amount of interferences from other wireless devices deployed in the same area.
-The \smip network delivers its exceptional performance, with 0~packets lost out of \PEACHNUMPCKTS (PEACH) and \EVANUMPCKTS (EVAlab) received (100\% reliable) and 4-16 years of battery lifetime on a pair of commercial AA batteries.
+We use a ``waterfall'' plot to show that the two networks are subject to different amounts of interferences from other wireless devices deployed in the same area.
+The \smip network delivers its exceptional performance, with 0~packets lost out of \PEACHNUMPCKTS (\agri) and \EVANUMPCKTS (\building) received (100\% reliable) and 4-8 years of battery lifetime on a pair of commercial AA batteries.
 
 % non-intuitive
 
-While it is often assumed that wireless links are asymmetric, we show to the contrary that the difference in RSSI averaged over 15 IEEE802.15.4 channels does not exceed a handful of dB.
-We show that the network is extremely stable, with less than 5 links being added or deleted per day in an outdoor environment and 15 links  being added or deleted per day in an indoor environment.
+While it is often assumed that wireless links are asymmetric, we show to the contrary that the difference in RSSI averaged over 15~IEEE802.15.4 channels does not exceed a handful of dB.
+We show that the network is extremely stable, with less than 5~links being added or deleted per day in the \agri deployment, less than 15 in the \building deployment.
+We attribute this performance to the use of Time Synchronized Channel Hopping (TSCH) technology at the heart of the \smip products.
 
 % conclusion
 
-We attribute this performance to the use of Time Synchronized Channel Hopping (TSCH) technology at the heart of the \smip products.
+We conclude that \smip technology is perfectly suitable for \agri and \building applications.
 
 \newpage
 %==============================================================================
