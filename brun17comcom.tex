@@ -184,53 +184,53 @@ Finally, Section~\ref{sec:conclusion} concludes this article and discusses furth
 \label{sec:collected}
 
 % environment
-\textbf{PEACH:}
-The PEACH wireless network is deployed in a peach orchard in Junin, 45~km South-East of Mendoza in Western Argentina.
+
+The \agri network is deployed in a peach orchard in Jun\'in, 45~km South-East of Mendoza in Western Argentina.
 No other electronic devices are present in the field.
 Farmers work inside the field with heavy machinery for 1-2~h every 20~days approximately.
 In the region, air temperature ranges between $-$9~C in winter (May-October) to +38~C in summer (November-April).
 Because of the sunny weather, day/night temperature swings of 10+~C are not uncommon in winter.
-\\
-\textbf{EVAlab:}
-The EVAlab network is deployed in the French National Institute of Research in Computation and Automation (Inria) in Paris.
-On the same location there are multiple other wireless devices such as Wi-Fi, Bluetooth and Zigbee.
-There are also people moving around, mainly during office hours.
+
+The \building network is deployed in the Inria offices (a research institute) in Paris, France.
+It is deployed in a typical 5-story office building, in which semi-permanent walls separate the offices which are arrange around a concrete core which houses the elevators.
+Several wireless technologies operate in the same building, including Wi-Fi, Bluetooth and other IEEE802.15.4-based networks.
+Around 200~people work in that office with lots of activity, mainly during office hours.
 
 % events and HR
 
 Each device in the network produces both sensor data and network statistics.
 Network statistics can be separated in Events and Health Reports messages.
-\textit{Event} messages are non-periodic notifications the network sends when a network event happens (e.g.~a node joins/leaves the network, a link is created/deleted).
+\textit{Event} messages are non-periodic notifications the network sends when a network event happens (e.g.~a mote joins/leaves the network, a link is created/deleted).
 \textit{Health Report} (HR) messages are sent periodically by each mote; they contain counters and statistics about that mote.
 HRs are used to assess the overall health of the network.
 
 % number received and remainder
 
-Table~\ref{tab:msg_stats} summarizes the number of events and HRs gathered during the two periods of 3~month.
+Table~\ref{tab:msg_stats} summarizes the number of events and HRs gathered during the 3~month periods of both deployments.
 In the remainder of this section, we detail the meaning of each of the statistics.
 
 \begin{table}
     \centering
     \begin{tabular}{|l|r|r|}
         \toprule
-        \multicolumn{1}{|c|}{type} & \multicolumn{1}{|c|}{PEACH} & \multicolumn{1}{|c|}{EVAlab} \\ \hline
+        \multicolumn{1}{|c|}{type} & \multicolumn{1}{|c|}{\agri} & \multicolumn{1}{|c|}{\building} \\ \hline
         \hline
-        \motecreate     &     133     &   85 \\ \hline
-        \pathcreate     &   4,098     &   1,403 \\ \hline
-        \pathdelete     &   3,653     &   1,325 \\ \hline
-        \HRDEVICE       & 132,758     &   154,698 \\ \hline
-        \HRDISCOVERED   &  87,737     &   152,641 \\ \hline
-        \HRNEIGHBORS    & \PEACHNUMHRNEIGHBORS & \EVANUMHRNEIGHBORS\\ \hline
+        \motecreate                &                         133 &                              85 \\ \hline
+        \pathcreate                &                       4,098 &                           1,403 \\ \hline
+        \pathdelete                &                       3,653 &                           1,325 \\ \hline
+        \HRDEVICE                  &                     132,758 &                         154,698 \\ \hline
+        \HRDISCOVERED              &                      87,737 &                         152,641 \\ \hline
+        \HRNEIGHBORS               &        \PEACHNUMHRNEIGHBORS &              \EVANUMHRNEIGHBORS \\ \hline
     \end{tabular}
-    \caption{The number of statistics collected over the 3~month period.}
+    \caption{The number of statistics collected over the 3~month periods.}
     \label{tab:msg_stats}
 \end{table}
 
 % - - - - - - - - - - - - - -
 \textbf{\motecreate.}
-Each node in a \smip network can periodically send beacons to announce the presence of the network.
+Each node in a \smip network periodically sends beacons to announce the presence of the network.
 When a mote wants to join a network, it listens for those beacons.
-Once it has heard a number of those, it starts a security handshake with the network.
+Once it has heard a beacon, the new mote starts a security handshake with the network.
 During that handshake, the \smip manager sends a \motecreate event notification over its serial port.
 This is the event we log\footnote{Normally, each mote generates a single \motecreate event. Due to power issues at the manager side, the network restarted a couple of times and new events were created.}.
 It contains, among other information, the association between the newly-joined device's 8-byte MAC address and its 2-byte \moteId.
@@ -262,7 +262,7 @@ These messages also specifies per-neighbor counters, such as the number of link-
 
 % analysis
 
-After 3~months of operation, we have collected \PEACHNUMSTATS and \EVANUMSTATS network statistics in the PEACH and EVAlab deployment respectively (see Table~\ref{tab:msg_stats}).
+After 3~months of operation, we have collected \PEACHNUMSTATS and \EVANUMSTATS network statistics in the \agri and \building deployment respectively (see Table~\ref{tab:msg_stats}).
 The goal of the next section is to present the main results from analyzing this information.
 We group these results in two categories.
 ``Intuitive'' results (Section~\ref{sec:intuitive}) are results that confirm the performance expected from a \smip network.
