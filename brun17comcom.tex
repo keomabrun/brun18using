@@ -22,7 +22,10 @@
 \newcommand{\lorem}          {\textcolor{green}{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}}
 
 % shortcuts
+\newcommand{\sm}                  {SmartMesh\xspace}
 \newcommand{\smip}                {SmartMesh~IP\xspace}
+\newcommand{\building}            {Smart Building\xspace}
+\newcommand{\agri}                {Smart Agriculture\xspace}
 \newcommand{\HRNEIGHBORS}         {{\tt HR\_NEIGHBORS}\xspace}
 \newcommand{\HRDISCOVERED}        {{\tt HR\_DISCOVERED}\xspace}
 \newcommand{\HRDEVICE}            {{\tt HR\_DEVICE}\xspace}
@@ -45,7 +48,7 @@
 
 \date{}
 
-\title{Smart Agriculture and Smart Building Low-Power Wireless SmartMesh Deployments: It Just Works!}
+\title{Using \smip in \agri \\ and \building Deployments: it Just Works}
 
 \author[inria]{Keoma~Brun-Laguna}
     \ead{keoma.brun@inria.fr}
@@ -60,35 +63,27 @@
 \address[uoc]{~Univ. Oberta de Catalunya, Barcelona, Catalonia, Spain}
 
 \begin{abstract}
-We deployed two low-power wireless networks, one in a peach orchard, one in an office building.
-Both networks use SmartMesh technology to gather sensor values and network statistics, and connect to a back-end system.
-This paper presents an in-depth analysis of the performance of the technology in both use cases, and compares them.
-Nodes in both networks exhibit an expected lifetime between 4 and 8~years, with an end-to-end reliability of 100\%.
+We deploy two low-power wireless networks, one in a \agri setting (a peach orchard), one in a \building.
+Both networks use out-of-the-box \smip technology to gather sensor values, as well as extensive network statistics.
+This article presents an in-depth analysis of the performance of both networks, and compares them.
+Nodes in both exhibit end-to-end reliability of 100\%, with an expected lifetime between 4 and 8~years.\thomas{above?}
 We show how -- contrary to popular belief -- wireless links are symmetric.
 Thanks to the use of Time Slotted Channel Hopping (TSCH), the network topology is very stable, with $\leq$15 link changes on average per day in the entire network.
-We conclude that SmartMesh technology is perfectly applicable for the Smart Agriculture and Smart Building domains.
+We conclude that \smip technology is perfectly applicable for  and \building applications.
 \end{abstract}
 
 \begin{keyword}
-Low-power wireless, SmartMesh, Smart Agriculture, Smart Building.
+Low-power wireless, \smip, TSCH, 6TiSCH, \agri, \building.
 \end{keyword}
 
 \end{frontmatter}
 
+
 %==============================================================================
-
-%======== front-page figure, do not move
-\begin{figure}
-    \centering
-    \includegraphics[width=0.80\textwidth]{orchard}
-    \caption{Areal view of the sensor network deployed in an orchard near Mendoza, Argentina.}
-    \label{fig:orchard}
-\end{figure}
-
 \section{Introduction}
 \label{sec:intro}
 
-% the problem
+% agri: problem
 
 Peaches do not like frost.
 If during the blooming season (September in Argentina), temperature gets below $-$3~C for only a couple of hours, the flowers freeze, and no peaches are produced.
@@ -97,26 +92,34 @@ Farmers can lose everything in only a couple of hours.
 Yet, if they are warned of a frost event a couple of hours ahead, they can install heaters throughout the orchards, and use big fans to move the hot air around.
 Fighting the frost events is not the issue, what is hard is predicting it.
 
-% the PEACH project
+%======== front-page figure, do not move
+\begin{figure}
+    \centering
+    \includegraphics[width=1.00\textwidth]{orchard}
+    \caption{Areal view of the low-power wireless network deployed in a peach orchard near Mendoza, Argentina.}
+    \label{fig:orchard}
+\end{figure}
 
-The goal of the PEACH project~\cite{watteyne16peach} is to predict frost events.
+% agri: project
+
+The goal of the \agri deployment (part of the PEACH project~\cite{watteyne16peach}) is to predict frost events in a peach orchard.
 We install sensors around the orchard that measure air temperature, air relative humidity, soil moisture and soil temperature.
-We feed the collected data into a database, and by analyzing the data in real-time using machine learning, we identify patterns in the data and predict frost events.
+We feed the collected data into a database, and by analyzing the data in real-time using machine learning, we can identify patterns in the data and predict frost events.
 
-% the architecture
+% agri: architecture
 
 Because of the heavy machinery that moves inside the orchard, using cables to interconnect the sensors is not an option.
-The main challenge is to deploy a system that provides both a high end-to-end reliability and a long lifetime without using cables.
-We use \smip, an off-the-shelf low-power wireless mesh solution from Linear Technology.
+The main challenge is to deploy a system that provides both high end-to-end reliability and long lifetime, without using cables.
+We use \smip off-the-shelf, the low-power wireless mesh solution from Analog Devices.
 The sensor devices are battery-powered and equipped with a radio.
 They form a multi-hop topology, and collaborate to route the data generated by the devices (called ``motes'') to a gateway.
 This gateway is connected to the Internet, and forwards the gathered date to the servers in Paris, France.
 Data appears on the web interface of the servers seconds after it was gathered by the sensor network.
 
-% the deployment PEACH
+% agri: deployment
 
-The network is deployed in a peach orchard of 204~trees, planted in a 50~m~$\times$~100~m area (shown in Fig.~\ref{fig:peach_map}).
-The low-power wireless network is composed of 18~sensor motes\footnote{2 motes malfunctioned and are not present on the map.} uniformly distributed between the peach trees, and 3~relay motes to connect the orchard to the gateway some 300~m away.
+The \agri network is deployed in a peach orchard of 204~trees, planted in a 50~m~$\times$~100~m area (shown in Fig.~\ref{fig:peach_map}).
+The low-power wireless network is composed of 18~sensor motes uniformly distributed between the peach trees, and 3~relay motes to connect the orchard to the gateway some 300~m away.
 Each mote is placed in a water-tight box that is fixed on a 4~m high pole (see Fig.~\ref{fig:orchard}).
 
 \begin{figure}
@@ -134,53 +137,47 @@ Each mote is placed in a water-tight box that is fixed on a 4~m high pole (see F
     \end{minipage}
 \end{figure}
 
-% the deployment EVAlab
+% building: deployment
 
-To better understand and compare the network statistics gathered from the PEACH deployment, we deployed a second wireless network inside an office building.
-14~motes are placed on the ceiling of one floor of the building and 3 nodes are placed outside on street lamps poles (shown in Fig.~\ref{fig:evalab_map}).
-The 14 inside motes are fixed to the ceiling with magnets and the 3 outside ones are placed in a water-tight box.
+To complement and compare the network performance gathered from the \agri deployment, we deploy a second \building low-power wireless network in an office building in Paris.
+14~motes are placed on the ceiling of one floor of the building, 3~additional motes are placed right outside the building, on lamp posts (Fig.~\ref{fig:evalab_map}).
+The 14~motes inside are fixed to the ceiling using magnets; the 3~motes outside are placed in a water-tight boxes.
+Thanks to the ``peel-and-stick'' nature of this low-power wireless technology, deployment takes less than an hour.
 
 % hardware
 
-In the peach orchard we use four types of \smip devices.
-The 2 DC9018 boards feature an external antenna; the 16~DC9003 boards a chip antenna.
-These are deployed inside the orchard.
-We deploy 3 repeaters outside the orchards to connect the orchard to the gateway.
-In the office building we use 2 types of \smip devices.
-The 11 DC9003 boards are the same as the ones used in the PEACH deployment.
-We use 1 DC9018 board with an external antenna.
-For the two deployments, the gateway is composed of a Raspberry~Pi single-board computer, and a DC2274 \smip manager.
+In the \agri deployment, we use four types of \smip devices.
+Inside the orchard, 2~DC9018 boards feature an external antenna, 16~DC9003 boards a chip antenna.
+We deploy 3~long-range repeaters outside the orchards to connect the network to the gateway, located some 300~m away.
+In the \building deployment, we use 2 types of \smip devices: 11~DC9003 boards (chip antenna), 1~DC9018 board (external antenna).
+For both deployments, the gateway is composed of a Raspberry~Pi single-board computer connected to a DC2274 \smip manager over USB.
+All boards are off-the-shelf.
 
 % technology
 
-The \smip network implements the IEEE802.15.4e standard~\cite{std_ieee802154e_2012}, which includes a channel hopping mechanism to reduce the impact of multipath fading and external interference.
-This allows the network to be highly reliable, stable, and extremely low power~\cite{watteyne10mitigating, watteyne09reliability}.
-
-% the data
-
+The \smip network implements the IEEE802.15.4e standard~\cite{std_ieee802154e_2012}, which includes a channel-hopping mechanism to reduce the impact of multi-path fading and external interference.
+This allows the network to be highly reliable, stable, and extremely low power~\cite{watteyne10mitigating,watteyne09reliability}.
 Each mote produces a temperature value every 30~s, and network statistics every 5~min.
-We extracted 3 months of data for each deployment
-We gathered over 4~million temperature values, and more than 350,000~network statistics for each deployment.
+We extract 3~months of data for each deployment, resulting in over 4~million temperature values, and more than 350,000~network statistics for each deployment.
 
-% the goal of this paper
+% goal of this article
 
-The goal of this paper is to analyze the network statistics over the two 3-month periods, and precisely assess the performance of the networks.
-\\
-
-This paper makes the following contributions:
+The goal of this article is to analyze the network statistics over the 3-month periods, precisely assess the performance of both networks, and contrast/compare them.
+This article makes the following contributions:
 \begin{itemize}
-    \item We confirm that the \smip network exhibits years of battery lifetime and wire-like reliability;
+    \item We confirm that the \smip network exhibits years of battery lifetime and wire-like reliability in both cases;
     \item We show that channel hopping causes the network topology to be very stable, with $\leq$15 link changes on average per day;
-    \item Contrary to popular belief, we show that links in the network are symmetric, i.e.~they exhibit the same signal strength in both directions of the same link.
+    \item Contrary to popular belief, we show that links in the networks are symmetric, i.e.~they exhibit the same signal strength in both directions of the same link;
+    \item We conclude that \smip is a perfectly suitable IoT technology for the \agri and \building domains.
 \end{itemize}
 
-% paper organisation
+% remainder
 
-The remainder of this paper is organized as follows.
-Section~\ref{sec:collected} describes what statistics we are collecting, and the amount of statistics collected over two periods of 3~months.
+The remainder of this article is organized as follows.
+Section~\ref{sec:collected} describes the types of network statistics, and the dataset of statistics collected over the 3~month periods.
 Section~\ref{sec:intuitive} presents results that confirm assumptions about what we can expect for real-world \smip deployment.
 Section~\ref{sec:notsointuitive} presents not so intuitive results about link symmetry and network stability.
-Finally, Section~\ref{sec:conclusion} concludes this paper and discusses further improvements.
+Finally, Section~\ref{sec:conclusion} concludes this article and discusses further improvements.
 
 %==============================================================================
 \section{Statistics Collected}
@@ -240,7 +237,7 @@ It contains, among other information, the association between the newly-joined d
 
 % - - - - - - - - - - - - - -
 \textbf{\pathcreate and \pathdelete.}
-In \smip terminology, a ``path'' is the link-layer resource that allows two neighbor nodes to communicate\footnote{~In more classical networking terminology, this is often referred to as a ``link''. We use the terms ``path'' and ``link'' interchangeably in this paper.}.
+In \smip terminology, a ``path'' is the link-layer resource that allows two neighbor nodes to communicate\footnote{~In more classical networking terminology, this is often referred to as a ``link''. We use the terms ``path'' and ``link'' interchangeably in this article.}.
 Each time a mote starts communicating with a new neighbor (e.g.~its routing parent), a \pathcreate event is produced.
 Similarly, each time a mote \textit{stops} communicating with a neighbor (e.g.~it changes routing parent), a \pathdelete event is produced.
 We log both messages.
@@ -563,7 +560,7 @@ It does not contradict the findings of~\cite{srinivasan08beta}, it just means th
 
 % intro
 
-This paper analyzes the network statistics generated by two low-power wireless mesh networks deployed in real-world conditions.
+This article analyzes the network statistics generated by two low-power wireless mesh networks deployed in real-world conditions.
 The first deployment in peach orchard in Argentina of 21 nodes produced \PEACHNUMSTATS~statistics over the course of 3~months.
 The second deployment in an office building in Paris of 17 nodes produced \EVANUMSTATS~statistics over the course of 3~months
 
