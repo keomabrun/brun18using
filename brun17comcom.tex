@@ -319,8 +319,15 @@ While it does \textit{not} apply directly to our real-world deployment, we note 
 This corroborates the results from~\cite{zats10wireless}.
 
 \begin{figure}[h]
-    \includegraphics[width=0.5\textwidth]{pister_hack_peach.eps}
-    \includegraphics[width=0.5\textwidth]{pister_hack.eps}
+    \centering
+    \begin{subfigure}[h]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{pister_hack_agri.eps}
+        \caption{\agri}
+    \end{subfigure}
+    \begin{subfigure}[h]{0.49\textwidth}  
+        \includegraphics[width=\textwidth]{pister_hack_building.eps}
+        \caption{\building}
+    \end{subfigure} 
     \caption{RSSI measurements are roughly located between the Friis model and the Friis model shifted by $-$40~dB.}
     \label{fig:pister_hack}
 \end{figure}
