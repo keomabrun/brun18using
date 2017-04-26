@@ -78,7 +78,7 @@ This article presents an in-depth analysis of the performance of both networks, 
 Nodes in both exhibit end-to-end reliability of 100\%, with an expected lifetime between 4 and 8~years.
 We show how -- contrary to popular belief -- wireless links are symmetric.
 Thanks to the use of Time Slotted Channel Hopping (TSCH), the network topology is very stable, with $\leq$15 link changes on average per day in the entire network.
-We conclude that \smip technology is perfectly applicable for  and \building applications.
+We conclude that \smip technology is perfectly suitable for \agri and \building applications.
 \end{abstract}
 
 \begin{keyword}
@@ -98,8 +98,8 @@ Peaches do not like frost.
 If during the blooming season (September in Argentina), temperature gets below $-$3~C for only a couple of hours, the flowers freeze, and no peaches are produced.
 In 2013, 85\% of the peach production in the Mendoza region (Western Argentina) was lost because of frost events.
 Farmers can lose everything in only a couple of hours.
-Yet, if they are warned of a frost event a couple of hours ahead, they can install heaters throughout the orchards, and use big fans to move the hot air around.
-Fighting the frost events is not the issue, what is hard is predicting it.
+Yet, if they are warned of a frost event a couple of hours ahead, they can install heaters throughout the orchard, and use big fans to move the hot air around.
+Fighting the frost event is not the issue, what is hard is predicting it.
 
 %======== front-page figure, do not move
 \begin{figure}
@@ -127,7 +127,7 @@ Data appears on the web interface of the servers seconds after it was gathered b
 
 % agri: deployment
 
-The \agri network is deployed in a peach orchard of 204~trees, planted in a 50~m~$\times$~100~m area (shown in Fig.~\ref{fig:peach_map}).
+The \agri network is deployed in a peach orchard of 204~trees, planted in a 50~m~$\times$~100~m area (shown in Fig.~\ref{fig:agri_map}).
 The low-power wireless network is composed of 18~sensor motes uniformly distributed between the peach trees, and 3~relay motes to connect the orchard to the gateway some 300~m away.
 Each mote is placed in a water-tight box that is fixed on a 4~m high pole (see Fig.~\ref{fig:agri_pics}).
 
@@ -148,7 +148,7 @@ Each mote is placed in a water-tight box that is fixed on a 4~m high pole (see F
 % building: deployment
 
 To complement and compare the network performance gathered from the \agri deployment, we deploy a second \building low-power wireless network in an office building in Paris.
-14~motes are placed on the ceiling of one floor of the building, 3~additional motes are placed right outside the building, on lamp posts (Fig.~\ref{fig:evalab_map}).
+14~motes are placed on the ceiling of one floor of the building, 3~additional motes are placed right outside the building, on lamp posts (Fig.~\ref{fig:building_map}).
 The 14~motes inside are fixed to the ceiling using magnets; the 3~motes outside are placed in a water-tight boxes.
 Thanks to the ``peel-and-stick'' nature of this low-power wireless technology, deployment takes less than an hour.
 
@@ -163,7 +163,7 @@ All boards are off-the-shelf.
 
 % technology
 
-The \smip network implements the IEEE802.15.4e standard~\cite{std_ieee802154e_2012}, which includes a channel-hopping mechanism to reduce the impact of multi-path fading and external interference.
+The \smip network implements the IEEE802.15.4 TSCH mode~\cite{std_ieee802154_2015}, which includes a channel-hopping mechanism to reduce the impact of multi-path fading and external interference.
 This allows the network to be highly reliable, stable, and extremely low power~\cite{watteyne10mitigating,watteyne09reliability}.
 Each mote produces a temperature value every 30~s, and network statistics every 5~min.
 We extract 3~months of data for each deployment, resulting in over 4~million temperature values, and more than 350,000~network statistics for each deployment.
@@ -173,10 +173,12 @@ We extract 3~months of data for each deployment, resulting in over 4~million tem
     \begin{subfigure}[h]{0.70\textwidth}
         \includegraphics[width=\textwidth]{map_annotated}
         \caption{\agri}
+        \label{fig:agri_map}
     \end{subfigure}
     \begin{subfigure}[h]{0.27\textwidth}  
         \includegraphics[width=\textwidth]{evalab_map_annotated}
         \caption{\building}
+        \label{fig:building_map}
     \end{subfigure} 
     \caption{
         Aerial view of the topology of both deployments.
@@ -317,7 +319,7 @@ The Friis transmission model~\cite{saunders07antennas} gives the relationship be
 While it does \textit{not} apply directly to our real-world deployment, we note in Fig.~\ref{fig:pister_hack} that the individual RSSI values are located between the Friis model, and the Friis model offset by $-$40~dB.
 This corroborates the results from~\cite{zats10wireless}.
 
-\begin{figure}[h]
+\begin{figure}
     \centering
     \begin{subfigure}[h]{0.49\textwidth}
         \includegraphics[width=\textwidth]{pister_hack_agri.eps}
@@ -350,7 +352,7 @@ Fig.~\ref{fig:waterfall} plots the PDR and the RSSI of these 69,643 and 93,135 m
 For readability, we also plot the average/deviation of the data for a given RSSI value.
 Because of its shape, this is known as the ``waterfall plot''.
 
-\begin{figure}[h]
+\begin{figure}
     \centering
     \begin{subfigure}[h]{0.49\textwidth}
         \includegraphics[width=\columnwidth]{waterfall_agri.eps}
@@ -437,7 +439,7 @@ This number allows us to predict the lifetime of the device.
 
 Table~\ref{tab:stats_charge} shows charge consumed by the motes over the two 3~month periods, as well as the portion of the battery this represents.
 Assuming the same energy consumption rate, we can extrapolate the lifetime.
-The nodes with the longest lifetime (8~years) are all leaf nodes as we can see from Fig.~\ref{fig:peach_map}.
+The nodes with the longest lifetime (8~years) are all leaf nodes as we can see from Fig.~\ref{fig:maps}.
 Since it does not have to relay data from any children, it is normal for these mote to consume very little.
 The mote with the shortest lifetime is {\tt 30-60-ef}, with a 4~year battery lifetime.
 This is normal as this mote has an external antenna and relays a lot of data.
@@ -646,72 +648,18 @@ We attribute this performance to the use of Time Synchronized Channel Hopping (T
 
 We conclude that \smip technology is perfectly suitable for \agri and \building applications.
 
-\newpage
 %==============================================================================
-\begin{thebibliography}{10}
+\section*{Acknowledgments}
 
-\bibitem{std_ieee802154_2015}
-{802.15.4-2015: IEEE Standard for Low-Rate Wireless Networks}, April 2016.
+This work was partially supported by
+the STIC-AmSud program through the PEACH project,
+the Dust Networks Product Group at Analog Devices,
+the European Commission through the H2020~F-Interop and H2020~ARMOUR projects,
+Inria through the REALMS and DIVERSITY associate teams.
 
-\bibitem{std_ieee802154e_2012}
-{802.15.4e-2012: IEEE Standard for Local and metropolitan area networks--Part
-  15.4: Low-Rate Wireless Personal Area Networks (LR-WPANs) Amendment 1: MAC
-  sublayer}, April 2012.
-
-\bibitem{rfc3626}
-T.~H. Clausen and P.~Jacquet.
-\newblock {Optimized Link State Routing Protocol (OLSR)}, October 2003.
-
-\bibitem{smip_app_note}
-Linear Technology.
-\newblock {\em {SmartMesh IP Application Notes}}, 2015.
-
-\bibitem{saunders07antennas}
-S.~R. Saunders and A.~Arag\'on-Zavala.
-\newblock {\em {Antennas and Propagation for Wireless Communication Systems}}.
-\newblock Wiley-Blackwell, 2nd edition, 2007.
-
-\bibitem{srinivasan08beta}
-K.~Srinivasan, M.~A. Kazandjieva, S.~Agarwal, and P.~Levis.
-\newblock {The $\beta$-factor: Measuring Wireless Link Burstiness}.
-\newblock In {\em Conference on Embedded Network Sensor Systems (SenSys)},
-  pages 29--42, Raleigh, NC, USA, 2008. ACM.
-
-\bibitem{watteyne16peach}
-T.~Watteyne, A.~L. Diedrichs, K.~Brun-Laguna, J.~E. Chaar, D.~Dujovne, J.~C.
-  Taffernaberry, and G.~Mercado.
-\newblock {PEACH: Predicting Frost Events in Peach Orchards Using IoT
-  Technology}.
-\newblock {\em {EAI Endorsed Transactions on the Internet of Things}}, June
-  2016.
-
-\bibitem{watteyne10mitigating}
-T.~Watteyne, S.~Lanzisera, A.~Mehta, and K.~S. Pister.
-\newblock {Mitigating Multipath Fading through Channel Hopping in Wireless
-  Sensor Networks}.
-\newblock In {\em IEEE International Conference on Communications (ICC)}, pages
-  1--5, Cape Town, South Africa, 23-27 May 2010. IEEE.
-
-\bibitem{watteyne09reliability}
-T.~Watteyne, A.~Mehta, and K.~Pister.
-\newblock {Reliability Through Frequency Diversity: Why Channel Hopping Makes
-  Sense}.
-\newblock In {\em International Symposium on Performance Evaluation of Wireless
-  Ad Hoc, Sensor, and Ubiquitous Networks (PE-WASUN)}, pages 116--123,
-  Tenerife, Canary Islands, Spain, 26-30 October 2009. ACM.
-
-\bibitem{watteyne15industrial}
-T.~Watteyne, J.~Weiss, L.~Doherty, and J.~Simon.
-\newblock {Industrial IEEE802.15.4e Networks: Performance and Trade-offs}.
-\newblock In {\em International Conference on Communications (ICC), Internet of
-  Things Symposium}, London, UK, 8-12 June 2015. IEEE.
-
-\bibitem{zats10wireless}
-S.~Zats.
-\newblock {Wireless Sensor Networks Scaling and Deployment in Industrial
-  Automation}.
-\newblock Master's thesis, University of California, Berkeley, 13 May 2010.
-
-\end{thebibliography}
+%==============================================================================
+\section*{References}
+\bibliographystyle{elsarticle-num}
+\bibliography{brun17using}
 
 \end{document}

@@ -7,3 +7,7 @@
 notebooks/.ipynb_checkpoints/
 
 .idea/workspace.xml
+*.bbl
+*.bak
+*.blg
+/brun17using.pdf
