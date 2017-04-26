@@ -13,14 +13,14 @@
 \usepackage{epstopdf}
 
 % reviews
-\newcommand{\todo}[1]             {\textcolor{red}{[TODO] #1}}
-\newcommand{\keoma}[1]            {\textcolor{blue}{[Keoma] #1}}
-\newcommand{\remy}[1]             {\textcolor{blue}{[Remy] #1}}
-\newcommand{\xavi}[1]             {\textcolor{blue}{[Xavi] #1}}
-\newcommand{\thomas}[1]           {\textcolor{blue}{[Thomas] #1}}
+%\newcommand{\todo}[1]             {\textcolor{red}{[TODO] #1}}
+%\newcommand{\keoma}[1]            {\textcolor{blue}{[Keoma] #1}}
+%\newcommand{\remy}[1]             {\textcolor{blue}{[Remy] #1}}
+%\newcommand{\xavi}[1]             {\textcolor{blue}{[Xavi] #1}}
+%\newcommand{\thomas}[1]           {\textcolor{blue}{[Thomas] #1}}
 
  % lorem
-\newcommand{\lorem}               {\textcolor{green}{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}}
+%\newcommand{\lorem}               {\textcolor{green}{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}}
 
 % shortcuts
 \newcommand{\sm}                  {SmartMesh\xspace}
@@ -452,60 +452,61 @@ This is expected, as this mote relays lots of data.
 This confirms the ultra-low power consumption of the \smip network.
 
 \begin{table}
-\begin{subtable}{.5\textwidth}
+\begin{subtable}{.49\textwidth}
     \begin{tabular}{|c|c|r|}
         \toprule
-        MAC           &  charge  & lifetime \\
-                      & consumed$^\star$ &          \\
+        MAC           &                  charge & lifetime \\
+                      &        consumed$^\star$ &          \\
         \midrule
-        \tt{30-60-ef} &   695 kC &  4 years \\
-        \tt{38-0f-66} &   461 kC &  6 years \\
-        \tt{3f-f8-20} &   380 kC &  8 years \\
-        \tt{3f-fe-87} &   549 kC &  5 years \\
-        \tt{3f-fe-88} &   718 kC &  4 years \\
-        \tt{58-32-36} &   311 kC &  7 years \\
-        \tt{60-01-f8} &   387 kC &  8 years \\
-        \tt{60-02-1b} &   371 kC &  8 years \\
-        \tt{60-02-4b} &   406 kC &  7 years \\
-        \tt{60-03-82} &   395 kC &  8 years \\
-        \tt{60-05-5f} &   386 kC &  8 years \\
-        \tt{60-05-69} &   509 kC &  6 years \\
-        \tt{60-05-78} &   364 kC &  8 years \\
-        \tt{60-05-ab} &   381 kC &  8 years \\
-        \tt{60-06-27} &   422 kC &  7 years \\
-        \tt{60-08-d5} &   432 kC &  7 years \\
+        \tt{30-60-ef} &                  695 kC &  4 years \\
+        \tt{38-0f-66} &                  461 kC &  6 years \\
+        \tt{3f-f8-20} &                  380 kC &  8 years \\
+        \tt{3f-fe-87} &                  549 kC &  5 years \\
+        \tt{3f-fe-88} &                  718 kC &  4 years \\
+        \tt{58-32-36} &                  311 kC &  7 years \\
+        \tt{60-01-f8} &                  387 kC &  8 years \\
+        \tt{60-02-1b} &                  371 kC &  8 years \\
+        \tt{60-02-4b} &                  406 kC &  7 years \\
+        \tt{60-03-82} &                  395 kC &  8 years \\
+        \tt{60-05-5f} &                  386 kC &  8 years \\
+        \tt{60-05-69} &                  509 kC &  6 years \\
+        \tt{60-05-78} &                  364 kC &  8 years \\
+        \tt{60-05-ab} &                  381 kC &  8 years \\
+        \tt{60-06-27} &                  422 kC &  7 years \\
+        \tt{60-08-d5} &                  432 kC &  7 years \\
         \bottomrule
     \end{tabular}
     \caption{\agri}
 \end{subtable}\hfill
-\begin{subtable}{.43\textwidth}
+\begin{subtable}{.49\textwidth}
     \begin{tabular}{|c|c|c|}
         \toprule
-        MAC           &  charge  & lifetime \\
-                      & consumed$^\star$ &          \\
+        MAC           &                 charge  & lifetime \\
+                      & consumed$^{\star\star}$ &          \\
         \midrule
-        \tt{38-03-dd} &   459 kC &  4 years \\
-        \tt{58-e9-ca} &   411 kC &  5 years \\
-        \tt{58-e9-cb} &   407 kC &  5 years \\
-        \tt{58-eb-5b} &   423 kC &  5 years \\
-        \tt{58-eb-64} &   322 kC &  6 years \\
-        \tt{58-eb-67} &   468 kC &  4 years \\
-        \tt{58-eb-69} &   243 kC &  6 years \\
-        \tt{58-f3-17} &   357 kC &  5 years \\
-        \tt{58-f4-f8} &   402 kC &  5 years \\
-        \tt{58-f5-23} &   416 kC &  5 years \\
-        \tt{58-f5-3c} &   412 kC &  5 years \\
-        \tt{58-f5-58} &   387 kC &  5 years \\
-        \tt{58-f8-63} &   198 kC &  7 years \\
-        \tt{58-f8-78} &   233 kC &  6 years \\
-        \tt{58-f8-8f} &   439 kC &  4 years \\
-        \tt{58-f9-c4} &   325 kC &  6 years \\
+        \tt{38-03-dd} &                  459 kC &  4 years \\
+        \tt{58-e9-ca} &                  411 kC &  5 years \\
+        \tt{58-e9-cb} &                  407 kC &  5 years \\
+        \tt{58-eb-5b} &                  423 kC &  5 years \\
+        \tt{58-eb-64} &                  322 kC &  6 years \\
+        \tt{58-eb-67} &                  468 kC &  4 years \\
+        \tt{58-eb-69} &                  243 kC &  6 years \\
+        \tt{58-f3-17} &                  357 kC &  5 years \\
+        \tt{58-f4-f8} &                  402 kC &  5 years \\
+        \tt{58-f5-23} &                  416 kC &  5 years \\
+        \tt{58-f5-3c} &                  412 kC &  5 years \\
+        \tt{58-f5-58} &                  387 kC &  5 years \\
+        \tt{58-f8-63} &                  198 kC &  7 years \\
+        \tt{58-f8-78} &                  233 kC &  6 years \\
+        \tt{58-f8-8f} &                  439 kC &  4 years \\
+        \tt{58-f9-c4} &                  325 kC &  6 years \\
         \bottomrule
     \end{tabular}
     \caption{\building}
 \end{subtable}\hfill
 \vspace{2mm}
-$^\star$~over the \thomas{period?} period.
+$^\star$~over the 20 Jun. 2016 - 5 Oct. 2016 period (107 days).\\
+$^{\star\star}$~over the 13 Nov. 2016 - 9 Feb. 2017 period (88 days).
 \caption{Per-node power consumption and associated expected lifetime when powered by a pair of AA batteries.}
 \label{tab:stats_charge}
 \end{table}
