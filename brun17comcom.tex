@@ -10,16 +10,17 @@
 \usepackage{booktabs}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{epstopdf}
 
 % reviews
-\newcommand{\todo}[1]        {\textcolor{red}{[TODO] #1}}
-\newcommand{\keoma}[1]       {\textcolor{blue}{[Keoma] #1}}
-\newcommand{\remy}[1]        {\textcolor{blue}{[Remy] #1}}
-\newcommand{\xavi}[1]        {\textcolor{blue}{[Xavi] #1}}
-\newcommand{\thomas}[1]      {\textcolor{blue}{[Thomas] #1}}
+\newcommand{\todo}[1]             {\textcolor{red}{[TODO] #1}}
+\newcommand{\keoma}[1]            {\textcolor{blue}{[Keoma] #1}}
+\newcommand{\remy}[1]             {\textcolor{blue}{[Remy] #1}}
+\newcommand{\xavi}[1]             {\textcolor{blue}{[Xavi] #1}}
+\newcommand{\thomas}[1]           {\textcolor{blue}{[Thomas] #1}}
 
  % lorem
-\newcommand{\lorem}          {\textcolor{green}{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}}
+\newcommand{\lorem}               {\textcolor{green}{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}}
 
 % shortcuts
 \newcommand{\sm}                  {SmartMesh\xspace}
@@ -66,7 +67,7 @@
     \ead{thomas.watteyne@inria.fr}
 
 \address[inria]{~Inria, EVA team, Paris, France}
-\address[utn]{~Univ. Tecnológica Nacional (UTN), Mendoza, Argentina}
+\address[utn]{~Univ. Tecnol\'ogica Nacional (UTN), Mendoza, Argentina}
 \address[udp]{~Univ. Diego Portales, Santiago, Chile}
 \address[uoc]{~Univ. Oberta de Catalunya, Barcelona, Catalonia, Spain}
 
@@ -104,27 +105,9 @@ Fighting the frost events is not the issue, what is hard is predicting it.
 \begin{figure}
     \centering
     \includegraphics[width=1.00\textwidth]{orchard}
-    \caption{Areal view of the low-power wireless network deployed in a peach orchard near Mendoza, Argentina.}
-    \label{fig:orchard}
+    \caption{Devices deployed in a peach orchard near Mendoza, Argentina, for the \agri use case.}
+    \label{fig:agri_pics}
 \end{figure}
-
-\begin{figure}
-    \hfill
-    \begin{minipage}[t]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{smartbuilding_outdoor}
-        \caption{The wireless motes deployed in the Inria office building outdoor, France.\newline}
-        \label{fig:peach_map}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{smartbuilding_indoor}
-        \caption{The wireless motes deployed in the Inria office building indoor, France.}
-        \label{fig:evalab_map}
-    \end{minipage}
-    \hfill
-\end{figure}
-
 
 % agri: project
 
@@ -146,21 +129,20 @@ Data appears on the web interface of the servers seconds after it was gathered b
 
 The \agri network is deployed in a peach orchard of 204~trees, planted in a 50~m~$\times$~100~m area (shown in Fig.~\ref{fig:peach_map}).
 The low-power wireless network is composed of 18~sensor motes uniformly distributed between the peach trees, and 3~relay motes to connect the orchard to the gateway some 300~m away.
-Each mote is placed in a water-tight box that is fixed on a 4~m high pole (see Fig.~\ref{fig:orchard}).
+Each mote is placed in a water-tight box that is fixed on a 4~m high pole (see Fig.~\ref{fig:agri_pics}).
 
 \begin{figure}
-    \begin{minipage}[b]{0.66\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{map_annotated}
-        \caption{The wireless motes deployed in the peach orchard in Mendoza, Argentina.\newline}
-        \label{fig:peach_map}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{evalab_map_annotated.eps}
-        \caption{The wireless motes deployed in the Inria office building, France.}
-        \label{fig:evalab_map}
-    \end{minipage}
+    \centering
+    \begin{subfigure}[h]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{smartbuilding_outdoor}
+        \caption{outdoors}
+    \end{subfigure}
+    \begin{subfigure}[h]{0.49\textwidth}  
+        \includegraphics[width=\textwidth]{smartbuilding_indoor}
+        \caption{indoors}
+    \end{subfigure} 
+    \caption{Devices deployed in the Inria-Paris offices for the \building use case.}
+    \label{fig:building_pics}
 \end{figure}
 
 % building: deployment
@@ -185,6 +167,23 @@ The \smip network implements the IEEE802.15.4e standard~\cite{std_ieee802154e_20
 This allows the network to be highly reliable, stable, and extremely low power~\cite{watteyne10mitigating,watteyne09reliability}.
 Each mote produces a temperature value every 30~s, and network statistics every 5~min.
 We extract 3~months of data for each deployment, resulting in over 4~million temperature values, and more than 350,000~network statistics for each deployment.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[h]{0.70\textwidth}
+        \includegraphics[width=\textwidth]{map_annotated}
+        \caption{\agri}
+    \end{subfigure}
+    \begin{subfigure}[h]{0.27\textwidth}  
+        \includegraphics[width=\textwidth]{evalab_map_annotated}
+        \caption{\building}
+    \end{subfigure} 
+    \caption{
+        Aerial view of the topology of both deployments.
+        The deployment is done in both cases in a 50m~$\times$~100m area.
+    }
+    \label{fig:maps}
+\end{figure}
 
 % goal of this article
 
@@ -408,7 +407,7 @@ It presents statistics gathered over the July 15-25 2016 period in the \agri dep
         (Arrived/Lost)                  & (\PEACHNUMPCKTS~/~0)      & (\EVANUMPCKTS~/~0)           \\
         \hline
         average PDR                     & 95\%                      &  87\%                        \\
-        (Transmit/Fails)                & (4,405,569~/~258778)      &  (19,807,535~/~2,488,149)    \\
+        (Transmit/Fails)                & (4,405,569~/~258,778)     &  (19,807,535~/~2,488,149)    \\
         \hline
         latency                         & 700~msec                  &  \textit{not measured.}      \\
         \bottomrule
@@ -545,7 +544,7 @@ Results are presented in Fig.~\ref{fig:tab_symmetry}.
     \centering
     \begin{subfigure}[h]{0.49\textwidth}
          \includegraphics[width=\columnwidth]{asymmetry_building.eps}
-        \caption{\agri}
+        \caption{\building}
     \end{subfigure}
     \caption{
         The difference in RSSI between the two directions of the wireless links with the highest number of exchanged messages.
@@ -605,7 +604,7 @@ We attribute the higher churn in the \building deployment to the presence of int
     \end{subfigure}
     \begin{subfigure}[h]{0.49\textwidth}
         \includegraphics[width=\columnwidth]{net_churn_building.eps}
-        \caption{\agri}
+        \caption{\building}
     \end{subfigure}    
     \caption{
         Network stability: the number of \pathcreate and \pathdelete events generated per day over a 16 days (\agri) and two months (\building).
@@ -649,13 +648,10 @@ We conclude that \smip technology is perfectly suitable for \agri and \building 
 
 \newpage
 %==============================================================================
-%\bibliographystyle{abbrv}
-%\bibliography{brun16intuitive}
-
 \begin{thebibliography}{10}
 
 \bibitem{std_ieee802154_2015}
-{802.15.4-2015: IEEE Standard for Low-Rate Wireless Networks}, April 2016 .
+{802.15.4-2015: IEEE Standard for Low-Rate Wireless Networks}, April 2016.
 
 \bibitem{std_ieee802154e_2012}
 {802.15.4e-2012: IEEE Standard for Local and metropolitan area networks--Part
