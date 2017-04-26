@@ -78,7 +78,7 @@ This article presents an in-depth analysis of the performance of both networks, 
 Nodes in both exhibit end-to-end reliability of 100\%, with an expected lifetime between 4 and 8~years.
 We show how -- contrary to popular belief -- wireless links are symmetric.
 Thanks to the use of Time Slotted Channel Hopping (TSCH), the network topology is very stable, with $\leq$15 link changes on average per day in the entire network.
-We conclude that \smip technology is perfectly suitable for \agri and \building applications.
+We conclude that \smip is a perfectly suitable IoT solution for \agri and \building applications.
 \end{abstract}
 
 \begin{keyword}
@@ -112,7 +112,7 @@ Fighting the frost event is not the issue, what is hard is predicting it.
 
 The goal of the \agri deployment (part of the PEACH project~\cite{watteyne16peach}) is to predict frost events in a peach orchard.
 We install sensors around the orchard that measure air temperature, air relative humidity, soil moisture and soil temperature.
-We feed the collected data into a database, and by analyzing the data in real-time using machine learning, we can identify patterns in the data and predict frost events.
+We feed the collected data into a database, and by analyzing the data in real-time using machine learning techniques, we can identify patterns in the data and predict frost events.
 
 % agri: architecture
 
@@ -126,7 +126,7 @@ Data appears on the web interface of the servers seconds after it was gathered b
 
 % agri: deployment
 
-The \agri network is deployed in a peach orchard of 204~trees, planted in a 50~m~$\times$~100~m area (shown in Fig.~\ref{fig:agri_map}).
+The \agri network is deployed in a peach orchard of 204~trees, planted in a 50~m~$\times$~110~m area (shown in Fig.~\ref{fig:agri_map}).
 The low-power wireless network is composed of 18~sensor motes uniformly distributed between the peach trees, and 3~relay motes to connect the orchard to the gateway some 300~m away.
 Each mote is placed in a water-tight box that is fixed on a 4~m high pole (see Fig.~\ref{fig:agri_pics}).
 
@@ -146,9 +146,9 @@ Each mote is placed in a water-tight box that is fixed on a 4~m high pole (see F
 
 % building: deployment
 
-To complement and compare the network performance gathered from the \agri deployment, we deploy a second \building low-power wireless network in an office building in Paris.
+To complement and compare the network performance gathered from the \agri deployment, we deploy a second \building low-power wireless network in an office building in Paris, France.
 14~motes are placed on the ceiling of one floor of the building, 3~additional motes are placed right outside the building, on lamp posts (Fig.~\ref{fig:building_map}).
-The 14~motes inside are fixed to the ceiling using magnets; the 3~motes outside are placed in a water-tight boxes.
+The 14~motes inside are fixed to the ceiling using magnets; the 3~motes outside are placed in a water-tight boxes (Fig.~\ref{fig:building_pics}).
 Thanks to the ``peel-and-stick'' nature of this low-power wireless technology, deployment takes less than an hour.
 
 % hardware
@@ -158,7 +158,7 @@ Inside the orchard, 2~DC9018 boards feature an external antenna, 16~DC9003 board
 We deploy 3~long-range repeaters outside the orchards to connect the network to the gateway, located some 300~m away.
 In the \building deployment, we use 2 types of \smip devices: 11~DC9003 boards (chip antenna), 1~DC9018 board (external antenna).
 For both deployments, the gateway is composed of a Raspberry~Pi single-board computer connected to a DC2274 \smip manager over USB.
-All boards are off-the-shelf.
+All boards are off-the-shelf, manufactured by Analog Devices.
 
 % technology
 
@@ -181,7 +181,7 @@ We extract 3~months of data for each deployment, resulting in over 4~million tem
     \end{subfigure} 
     \caption{
         Aerial view of the topology of both deployments.
-        The deployment is done in both cases in a 50m~$\times$~100m area.
+        The deployment is done in both cases in a roughly 50~m~$\times$~100~m area.
     }
     \label{fig:maps}
 \end{figure}
@@ -190,11 +190,12 @@ We extract 3~months of data for each deployment, resulting in over 4~million tem
 
 The goal of this article is to analyze the network statistics over the 3-month periods, precisely assess the performance of both networks, and contrast/compare them.
 This article makes the following contributions:
+
 \begin{itemize}
     \item We confirm that the \smip network exhibits years of battery lifetime and wire-like reliability in both cases;
     \item We show that channel hopping causes the network topology to be very stable, with $\leq$15 link changes on average per day;
     \item Contrary to popular belief, we show that links in the networks are symmetric, i.e.~they exhibit the same signal strength in both directions of the same link;
-    \item We conclude that \smip is a perfectly suitable IoT technology for the \agri and \building domains.
+    \item We conclude that \smip is a perfectly suitable IoT solution for \agri and \building applications.
 \end{itemize}
 
 % extension
@@ -206,7 +207,7 @@ This article offers analysis over a 3-month period, and contrasts and compares t
 
 The remainder of this article is organized as follows.
 Section~\ref{sec:collected} describes the types of network statistics, and the dataset of statistics collected over the 3~month periods.
-Section~\ref{sec:intuitive} presents results that confirm assumptions about what we can expect for real-world \smip deployment.
+Section~\ref{sec:intuitive} presents results that confirm assumptions about what we can expect for a real-world \smip deployment.
 Section~\ref{sec:notsointuitive} presents not so intuitive results about link symmetry and network stability.
 Finally, Section~\ref{sec:conclusion} concludes this article and discusses further improvements.
 
@@ -223,9 +224,9 @@ In the region, air temperature ranges between $-$9~C in winter (May-October) to 
 Because of the sunny weather, day/night temperature swings of 10+~C are not uncommon in winter.
 
 The \building network is deployed in the Inria offices (a research institute) in Paris, France.
-It is deployed in a typical 5-story office building, in which semi-permanent walls separate the offices which are arrange around a concrete core which houses the elevators.
+It is deployed in a typical 5-story office building, in which semi-permanent walls separate offices which are arranged around a concrete core which houses the elevators.
 Several wireless technologies operate in the same building, including Wi-Fi, Bluetooth and other IEEE802.15.4-based networks.
-Around 200~people work in that office with lots of activity, mainly during office hours.
+Around 200~people work in that building, with lots of activity, mainly during business hours.
 
 % events and HR
 
@@ -233,12 +234,9 @@ Each device in the network produces both sensor data and network statistics.
 Network statistics can be separated in Events and Health Reports messages.
 \textit{Event} messages are non-periodic notifications the network sends when a network event happens (e.g.~a mote joins/leaves the network, a link is created/deleted).
 \textit{Health Report} (HR) messages are sent periodically by each mote; they contain counters and statistics about that mote.
-HRs are used to assess the overall health of the network.
+HRs are used to assess the health and performance of the network.
 
 % number received and remainder
-
-Table~\ref{tab:msg_stats} summarizes the number of events and HRs gathered during the 3~month periods of both deployments.
-In the remainder of this section, we detail the meaning of each of the statistics.
 
 \begin{table}
     \centering
@@ -257,60 +255,60 @@ In the remainder of this section, we detail the meaning of each of the statistic
     \label{tab:msg_stats}
 \end{table}
 
-% - - - - - - - - - - - - - -
-\textbf{\motecreate.}
-Each node in a \smip network periodically sends beacons to announce the presence of the network.
-When a mote wants to join a network, it listens for those beacons.
-Once it has heard a beacon, the new mote starts a security handshake with the network.
-During that handshake, the \smip manager sends a \motecreate event notification over its serial port.
-This is the event we log\footnote{Normally, each mote generates a single \motecreate event. Due to power issues at the manager side, the network restarted a couple of times and new events were created.}.
-It contains, among other information, the association between the newly-joined device's 8-byte MAC address and its 2-byte \moteId.
+Table~\ref{tab:msg_stats} summarizes the number of events and HRs gathered during the 3~month periods of both deployments:
 
-% - - - - - - - - - - - - - -
-\textbf{\pathcreate and \pathdelete.}
-In \smip terminology, a ``path'' is the link-layer resource that allows two neighbor nodes to communicate\footnote{~In more classical networking terminology, this is often referred to as a ``link''. We use the terms ``path'' and ``link'' interchangeably in this article.}.
-Each time a mote starts communicating with a new neighbor (e.g.~its routing parent), a \pathcreate event is produced.
-Similarly, each time a mote \textit{stops} communicating with a neighbor (e.g.~it changes routing parent), a \pathdelete event is produced.
-We log both messages.
-
-% - - - - - - - - - - - - - -
-\textbf{\HRDEVICE.}
-Each network device produces a \HRDEVICE every 15~min.
-This health report contains counters/statistics internal to the mote, such as its current battery voltage, temperature, or total number of messages sent.
-
-% - - - - - - - - - - - - - -
-\textbf{\HRDISCOVERED.}
-\smip nodes continuously monitor their surroundings to discover neighbor nodes.
-Every 15~min, each node produces an \HRDISCOVERED health report that contains the list of ``discovered'' neighbors, and the associate signal strength it heard them at.
-These discovered neighbors can potentially be used in the future as neighbors the node communicates with.
-
-% - - - - - - - - - - - - - -
-\textbf{\HRNEIGHBORS.}
-Two nodes are neighbors when link-layer resources are installed for them to communicate.
-The neighbors of a node are a subset of the discovered neighbors.
-Every 15~min, each note generates an \HRNEIGHBORS health report that contains its list of neighbors.
-These messages also specifies per-neighbor counters, such as the number of link-layer retransmissions.
+\begin{itemize}
+    \item[-] \textbf{\motecreate.}
+        Each node in a \smip network periodically sends beacons to announce the presence of the network.
+        When a mote wants to join a network, it listens for those beacons.
+        Once it has heard a beacon, the new mote starts a security handshake with the network.
+        During that handshake, the \smip manager sends a \motecreate event notification over its serial port.
+        This is the event we log\footnote{~Normally, each mote generates a single \motecreate event. Due to power issues at the manager side, the network restarted a couple of times and new events were created.}.
+        It contains, among other information, the association between the newly-joined device's 8-byte MAC address and its 2-byte \moteId.
+    \item[-] \textbf{\pathcreate} and \textbf{\pathdelete.}
+        In \smip terminology, a ``path'' is the link-layer resource that allows two neighbor nodes to communicate\footnote{~In more classical networking terminology, this is often referred to as a ``link''. We use the terms ``path'' and ``link'' interchangeably in this article.}.
+        Each time a mote starts communicating with a new neighbor (e.g.~its routing parent), a \pathcreate event is produced.
+        Similarly, each time a mote \textit{stops} communicating with a neighbor (e.g.~it changes routing parent), a \pathdelete event is produced.
+        We log both messages.
+    \item[-] \textbf{\HRDEVICE.}
+        Each network device produces a \HRDEVICE every 15~min.
+        This health report contains counters/statistics internal to the mote, such as its current battery voltage, temperature, or total number of messages sent.
+    \item[-] \textbf{\HRDISCOVERED.}
+        \smip nodes continuously monitor their surroundings to discover neighbor nodes.
+        Every 15~min, each node produces an \HRDISCOVERED health report that contains the list of ``discovered'' neighbors, and the associate signal strength it heard them at.
+        These discovered neighbors can potentially be used in the future as neighbors the node communicates with.
+    \item[-] \textbf{\HRNEIGHBORS.}
+        Two nodes are neighbors when link-layer resources are installed for them to communicate.
+        The neighbors of a node are a subset of the discovered neighbors.
+        Every 15~min, each note generates an \HRNEIGHBORS health report that contains its list of neighbors.
+        These messages also specifies per-neighbor counters, such as the number of link-layer retransmissions.
+\end{itemize}
 
 % analysis
 
-After 3~months of operation, we have collected \PEACHNUMSTATS and \EVANUMSTATS network statistics in the \agri and \building deployment respectively (see Table~\ref{tab:msg_stats}).
+After 3~months of operation, we have collected \PEACHNUMSTATS and \EVANUMSTATS network statistics in the \agri and \building deployment, respectively (see Table~\ref{tab:msg_stats}).
 The goal of the next section is to present the main results from analyzing this information.
 We group these results in two categories.
 ``Intuitive'' results (Section~\ref{sec:intuitive}) are results that confirm the performance expected from a \smip network.
 ``Not so intuitive'' results (Section~\ref{sec:notsointuitive}) are results that we believe go against popular belief.
 This classification is necessarily subjective.
 
-Possibly due to power line failure at the network manager side, the network experienced some restarting.
+Due to power line failure at the network manager side, the network experienced several restarts.
 For this reason, some analysis presented in the next sections are done in shorter period.
-As a side effect, this allows us to verify the network formation and joining process.
+As a beneficial side effect, this allows us to verify the network formation and joining process.
 
 %==============================================================================
 \section{Intuitive Results}
 \label{sec:intuitive}
 
+% intro
+
 Previous publications~\cite{watteyne16peach,watteyne10mitigating,watteyne09reliability,watteyne15industrial} underline the performance of TSCH networks in general, and \smip in particular.
 Standardization work in the IETF 6TiSCH working group\footnote{~\url{https://tools.ietf.org/wg/6tisch/charters}} around TSCH networks further illustrates the move of the industry towards this type of networking technology.
 While we generally expect good performance from the network, this section verifies that this is the case, on the commercial \smip implementation.
+
+% remainder
+
 We start by looking at two physical-layer metrics: RSSI vs Distance (Section~\ref{sec:rssi_distance}) and PDR vs. RSSI (Section~\ref{sec:waterfall}).
 While these have no dependency on TSCH (the type of medium access), they allow us to verify the overall connectivity in the network.
 We then look at key performance indicators: end-to-end reliability (Section~\ref{sec:net_reliability}) and network lifetime (Section~\ref{sec:lifetime}).
@@ -319,8 +317,8 @@ We then look at key performance indicators: end-to-end reliability (Section~\ref
 \subsection{RSSI vs. Distance}
 \label{sec:rssi_distance}
 
-The Friis transmission model~\cite{saunders07antennas} gives the relationship between the Received Signal Strength (RSSI)\footnote{~Strictly speaking, the RSSI is the Received Signal Strength \textit{Indicator}, a value returned by radio chip. Because of its prevalence in low-power wireless literature, we use it RSS and RSSI interchangeably.} in free space.
-While it does \textit{not} apply directly to our real-world deployment, we note in Fig.~\ref{fig:pister_hack} that the individual RSSI values are located between the Friis model, and the Friis model offset by $-$40~dB.
+The Friis transmission model~\cite{saunders07antennas} gives the relationship between the Received Signal Strength (RSSI)\footnote{~Strictly speaking, the RSSI is the Received Signal Strength \textit{Indicator}, a value returned by the radio chip. Because of its prevalence in low-power wireless literature, we use it RSS and RSSI interchangeably.} in free space.
+While the Friis transmission model  does \textit{not} apply directly to our real-world deployment, we note in Fig.~\ref{fig:pister_hack} that the individual RSSI values are located between the Friis model, and the Friis model offset by $-$40~dB.
 This corroborates the results from~\cite{zats10wireless}.
 
 \begin{figure}
@@ -343,7 +341,7 @@ This corroborates the results from~\cite{zats10wireless}.
 
 % sample presentation
 
-Due to the inherent physical unreliability of the radio medium, it is impossible to know if a future transmission will be successful or not.
+Due to the inherent physical unreliability of the radio medium, it is impossible to know if a future transmission will succeed or not.
 The Packet Delivery Ratio (PDR) is the portion of successful link-layer transmissions over the total number of link-layer transmission attempts.
 A failed attempt means that the link-layer frame needs to be re-transmitted; it does \textit{not} mean the packet is lost.
 Over a period of 3~months, \PEACHNUMHRNEIGHBORS~\HRNEIGHBORS messages are collected in the \agri deployment and \EVANUMHRNEIGHBORS in the \building deployment.
@@ -359,12 +357,14 @@ Because of its shape, this is known as the ``waterfall plot''.
 \begin{figure}
     \centering
     \begin{subfigure}[h]{0.49\textwidth}
-        \includegraphics[width=\columnwidth]{waterfall_agri.eps}
+        \includegraphics[width=\columnwidth]{waterfall_agri}
         \caption{\agri}
+        \label{fig:waterfall_agri}
      \end{subfigure}
      \begin{subfigure}[h]{0.49\textwidth} 
-        \includegraphics[width=\columnwidth]{waterfall_building.eps}
+        \includegraphics[width=\columnwidth]{waterfall_building}
         \caption{\building}
+        \label{fig:waterfall_building}
     \end{subfigure}
     \caption{
         The PDR/RSSI ``waterfall'' plot.
@@ -373,7 +373,7 @@ Because of its shape, this is known as the ``waterfall plot''.
     \label{fig:waterfall}
 \end{figure}
 
-For the \agri deployment, above $-85~dBm$, the PDR of the link is very good~($>95$\%).
+For the \agri deployment, the PDR of the link is very good~($>95$\%) above $-85~dBm$.
 Below that value, the PDR rapidly degrades, indicating that, on these links, frequent retransmissions happen.
 For the \building deployment, the PDR starts to degrade at $-60~dBm$.
 The device manufacturer documentation~\cite{smip_app_note} indicates that a path is considered as ``bad'' when:
@@ -387,11 +387,13 @@ This is not the case in any of the two deployments.
 
 % interferences
 
-A \textit{waterfall plot} which is either shifted right with very few paths below $-70~dBm$, or which exhibits a non-constantly decreasing curve, indicates an environment in which there is external interference.
-This is not the case for the \agri deployment, meaning that the \smip network is not experiencing high levels of interferences from co-located wireless devices.
-This is, however, the case for the \building deployment, meaning that the \smip network is experiencing external interferences.
-Those results correspond to the environment described in Section~\ref{sec:intro} as other concurrent technologies are present in the building.
-Despite the external interfere, the \building deployment exhibits 100\% end-to-end reliability, as presented in Section~\ref{sec:net_reliability}.
+The waterfall plot allows us to assess the level of external interference.
+In the presence of external interference, the waterfall plot is either shifted to the right with very few paths below $-70~dBm$, or does no constantly increase with RSSI.
+
+The waterfall plot in the \agri deployment (Fig.~\ref{fig:waterfall_agri}) is ``clean'', meaning that the \smip network is not experiencing high levels of external interferences from co-located wireless devices.
+Especially when comparing both, the waterfall plot in the \building deployment \textit{is} shifted to the right (Fig.~\ref{fig:waterfall_agri}), indicating the \smip network is experiencing external interferences.
+This is expected, as several hundred WiFi devices and tens of WiFi access points are operating in the building.
+Yet, despite the high external interfere, the \building deployment exhibits 100\% end-to-end reliability (as detailed in Section~\ref{sec:net_reliability}), underlying the resiliency of \smip to external interference.
 
 %------------------------------------------------------------------------------
 \subsection{End-to-End Reliability}
@@ -401,7 +403,7 @@ Despite the external interfere, the \building deployment exhibits 100\% end-to-e
 
 We expect the \smip network to offer wire-like reliability.
 Table~\ref{tab:net_stats} confirms that this is the case.
-It presents statistics gathered over the July 15-25 2016 period in the \agri deployment, and from 12 November 2016 to 12 February 2017 in the \building deployment.
+It presents statistics gathered over the 15-25 July 2016 period in the \agri deployment, and over the 12 November 2016 - 12 February 2017 period in the \building deployment.
 
 \begin{table}
     \centering
@@ -425,7 +427,7 @@ It presents statistics gathered over the July 15-25 2016 period in the \agri dep
 It shows that, as none of the \PEACHNUMPCKTS and \EVANUMPCKTS packets generated in the networks was lost, the end-to-end reliability is 100\%.
 The average PDR over all links is very high (95\% and 87\%), indicating that the nodes are deployed close enough to one another.
 Finally, the average latency over all nodes is 700~ms for the \agri deployment.
-These results are very similar to the very initial results presented in~\cite{watteyne16peach}, indicating \textit{no} degradation in performance of the \smip network over the 3~month operation.
+These results are very similar to the very initial results presented in~\cite{watteyne16peach}, indicating \textit{no} degradation in performance of the \smip network over the 3~month periods.
 
 %------------------------------------------------------------------------------
 \subsection{Network Lifetime}
@@ -441,12 +443,12 @@ This number allows us to predict the lifetime of the device.
 
 % results
 
-Table~\ref{tab:stats_charge} shows charge consumed by the motes over the two 3~month periods, as well as the portion of the battery this represents.
-Assuming the same energy consumption rate, we can extrapolate the lifetime.
+Table~\ref{tab:stats_charge} shows charge consumed by the motes over the two 3~month periods.
+Assuming a relatively constant energy consumption rate, we extrapolate the lifetime.
 The nodes with the longest lifetime (8~years) are all leaf nodes as we can see from Fig.~\ref{fig:maps}.
-Since it does not have to relay data from any children, it is normal for these mote to consume very little.
+Since they do not have to relay data from any children, it is expected for these motes to consume the least.
 The mote with the shortest lifetime is {\tt 30-60-ef}, with a 4~year battery lifetime.
-This is normal as this mote has an external antenna and relays a lot of data.
+This is expected, as this mote relays lots of data.
 This confirms the ultra-low power consumption of the \smip network.
 
 \begin{table}
@@ -454,7 +456,7 @@ This confirms the ultra-low power consumption of the \smip network.
     \begin{tabular}{|c|c|r|}
         \toprule
         MAC           &  charge  & lifetime \\
-                      & consumed &          \\
+                      & consumed$^\star$ &          \\
         \midrule
         \tt{30-60-ef} &   695 kC &  4 years \\
         \tt{38-0f-66} &   461 kC &  6 years \\
@@ -480,7 +482,7 @@ This confirms the ultra-low power consumption of the \smip network.
     \begin{tabular}{|c|c|c|}
         \toprule
         MAC           &  charge  & lifetime \\
-                      & consumed &          \\
+                      & consumed$^\star$ &          \\
         \midrule
         \tt{38-03-dd} &   459 kC &  4 years \\
         \tt{58-e9-ca} &   411 kC &  5 years \\
@@ -502,6 +504,8 @@ This confirms the ultra-low power consumption of the \smip network.
     \end{tabular}
     \caption{\building}
 \end{subtable}\hfill
+\vspace{2mm}
+$^\star$~over the \thomas{period?} period.
 \caption{Per-node power consumption and associated expected lifetime when powered by a pair of AA batteries.}
 \label{tab:stats_charge}
 \end{table}
@@ -535,7 +539,7 @@ Numerous routing protocols (often standardized~\cite{rfc3626}) reuse that assump
 
 % what we measure
 
-We look at the link statistics between 18 June 2016 and 4 July 2016 (16 days) in the \agri deployment, and between the 12th of November and the 7th of February in the \building deployment.
+We look at the link statistics between 18 June 2016 and 4 July 2016 (16 days) in the \agri deployment, and between the 12 November 2016 and 7 February 2017 (87 days) in the \building deployment.
 The sample contains 411,132 \HRNEIGHBORS messages received from 14~DC9003 nodes (same hardware).
 During that period, 21~links are active with at least 250~transmissions for each link.
 For each of those links, we compute the difference between average RSSI in each directions.
@@ -562,11 +566,11 @@ Results are presented in Fig.~\ref{fig:tab_symmetry}.
 % discussion
 
 Fig.~\ref{fig:tab_symmetry} shows that the RSSI difference never exceeds a couple of dB.
-Looking at Fig.~\ref{fig:waterfall}, this translates into a handful of percentage points difference in PDR only.
+Looking at Fig.~\ref{fig:waterfall}, this translates into only a handful of percentage points difference in PDR.
 This means the links can be considered symmetric.
 This result is in-line with the physical phenomenon that the signal traveling from $A$ to $B$ undergoes the same attenuation as that from $B$ to $A$.
 This result would \textit{not} hold if the neighbor radios had a different transmit power or sensitivity.
-That being said, discussions on link symmetry at the routing layer is largely artificial, as any ``good'' medium access control (MAC) protocol uses link-layer acknowledgments.
+That being said, discussions on link symmetry at the routing layer is largely artificial, as virtual all state-of-the-art medium access control (MAC) protocols uses link-layer acknowledgments.
 
 %------------------------------------------------------------------------------
 \subsection{Network Stability}
@@ -576,7 +580,7 @@ That being said, discussions on link symmetry at the routing layer is largely ar
 
 Wireless in unreliable in nature.
 It is normal that some wireless links interconnecting motes ``come and go''.
-That is, links that have been performing well (e.g.~PDR>90\%) can suddenly disappear (e.g.$~PDR<10$\%).
+That is, links that have been performing well (e.g.~PDR$>$90\%) can suddenly disappear (e.g.~PDR$<$10\%).
 Similarly, nodes that were not able to communicate can suddenly hear one another perfectly.
 
 % time scale
@@ -591,16 +595,16 @@ In this section, we infirm this statement by looking at the stability of the net
 In particular, we look at the \pathdelete and \pathcreate events.
 These are generated each time a node adds/deletes a neighbor to communicate with, which happens for example when the routing topology changes (see Section~\ref{sec:collected}).
 The number of \pathdelete and \pathcreate events is a direct measurement of the network stability.
-Note that we removed the nodes that does not respect the deployment requirement of having at least two parents to associate with (one node in the \agri deployment and three in the \building one).
-Due to the lack of second parent, the nodes were producing over 20~times the amount of messages than all the other nodes assembled.
+Note that we remove the nodes that do not respect the deployment requirement of having at least two parents to associate with (one node in the \agri deployment and three in the \building one).
+Due to the lack of second parent, these nodes were producing over 20~times the amount of messages than all the other nodes combined.
 
 % results
 
-Fig.~\ref{fig:net_churn} shows the number of \pathdelete and \pathcreate events per day, over a 16~days (\agri) and 2~months (\building).
+Fig.~\ref{fig:net_churn} shows the number of \pathdelete and \pathcreate events per day, over the 16~day (\agri) and 87~day (\building) periods.
 For reference, the total number of links in the network is also depicted.
-There are less than 5~\pathdelete or \pathcreate events \textit{per day} in the entire \agri network and less than 15 in the \building network.
+There are less than 5~\pathdelete or \pathcreate events \textit{per day} in the entire \agri network, and less than 15 in the \building network.
 This means that links, once established, remain useful for days/weeks at a time, and that the network is extremely stable.
-We attribute the higher churn in the \building deployment to the presence of interfering technology and movement.
+We attribute the higher churn in the \building deployment to the presence of significant external interference.
 
 \begin{figure}
     \centering
@@ -632,14 +636,14 @@ It does not contradict the findings of~\cite{srinivasan08beta}, it just means th
 % intro
 
 This article analyzes the network statistics generated by two low-power wireless mesh networks deployed in real-world conditions.
-The first network is deployed in peach orchard in Argentina, in a \agri scenario.
+The first network is deployed in a peach orchard in Argentina, in a \agri scenario.
 Its 21~motes have produced \PEACHNUMSTATS~statistics over the course of 3~months.
-The first network is deployed in an office building in Paris , in a \building scenario.
+The second network is deployed in an office building in Paris, in a \building scenario.
 Its 17~motes have produced \EVANUMSTATS~statistics over the course of 3~months.
 
 % intuitive
 
-We use a ``waterfall'' plot to show that the two networks are subject to different amounts of interferences from other wireless devices deployed in the same area.
+We use a ``waterfall'' plot to show that the two networks are subject to different amounts of external interference from other wireless devices deployed in the same area.
 The \smip network delivers its exceptional performance, with 0~packets lost out of \PEACHNUMPCKTS (\agri) and \EVANUMPCKTS (\building) received (100\% reliable) and 4-8 years of battery lifetime on a pair of commercial AA batteries.
 
 % non-intuitive
@@ -650,7 +654,7 @@ We attribute this performance to the use of Time Synchronized Channel Hopping (T
 
 % conclusion
 
-We conclude that \smip technology is perfectly suitable for \agri and \building applications.
+We conclude that \smip is a perfectly suitable IoT solution for \agri and \building applications.
 
 %==============================================================================
 \section*{Acknowledgments}
@@ -659,7 +663,8 @@ This work was partially supported by
 the STIC-AmSud program through the PEACH project,
 the Dust Networks Product Group at Analog Devices,
 the European Commission through the H2020~F-Interop and H2020~ARMOUR projects,
-Inria through the REALMS and DIVERSITY associate teams.
+Inria through the REALMS and DIVERSITY associate teams,
+the Spanish Ministry of Economy and the FEDER regional development fund through the SINERGIA project (TEC2015-71303-R).
 
 %==============================================================================
 \section*{References}
