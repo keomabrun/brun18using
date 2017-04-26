@@ -19,7 +19,7 @@
 %\newcommand{\xavi}[1]             {\textcolor{blue}{[Xavi] #1}}
 %\newcommand{\thomas}[1]           {\textcolor{blue}{[Thomas] #1}}
 
- % lorem
+% lorem
 %\newcommand{\lorem}               {\textcolor{green}{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}}
 
 % shortcuts
@@ -163,6 +163,7 @@ All boards are off-the-shelf, manufactured by Analog Devices.
 % technology
 
 The \smip network implements the IEEE802.15.4 TSCH mode~\cite{std_ieee802154_2015}, which includes a channel-hopping mechanism to reduce the impact of multi-path fading and external interference.
+Communication is done on the 2.4~GHz range, with channel hopping happening on 15 frequencies, between 2.405~GHz and 2.475~GHz.
 This allows the network to be highly reliable, stable, and extremely low power~\cite{watteyne10mitigating,watteyne09reliability}.
 Each mote produces a temperature value every 30~s, and network statistics every 5~min.
 We extract 3~months of data for each deployment, resulting in over 4~million temperature values, and more than 350,000~network statistics for each deployment.
@@ -225,7 +226,7 @@ Because of the sunny weather, day/night temperature swings of 10+~C are not unco
 
 The \building network is deployed in the Inria offices (a research institute) in Paris, France.
 It is deployed in a typical 5-story office building, in which semi-permanent walls separate offices which are arranged around a concrete core which houses the elevators.
-Several wireless technologies operate in the same building, including Wi-Fi, Bluetooth and other IEEE802.15.4-based networks.
+Several wireless technologies operate in the same building on the same 2.4~GHz frequency band, including WiFi, Bluetooth and other IEEE802.15.4-based networks.
 Around 200~people work in that building, with lots of activity, mainly during business hours.
 
 % events and HR
