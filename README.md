@@ -1,3 +1,6 @@
+Using SmartMesh IP in Smart Agriculture and Smart Building Deployments: it Just Works. Keoma Brun-Laguna, Ana Laura Diedrichs, Diego Dujovne,
+Carlos Taffernaberry, Remy Leone, Xavier Vilajosana, Thomas Watteyne. Elsevier Computer Communications Journal, to appear in 2017.
+
 "(Not so) Intuitive Results from a Smart Agriculture Low-Power Wireless Mesh Deployment"
 
 accepted at CHANTS 2016, for possible Fast Track publication in the Computer Communications (ComCom) Journal (Elsevier), http://ees.elsevier.com/comcom.
