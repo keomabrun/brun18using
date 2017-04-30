@@ -110,7 +110,7 @@ Fighting the frost event is not the issue, what is hard is predicting them.
 
 % agri: project
 
-The goal of the \agri deployment (part of the PEACH project~\cite{watteyne16peach}) is to predict frost events in a peach orchard.
+The goal of the \agri deployment (part of the PEACH~\cite{watteyne16peach} project) is to predict frost events in a peach orchard.
 We install sensors around the orchard that measure air temperature, air relative humidity, soil moisture and soil temperature.
 We feed the collected data into a database, and by analyzing the data in real-time using machine learning techniques, we can identify patterns in the data and predict frost events.
 
@@ -274,7 +274,7 @@ Table~\ref{tab:msg_stats} summarizes the number of events and HRs gathered durin
         Each network device produces a \HRDEVICE every 15~min.
         This health report contains counters/statistics internal to the mote, such as its current battery voltage, temperature, or total number of messages sent.
     \item[-] \textbf{\HRDISCOVERED.}
-        \smip nodes continuously monitor their surroundings to discover neighbor nodes.
+        \sm nodes continuously monitor their surroundings to discover neighbor nodes.
         Every 15~min, each node produces an \HRDISCOVERED health report that contains the list of ``discovered'' neighbors, and the associate signal strength it heard them at.
         These discovered neighbors can potentially be used in the future as neighbors the node communicates with.
     \item[-] \textbf{\HRNEIGHBORS.}
@@ -376,6 +376,7 @@ Because of its shape, this is known as the ``waterfall plot''.
 For the \agri deployment, the average PDR of the links is very good~($>95$\%) above $-85~dBm$.
 Below that value, the PDR rapidly degrades, indicating that, on these links, frequent retransmissions happen.
 For the \building deployment, the PDR starts to degrade at $-60~dBm$.
+Note that, if the network were using a non-schedule MAC layer (e.g.~ZigBee), the PDR for the same RSSI would be lower than in Fig.~\ref{fig:waterfall} because of collisions.
 The device manufacturer documentation~\cite{smip_app_note} indicates that a path is considered as ``bad'' when:
 
 \begin{itemize}
@@ -645,6 +646,7 @@ Its 17~motes have produced \EVANUMSTATS~statistic measurements over the course o
 
 We use a ``waterfall'' plot to show that the two networks are subject to different amounts of external interference from other wireless devices deployed in the same area.
 The \smip network delivers its exceptional performance, with 0~packets lost out of \PEACHNUMPCKTS (\agri) and \EVANUMPCKTS (\building) received (100\% reliable) and 4-8 years of battery lifetime on a pair of commercial AA batteries.
+This is representative of the performance of 6TiSCH technology.
 
 % non-intuitive
 
@@ -664,7 +666,7 @@ the STIC-AmSud program through the PEACH project,
 the Dust Networks Product Group at Analog Devices,
 the European Commission through the H2020~F-Interop and H2020~ARMOUR projects,
 Inria through the REALMS and DIVERSITY associate teams,
-the Spanish Ministry of Economy and the FEDER regional development fund through the SINERGIA project (TEC2015-71303-R).
+and the Spanish Ministry of Economy and the FEDER regional development fund through the SINERGIA project (TEC2015-71303-R).
 
 %==============================================================================
 \section*{References}
