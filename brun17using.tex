@@ -162,9 +162,11 @@ All boards are off-the-shelf, manufactured by Analog Devices.
 
 % technology
 
+\smip is a product line developed by the Dust Networks Product Group at Analog Devices.
+The \smip network stack is based on 6LowPAN and the 802.15.4e standards and provides an API for the user to write applications.
 The \smip network implements the IEEE802.15.4 TSCH mode~\cite{std_ieee802154_2015}, which includes a channel-hopping mechanism to reduce the impact of multi-path fading and external interference.
 This allows the network to be highly reliable, stable, and extremely low power~\cite{watteyne10mitigating,watteyne09reliability}.
-Each mote produces a temperature value every 30~s, and network statistics every 5~min.
+We use the default application where each mote produces a temperature value every 30~s, and network statistics every 5~min.
 We extract 3~months of data for each deployment, resulting in over 4~million temperature values, and more than 350,000~network statistic measurements for each deployment.
 
 \begin{figure}
