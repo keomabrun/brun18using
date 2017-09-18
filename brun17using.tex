@@ -94,7 +94,7 @@ Low-power wireless, \smip, TSCH, 6TiSCH, \agri, \building.
 % agri: problem
 
 Peaches do not like frost.
-If during the blooming season (September in Argentina), temperature gets below $-$3~C for only a couple of hours, the flowers freeze, and no peaches are produced.
+If during the blooming season (September in Argentina), temperature gets below $-3^{\circ}C$ for only a couple of hours, the flowers freeze, and no peaches are produced.
 In 2013, 85\% of the peach production in the Mendoza region (Western Argentina) was lost because of frost events.
 Farmers can lose everything in only a couple of hours.
 Yet, if they are warned of a frost event a couple of hours ahead, they can install heaters throughout the orchard, and use big fans to move the hot air around.
@@ -209,10 +209,27 @@ This article offers analysis over a 3-month period, and contrasts and compares t
 % remainder
 
 The remainder of this article is organized as follows.
+Section~\ref{sec:related} lists the related work and explain why we chose \smip.
 Section~\ref{sec:collected} describes the types of network statistics, and the dataset of statistics collected over each 3~month periods.
 Section~\ref{sec:intuitive} presents results that confirm assumptions about what we can expect for a real-world \smip deployment.
 Section~\ref{sec:notsointuitive} presents not so intuitive results about link symmetry and network stability.
 Finally, Section~\ref{sec:conclusion} concludes this article and discusses further improvements.
+
+%==============================================================================
+\section{Related Work}
+\label{sec:related}
+
+% realworld deployment is hard
+Deploying networks in real-world environment is not an easy task.
+Barrenetxea et al.~\cite{barrenetxea08hitchhiker} give a detailed survey of experimental studies and propose a guide for future deployments from system conception to data analysis and monitoring.
+We completely agree with their deployment rules and try to apply them for all our deployments.
+
+% we focus on network statistic (why smartmesh)
+Knowing the deployment difficulties, we decided to use off the shelf products and focus more on the sensor integration and network analysis.
+With more than 60,000 networks deployed around the world, the \smip technology is a proven technology.
+The solution is thoroughly tested and validated for industrial application, with temperature ranging from $-40^{\circ}C$ to $85^{\circ}C$.
+It features over-the-air reprogramming and periodically send network statistic when using the default application (which we do).
+\smip is thus a perfect solution for real-world deployment.
 
 %==============================================================================
 \section{Statistics Collected}
