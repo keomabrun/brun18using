@@ -1,0 +1,5 @@
+SITE = "FRA_evalab"
+STARTDATE = "2017-09-12T10:00:00Z"
+STOPDATE = "2018-02-12T10:00:00Z"
+DATA_FOLDER = "../data/"
+FIGURE_FOLDER = "../figures/"
