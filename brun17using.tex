@@ -361,8 +361,9 @@ We then look at key performance indicators: end-to-end reliability (Section~\ref
 \label{sec:rssi_distance}
 
 The Friis transmission model~\cite{saunders07antennas} gives the relationship between the Received Signal Strength (RSSI)\footnote{~Strictly speaking, the RSSI is the Received Signal Strength \textit{Indicator}, a value returned by the radio chip. Because of its prevalence in low-power wireless literature, we use RSS and RSSI interchangeably.} in free space.
-While the Friis transmission model  does \textit{not} apply directly to our real-world deployment, we note in Fig.~\ref{fig:pister_hack} that the individual RSSI values are located between the Friis model, and the Friis model offset by $-$40~dB.
+While the Friis transmission model does \textit{not} apply directly to our real-world deployment \footnote{a Log-Normal model would be more appropriate for indoor environment}, we note in Fig.~\ref{fig:pister_hack} that the individual RSSI values are located between the Friis model, and the Friis model offset by $-$40~dB.
 This corroborates the results from~\cite{zats10wireless}.
+Variability is lower on the \agri deployment, given that there is almost no environmental change, compared to what happens on the \building deployment.
 
 \begin{figure}
     \centering
