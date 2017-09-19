@@ -286,23 +286,28 @@ Table~\ref{tab:msg_stats} summarizes the number of events and HRs gathered durin
         During that handshake, the \smip manager sends a \motecreate event notification over its serial port.
         This is the event we log\footnote{~Normally, each mote generates a single \motecreate event. Due to power issues at the manager side, the network restarted a couple of times and new events were created.}.
         It contains, among other information, the association between the newly-joined device's 8-byte MAC address and its 2-byte \moteId.
+        The payload size of a \motecreate is 6B.
     \item[-] \textbf{\pathcreate} and \textbf{\pathdelete.}
         In \smip terminology, a ``path'' is the link-layer resource that allows two neighbor nodes to communicate\footnote{~In more classical networking terminology, this is often referred to as a ``link''. We use the terms ``path'' and ``link'' interchangeably in this article.}.
         Each time a mote starts communicating with a new neighbor (e.g.~its routing parent), a \pathcreate event is produced.
         Similarly, each time a mote \textit{stops} communicating with a neighbor (e.g.~it changes routing parent), a \pathdelete event is produced.
         We log both messages.
+        The payload size of a \pathcreate is 6B.
     \item[-] \textbf{\HRDEVICE.}
         Each network device produces a \HRDEVICE every 15~min.
         This health report contains counters/statistics internal to the mote, such as its current battery voltage, temperature, or total number of messages sent.
+        The payload size of an \HRDEVICE is 27B.
     \item[-] \textbf{\HRDISCOVERED.}
         \sm nodes continuously monitor their surroundings to discover neighbor nodes.
         Every 15~min, each node produces an \HRDISCOVERED health report that contains the list of ``discovered'' neighbors, and the associate signal strength it heard them at.
         These discovered neighbors can potentially be used in the future as neighbors the node communicates with.
+        The payload size of an \HRDISCOVERED is variable as it depends on the number of neighbors heard.
     \item[-] \textbf{\HRNEIGHBORS.}
         Two nodes are neighbors when link-layer resources are installed for them to communicate.
         The neighbors of a node are a subset of the discovered neighbors.
         Every 15~min, each note generates an \HRNEIGHBORS health report that contains its list of neighbors.
         These messages also specifies per-neighbor counters, such as the number of link-layer retransmissions.
+        The payload size of an \HRNEIGHBORS is variable as it depends on the number of neighbors used.
 \end{itemize}
 
 % analysis
