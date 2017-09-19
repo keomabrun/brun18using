@@ -292,7 +292,7 @@ Table~\ref{tab:msg_stats} summarizes the number of events and HRs gathered durin
         Each time a mote starts communicating with a new neighbor (e.g.~its routing parent), a \pathcreate event is produced.
         Similarly, each time a mote \textit{stops} communicating with a neighbor (e.g.~it changes routing parent), a \pathdelete event is produced.
         We log both messages.
-        The payload size of a \pathcreate is 6B.
+        The payload size of a \pathcreate and \pathdelete are 9B.
     \item[-] \textbf{\HRDEVICE.}
         Each network device produces a \HRDEVICE every 15~min.
         This health report contains counters/statistics internal to the mote, such as its current battery voltage, temperature, or total number of messages sent.
