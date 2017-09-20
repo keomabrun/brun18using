@@ -211,46 +211,54 @@ Finally, Section~\ref{sec:conclusion} concludes this article and discusses furth
 \section{Related Work}
 \label{sec:related}
 
-% characterization of smart agriculture and 
+% agri
 
-Previous work on \agri~\cite{ojha15wireless} has shown the importance of low-power wireless technologies to easily deploy wireless sensor networks in the field.
-The less current the motes draw on average, the longer the network operates without changing batteries.
-Wire-like network reliability is important in \agri applications as the data feeds productivity decision processes and which trigger actions in real time (frost detection is an example).
+Previous work on \agri has shown the importance of low-power wireless technologies~\cite{ojha15wireless}.
+The less current the motes draw, the longer the network operates without changing batteries.
+Wire-like network reliability is important in \agri applications, as the data feeds productivity decision processes and triggers actions in real time.
+One example is frost prediction, as the analysis of sensor data triggers an warnings that goes to the farmer about the imminence of a frost event.
 Loosing data is not an option.
 The key requirements for a \agri application is low maintenance, energy-efficiency, reliability and ease of operation.
 
-% smart building deployments
+% smart building
 
-Smart buildings save energy by automating controls and optimizing systems which is adding value to leasing and sales of properties~\cite{king17smart}.
-\building applications also have to face more interference problems, because the sensor network has to perform in the middle of other wireless technologies such as Wifi and Bluetooth, sharing the spectrum with them. 
-% interference + industrial internet + TSCH IEEE 802.15.4e
-The IEEE has released the 802.15.4e amendment that
-introduces a number of enhancements to the MAC
-layer of the original 802.15.4 standard to overcome its limitations~\cite{deguglielmo16ieee}, 
-such as low reliability, no protection against interference and unbounded packet delay. 
-Also, IEEE 802.15.4e is considered the base of the industrial Internet of things stack.
+Smart buildings save energy by automating controls and optimizing systems.
+This adds value to leasing and sales of properties~\cite{king17smart}.
+\building applications face external interference, as the low-power wireless mesh networks are co-located with other technologies sharing the same frequency bands.
+For example, \smip operates in the same 2.4~GHz band as Wi-Fi and Bluetooth.
+On top of the requirements for \agri applications, a solution deployed in a building must be resilient to external interference.
 
 % realworld deployment is hard
 
-Deploying networks in real-world environment is not an easy task.
-Barrenetxea et al.~\cite{barrenetxea08hitchhiker} give a detailed survey of experimental studies and propose a guide for future deployments from system conception to data analysis and monitoring.
-We completely agree with their deployment rules and try to apply them for all our deployments.
+Deploying IoT-based solutions in real-world application is complex, and involves elements well beyond the low-power wireless network.
+Barrenetxea et al.~\cite{barrenetxea08hitchhiker} survey experimental studies and discuss best practices from system conception to data analysis.
 
-% we focus on network statistic (why smartmesh)
+% TSCH
 
-Knowing the deployment difficulties and the previous requirements mentioned, we decided to use off the shelf products and focus more on the sensor integration and network analysis.
-With more than 60,000 networks deployed around the world, the \smip technology is a proven technology.
-%technology SMIP
-\smip is a product line developed by the Dust Networks Product Group at Analog Devices.
-The \smip network stack is based on 6LowPAN and the 802.15.4e standards and provides an API for the user to write applications.
-The \smip network implements the IEEE802.15.4 TSCH mode~\cite{std_ieee802154_2015}, which includes a channel-hopping mechanism to reduce the impact of multi-path fading and external interference.
-This allows the network to be highly reliable, stable, and extremely low power~\cite{watteyne10mitigating,watteyne09reliability}.
-The solution is thoroughly tested and validated for industrial application, with temperature ranging from $-40^{\circ}$C to $85^{\circ}$C.
-It features over-the-air reprogramming and periodically send network statistics when using the default application (which we do).
-\smip is thus a perfect solution for real-world deployment.
-More information can be found on the manufacturer documentation~\cite{smip_app_note}.
-We use the default application where each mote produces a temperature value every 30~s, and network statistics every 5~min.
-We extract 3~months of data for each deployment, resulting in over 4~million temperature values, and more than 350,000~network statistic measurements for each deployment.
+The \agri and \building deployments described in this article use IEEE802.15.4 technology.
+In the 2015 amendment of IEEE802.15.4~\cite{std_ieee802154_2015}, the IEEE has introduced enhancements to the medium access control sub-layer of the standard.
+The major enhancement is Time Synchronized Channel Hopping (TSCH), a technique which increases the reliability and lowers the power consumption of the networks~\cite{deguglielmo16ieee}.
+Inheriting from several generations of industrial standards, the TSCH mode makes IEEE802.15.4 ready for the Industrial Internet of Things.
+
+% smip
+
+We use \smip~\cite{smip_app_note} at the core of the deployments presented in this article.
+\smip is an off-the-shelf low-power wireless solution by Analog Devices.
+The \smip network stack combines the industrial performance of IEEE802.15.4 TSCH with the ease of use of the 6LoWPAN standard.
+It uses channel-hopping to reduce the impact of multi-path fading and external interference.
+A \smip network exhibits over 99.999\% end-to-end reliability and over a decade of battery lifetime~\cite{watteyne10mitigating,watteyne09reliability}.
+Its security solution is NIST certified, and is always on.
+It features secure Over-The-Air Programming (OTAP) out of the box, so it is possible to remotely update the firmware running on devices that are already deployed.
+It is designed and tested to operate in the -40$^{\circ}$C to +85$^{\circ}$C industrial temperature range.
+With over 60,000 networks deployed around the world, and the market leader position, \smip is a proven technology.
+
+% programming smip
+
+We integrate \smip into our \agri and \building software solutions in two way.
+On the embedded low-power wireless motes, we use the \smip Software Development Kit (SDK) to create applications which sample the sensors attached every 30~s, and send the measurements into the Internet.
+On the gateway side, we develop software to gather the network statistics automatically generated by the motes every 5~min, and provide network health monitoring tools.
+After 3~months of operation, each deployment has produces 4~million temperature values and over 350,000~network statistics.
+This data is analysed and the main lessons learnt are presented in Sections~\ref{sec:intuitive} and~\ref{sec:notsointuitive}.
 
 %==============================================================================
 \section{Statistics Collected}
