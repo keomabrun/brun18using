@@ -269,19 +269,19 @@ This data is analysed and the main lessons learnt are presented in Sections~\ref
 The \agri network is deployed in a peach orchard in Jun\'in, 45~km South-East of Mendoza in Western Argentina.
 No other electronic devices are present in the field.
 Farmers work inside the field with heavy machinery for 1-2~h every 20~days approximately.
-In the region, air temperature ranges between $-9^{\circ}$C in winter (May-October) to $38^{\circ}$C in summer (November-April).
+In the region, air temperature ranges between $-9^{\circ}$C in winter (May-October) and $38^{\circ}$C in summer (November-April).
 Because of the sunny weather, day/night temperature swings of $10^{\circ}$C are not uncommon in winter.
 
 The \building network is deployed in the Inria-Paris offices (a research institute) in Paris, France.
 It is deployed in a typical 5-story office building, in which light-material walls separate offices which are arranged around a concrete core which houses the elevators.
 Several wireless technologies operate in the same building, including Wi-Fi, Bluetooth and other IEEE802.15.4-based networks.
-Around 200~people work in that building, with lots of activity, mainly during business hours.
+Around 200~people work in that building, with lots of movement and activity during business hours.
 
 % events and HR
 
 Each device in the network produces both sensor data and network statistics.
 Network statistics can be separated in Events and Health Reports messages.
-\textit{Event} messages are non-periodic notifications the network sends when a network event happens (e.g.~a mote joins/leaves the network, a link is created/deleted).
+\textit{Event} messages are non-periodic notifications the network generates when a network event happens (e.g.~a mote joins/leaves the network, a link is created/deleted).
 \textit{Health Report} (HR) messages are sent periodically by each mote; they contain counters and statistics about that mote.
 HRs are used to assess the health and performance of the network.
 
@@ -300,7 +300,7 @@ HRs are used to assess the health and performance of the network.
         \HRDISCOVERED              &                      87,737 &                         152,641 \\ \hline
         \HRNEIGHBORS               &        \PEACHNUMHRNEIGHBORS &              \EVANUMHRNEIGHBORS \\ \hline
     \end{tabular}
-    \caption{The number of statistics collected over the 3~month periods.}
+    \caption{The number of statistics collected over the 3~month period.}
     \label{tab:msg_stats}
 \end{table}
 
@@ -314,17 +314,17 @@ Table~\ref{tab:msg_stats} summarizes the number of events and HRs gathered durin
         During that handshake, the \smip manager sends a \motecreate event notification over its serial port \cite{smip_manager_api}.
         This is the event we log\footnote{~Normally, each mote generates a single \motecreate event. Due to power issues at the manager side, the network restarted a couple of times and new events were created.}.
         It contains, among other information, the association between the newly-joined device's 8-byte MAC address and its 2-byte \moteId.
-        The payload size of a \motecreate is 6B.
+        The payload size of a \motecreate serial notification is 6~B.
     \item[-] \textbf{\pathcreate} and \textbf{\pathdelete.}
         In \smip terminology, a ``path'' is the link-layer resource that allows two neighbor nodes to communicate\footnote{~In more classical networking terminology, this is often referred to as a ``link''. We use the terms ``path'' and ``link'' interchangeably in this article.}.
         Each time a mote starts communicating with a new neighbor (e.g.~its routing parent), a \pathcreate event is produced.
         Similarly, each time a mote \textit{stops} communicating with a neighbor (e.g.~it changes routing parent), a \pathdelete event is produced.
         We log both messages \cite{smip_manager_api}.
-        The payload size of a \pathcreate and \pathdelete are 9B.
+        The payload size of a \pathcreate or \pathdelete serial notification is 9~B.
     \item[-] \textbf{\HRDEVICE.}
-        Each network device produces a \HRDEVICE every 15~min.
+        Each network device produces an \HRDEVICE every 15~min.
         This health report contains counters/statistics internal to the mote, such as its current battery voltage, temperature, or total number of messages sent.
-        The payload size of an \HRDEVICE is 27B.
+        The payload size of an \HRDEVICE serial notification is 27B.
     \item[-] \textbf{\HRDISCOVERED.}
         \sm nodes continuously monitor their surroundings to discover neighbor nodes.
         Every 15~min, each node produces an \HRDISCOVERED health report that contains the list of ``discovered'' neighbors, and the associate signal strength it heard them at.
@@ -333,14 +333,9 @@ Table~\ref{tab:msg_stats} summarizes the number of events and HRs gathered durin
     \item[-] \textbf{\HRNEIGHBORS.}
         Two nodes are neighbors when link-layer resources are installed for them to communicate.
         The neighbors of a node are a subset of the discovered neighbors.
-        SmartMesh IP's networks automatically form meshes, so each mote has multiple neighbors 
-        through which it can send or forward data. 
-        The manager will make sure every mote has at least the number of parents indicated by numparents parameter, 
-        which value could be setup between one and four. 
-        There are no loops in the mesh topology provided. 
-        A mote having two parents or more is the best balance between robustness and power consumption under most operating conditions.
+        A \smip network is a mesh network, so each mote has multiple neighbors it communicates with.
         Every 15~min, each mote generates an \HRNEIGHBORS health report that contains its list of neighbors.
-        These messages also specifies per-neighbor counters, such as the number of link-layer retransmissions.
+        These messages also specify per-neighbor counters, such as the number of link-layer retransmissions.
         The payload size of an \HRNEIGHBORS is variable as it depends on the number of neighbors used.
 \end{itemize}
 
