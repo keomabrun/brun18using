@@ -80,7 +80,7 @@ This article presents an in-depth analysis of the performance of both networks, 
 Nodes in both exhibit end-to-end reliability of 100\%, with an expected lifetime between 4 and 8~years.
 We show how -- contrary to popular belief -- wireless links are symmetrical.
 Thanks to the use of Time Slotted Channel Hopping (TSCH), the network topology is stable, with at most 15 link changes on average per day in the network.
-We conclude that \smip is a perfectly suitable IoT solution for \agri and \building applications.
+We conclude that TSCH as implemented by \smip is a perfectly suitable IoT solution for \agri and \building applications.
 \end{abstract}
 
 \begin{keyword}
@@ -114,7 +114,7 @@ Fighting the frost event is not the challenge, what is hard is predicting them.
 
 The goal of the \agri deployment (part of the PEACH~\cite{watteyne16peach} project) is to predict frost events in a peach orchard.
 We install sensors around the orchard that measure air temperature, air relative humidity, soil moisture and soil temperature.
-We feed the collected data into a database, and by analyzing the data in real-time using machine learning techniques, we can identify patterns in the data to predict frost events.
+We feed the collected data into a database, and by analyzing the data in real-time using machine learning techniques \xavi{too generic? what ML techniques?}, we can identify patterns in the data to predict frost events.
 
 % agri: architecture
 
@@ -187,10 +187,10 @@ The goal of this article is to analyze the network statistics over each of the 3
 This article makes the following contributions:
 
 \begin{itemize}
-    \item We confirm that the \smip network exhibits years of battery lifetime and wire-like reliability in all cases;
+    \item We confirm that the TSCH technology as implemented by \smip exhibits years of battery lifetime and wire-like reliability in all cases;
     \item We show that channel hopping causes the network topology to be very stable, with at most 15 link changes on average per day on the 14-node and 18-node networks;
     \item Contrary to popular belief, we show that links in the networks are symmetrical, i.e.~they exhibit the same signal strength in both directions of the same link;
-    \item We conclude that \smip is a perfectly suitable IoT solution for \agri and \building applications.
+    \item We conclude that TSCH as implemented by \smip is a perfectly suitable IoT solution for \agri and \building applications.
 \end{itemize}
 
 % extension
@@ -203,7 +203,7 @@ This article extends this work and offers analysis over a 3-month period, and co
 The remainder of this article is organized as follows.
 Section~\ref{sec:related} lists the related work and explain why we chose \smip.
 Section~\ref{sec:collected} describes the types of network statistics, and the dataset of statistics collected over each 3~month period.
-Section~\ref{sec:intuitive} presents results that confirm assumptions about what we can expect for a real-world \smip deployment.
+Section~\ref{sec:intuitive} presents results that confirm assumptions about what we can expect for a real-world TSCH \smip deployment.
 Section~\ref{sec:notsointuitive} presents not so intuitive results about link symmetry and network stability.
 Finally, Section~\ref{sec:conclusion} concludes this article and discusses further improvements.
 
