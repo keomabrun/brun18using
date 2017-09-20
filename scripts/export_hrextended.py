@@ -1,6 +1,6 @@
 import influxdb
 import tools
-import context
+import context_heatmap as context
 import pandas as pd
 
 # open input file
@@ -25,7 +25,7 @@ query       +=  " GROUP BY mac"
 json_list   = tools.influxdb_to_json(influxClient.query(query).raw)
 
 # write json to file
-out_file.write("time,mac,channel,rssi,lat,long\n")
+out_file.write("time,mac,channel,rssi,txUnicastAttempts,txUnicastFailures,pdr,lat,long\n")
 for obj in json_list:
     time = tools.iso_to_epoch(obj["timestamp"])
     mote_info = tools.get_mote_info(df_snapshot, obj["mac"], time)
@@ -33,11 +33,15 @@ for obj in json_list:
     #print obj["value"].keys()
     for channel, value in obj["value"].iteritems():
         if type(value) == dict:
+            pdr = 100 * (1.0 - (float(value["txUnicastFailures"]) / value["txUnicastAttempts"]))
             out_file.write(
                 str(time)+',' +
                 str(obj["mac"]) + ',' +
                 str(channel) + ',' +
                 str(value["idleRssi"]) + ',' +
+                str(value["txUnicastAttempts"]) + ',' +
+                str(value["txUnicastFailures"]) + ',' +
+                str(pdr) + ',' +
                 str(mote_info["lat"]) + ',' +
                 str(mote_info["long"]) +
                 '\n'
