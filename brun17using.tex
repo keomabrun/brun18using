@@ -589,11 +589,11 @@ $^\star$~over the 3.5~month and 3~month periods, respectively.
 \section{Not so Intuitive Results}
 \label{sec:notsointuitive}
 
-Results from Section~\ref{sec:intuitive} are ``intuitive'' is that they corroborate previous measurements~\cite{watteyne16peach} or confirm theoretical/lab results~\cite{watteyne10mitigating,watteyne09reliability,watteyne15industrial}.
+Results from Section~\ref{sec:intuitive} are ``intuitive'' in that they corroborate previous measurements~\cite{watteyne16peach} or confirm theoretical/lab results~\cite{watteyne10mitigating,watteyne09reliability,watteyne15industrial}.
 This section presents results which we believe go against popular belief.
 This classification is necessarily subjective.
 
-In Section~\ref{sec:symmetry}, we show that links are, in fact, symmetric.
+In Section~\ref{sec:symmetry}, we show that links are, in fact, symmetrical.
 In Section~\ref{sec:net_stability}, we show that, through the use of TSCH, the low-power wireless topology is, in fact, extremely stable.
 
 %------------------------------------------------------------------------------
@@ -604,7 +604,7 @@ In Section~\ref{sec:net_stability}, we show that, through the use of TSCH, the l
 
 Motes report the average RSSI value of the packets received from each neighbor in their \HRNEIGHBORS health reports.
 Because the network uses channel hopping, the reported RSSI values are also averaged over 15~IEEE802.15.4 frequencies~\cite{std_ieee802154_2015}.
-In this section, we use the term ``RSSI'' to denote the average RSSI over 15 frequencies.
+In this section, we use the term ``RSSI'' to denote the average RSSI over 15~frequencies.
 
 % what is asymmetry
 
@@ -615,9 +615,9 @@ Numerous routing protocols (often standardized~\cite{rfc3626}) reuse that assump
 % what we measure
 
 We look at the link statistics between 18 June 2016 and 4 July 2016 (16 days) in the \agri deployment, and between the 12 November 2016 and 7 February 2017 (87 days) in the \building deployment.
-The sample contains 411,132 \HRNEIGHBORS messages received from 14~DC9003 nodes (same hardware).
+The dataset contains 411,132~\HRNEIGHBORS messages received from 14~DC9003 nodes (same hardware).
 During that period, 21~links are active with at least 250~transmissions for each link.
-For each of those links, we compute the difference between average RSSI in each directions.
+For each of these links, we compute the difference between the average RSSI in each direction.
 Results are presented in Fig.~\ref{fig:tab_symmetry}.
 
 \begin{figure}
@@ -640,12 +640,12 @@ Results are presented in Fig.~\ref{fig:tab_symmetry}.
 
 % discussion
 
-Fig.~\ref{fig:tab_symmetry} shows that the RSSI difference. In $99.6\%$ of the cases, the difference does not exceeds 7~dB the average value of the distribution.
+In $99.6\%$ of the cases, the difference does not exceeds 7~dB.
 Looking at Fig.~\ref{fig:waterfall}, this translates into only a handful of percentage points difference in PDR.
 This means the links can be considered symmetric.
 This result is in-line with the physical phenomenon that the signal traveling from $A$ to $B$ undergoes the same attenuation as that from $B$ to $A$.
 This result would \textit{not} hold if the neighbor radios had a different transmit power or sensitivity.
-That being said, discussions on link symmetry at the routing layer is largely artificial, as virtual all state-of-the-art medium access control (MAC) protocols uses link-layer acknowledgments.
+That being said, discussions on link (a)symmetry at the routing layer is largely artificial, as virtually all state-of-the-art medium access control (MAC) protocols uses link-layer acknowledgments, thereby naturally filtering out assymetric links.
 
 %------------------------------------------------------------------------------
 \subsection{Network Stability}
@@ -669,15 +669,15 @@ In this section, we infirm this statement by looking at the stability of the net
 
 In particular, we look at the \pathdelete and \pathcreate events.
 These are generated each time a node adds/deletes a neighbor to communicate with, which happens for example when the routing topology changes (see Section~\ref{sec:collected}).
-The number of \pathdelete and \pathcreate events is a direct measurement of the network stability.
-Note that we remove the nodes that do not respect the deployment requirement of having at least two parents to associate with (one node in the \agri deployment and three in the \building one).
+The number of \pathdelete and \pathcreate events is a direct measurement of network stability.
+We remove the nodes that do not respect the deployment requirement of having at least two parents to associate with (we remove one node in the \agri deployment and three nodes in the \building one).
 Due to the lack of second parent, these nodes were producing over 20~times the amount of messages than all the other nodes combined.
 
 % results
 
 Fig.~\ref{fig:net_churn} shows the number of \pathdelete and \pathcreate events per day, over the 16~day (\agri) and 87~day (\building) periods.
 For reference, the total number of links in the network is also depicted.
-There are less than 5~\pathdelete or \pathcreate events \textit{per day} in the entire \agri network, and less than 15 in the \building network.
+There are less than 5~\pathdelete or \pathcreate events \textit{per day} in the entire \agri network, and at most 15 in the \building network.
 This means that links, once established, remain useful for days/weeks at a time, and that the network is extremely stable.
 We attribute the higher churn in the \building deployment to the presence of significant external interference.
 
@@ -692,7 +692,7 @@ We attribute the higher churn in the \building deployment to the presence of sig
         \caption{\building}
     \end{subfigure}    
     \caption{
-        Network stability: the number of \pathcreate and \pathdelete events generated per day over a 16 days (\agri) and two months (\building).
+        Network stability: the number of \pathcreate and \pathdelete events generated per day over a 16~day (\agri) and two~month (\building) period.
         The top line shows the total number of active links.
     }
     \label{fig:net_churn}
@@ -702,7 +702,7 @@ We attribute the higher churn in the \building deployment to the presence of sig
 
 This stability can largely be attributed to the use of channel hopping.
 Changing frequency for each frame is known to efficiently combat multi-path fading and external interference~\cite{watteyne09reliability}, the major causes of instability.
-If channel hopping was not used, selecting links with high PDR would not be sufficient as they could be affected by external interference at any time and become unstable.
+If channel hopping were not used, selecting links with high PDR would not be sufficient as they could be affected by external interference at any time and become unstable.
 It does not contradict the findings of~\cite{srinivasan08beta}, it just means that link-layer retransmissions can efficiently cope with link burstiness, and that the multi-hop topology can remain very stable.
 
 %==============================================================================
@@ -713,7 +713,7 @@ It does not contradict the findings of~\cite{srinivasan08beta}, it just means th
 
 This article analyzes the network statistics generated by two low-power wireless mesh networks deployed in real-world conditions.
 The first network is deployed in a peach orchard in Argentina, in a \agri scenario.
-Its 21~motes have produced \PEACHNUMSTATS~statistic measurements over the course of 3~months.
+Its 21~motes have produced \PEACHNUMSTATS~statistic measurements over the course of 3.5~months.
 The second network is deployed in an office building in Paris, in a \building scenario.
 Its 17~motes have produced \EVANUMSTATS~statistic measurements over the course of 3~months.
 
@@ -726,7 +726,7 @@ This is representative of the performance of 6TiSCH technology.
 % non-intuitive
 
 While it is often assumed that wireless links are asymmetric, we show to the contrary that the difference in RSSI averaged over 15~IEEE802.15.4 channels does not exceed a handful of dB.
-We show that the network is extremely stable, with less than 5~links being added or deleted per day in the \agri deployment, less than 15 in the \building deployment.
+We show that the network is extremely stable, with less than 5~links being added or deleted per day in the \agri deployment, at most 15 in the \building deployment.
 We attribute this performance to the use of Time Synchronized Channel Hopping (TSCH) technology at the heart of the \smip products.
 
 % conclusion
