@@ -6,7 +6,7 @@
 
 notebooks/.ipynb_checkpoints/
 
-.idea/workspace.xml
+.idea/
 *.bbl
 *.bak
 *.blg
