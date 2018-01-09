@@ -238,42 +238,56 @@ Barrenetxea et al.~\cite{barrenetxea08hitchhiker} survey experimental studies an
 The \agri and \building deployments described in this article use IEEE802.15.4 technology.
 In the 2015 amendment of IEEE802.15.4~\cite{std_ieee802154_2015}, the IEEE has introduced enhancements to the medium access control sub-layer of the standard.
 The major enhancement is Time Synchronized Channel Hopping (TSCH), a technique which increases the reliability and lowers the power consumption of the networks~\cite{deguglielmo16ieee}.
-Inheriting from several generations of industrial standards, the TSCH mode makes IEEE802.15.4 ready for the Industrial Internet of Things.
+While TSCH was designed for industrial applications, this article shows that it operates equally well in the \agri context.
+Section~\ref{sec:tsch} provides an overview of TSCH technology, and delves into \smip, the market-leading commercial implementation.
+
+%==============================================================================
+\section{Time Synchronized Channel Hopping and \smip}
+\label{sec:tsch}
+
+A TSCH mode was added to the IEEE802.15.4 standard in its 2015 revision.
+This mode inherits from several generations of industrial standards, and make IEEE802.15.4 ready for the Industrial Internet of Things.
+This section surveys TSCH and how it integrates into IEEE802.15.4, and describes \smip, today's market-leading TSCH-based product.
+
+% TSCH
+
+In a TSCH network, all devices are synchronized, and time is cut into timeslots.
+All communication is orchestrated by a schedule, which indicates to each node what to do in each of the timeslots: transmit, listen or sleep.
+The result is that the devices sleep most of the time (i.e $<1\%$ duty cycle is common), which results in long battery lifetimes.
+On top of this mechanism, nodes ``channel hop''.
+That is, when node $A$ sends multiple frames to node $B$, each frame is transmitted on a different frequency, according to a pseuso-random hopping sequence.
+The result is that, if one frame isn't transmitted successfully (node $A$ does not receive a link-layer acknowledgement from node $B$), node $A$ retransmits \textit{on a different frequency}, thereby exploiting frequency diversity.
+Channel hopping (which bluetooth and some cellular networks also exploits), is very good and combating multipath fading and external interference, the two main causes for a loss of end-to-end network reliability~\cite{watteyne09reliability}.
+In a nutshell,
+    time synchronization yield ultra low-power operation,
+    channel yields ultra high reliability.
+
+% TSCH in IEEE802.15.4
+
+TSCH was introduced in low-power wireless industrial standards WirelessHART (2008) and ISA100.11a (2009).
+These standards have been very successfully rolled out in the industrial market (industrial process monitoring, factory automation).
+A new TSCH mode was added to the IEEE802.15.4 standard by the IEEE802.15.4e Task Group, to ``better support the industrial markets''.
+From a packet format point of view, this meant adding Information Elements, generic containers to carry TSCH-specific information, for example the hopping sequence added to beacon frames.
 
 % smip
 
-We use \smip~\cite{smip_app_note} at the core of the deployments presented in this article.
-\smip is an off-the-shelf low-power wireless solution by Analog Devices.
-The \smip network stack combines the industrial performance of IEEE802.15.4 TSCH with the ease of use of the 6LoWPAN standard.
-It uses channel-hopping to reduce the impact of multi-path fading and external interference.
-A \smip network exhibits over 99.999\% end-to-end reliability and over a decade of battery lifetime~\cite{watteyne10mitigating,watteyne09reliability}.
-Its security solution is NIST certified, and is always on.
+\smip is a commercial implementation of TSCH by Analog Devices~\cite{smip_app_note}.
+The \smip network stack combines the industrial performance of IEEE802.15.4 TSCH with the ease of use of 6LoWPAN, and is fully compliant to these standards.
+A \smip network exhibits over 99.999\% end-to-end reliability\cite{watteyne09reliability}.
+A \smip node (even when routing) consumes less than 50~$\mu A$ average current, resulting in over a decade of battery lifetime~\cite{watteyne10mitigating}.
+The security solution of \smip is NIST-certified.
 It features secure Over-The-Air Programming (OTAP) out of the box, so it is possible to remotely update the firmware running on devices that are already deployed.
-It is designed and tested to operate in the $-$40$^{\circ}$C to $+$85$^{\circ}$C industrial temperature range.
+It is designed to operate in the $-$40$^{\circ}$C to $+$85$^{\circ}$C industrial temperature range.
 With over 60,000 networks deployed around the world, and its market leader position, \smip is a proven technology.
+We use \smip at the core of the deployments presented in this article.
 
 % programming smip
 
-We integrate \smip into our \agri and \building software solutions in two way.
+We integrate \smip into our \agri and \building software solutions in two ways.
 On the embedded low-power wireless motes, we use the \smip Software Development Kit (SDK) to create applications which sample the sensors attached every 30~s, and send the measurements into the Internet.
 On the gateway side, we develop software to gather the network statistics automatically generated by the motes every 5~min, and provide network health monitoring tools.
 After 3~months of operation, each deployment has produces 4~million temperature values and over 350,000~network statistics.
 This data is analysed and the main lessons learnt are presented in Sections~\ref{sec:intuitive} and~\ref{sec:notsointuitive}.
-
-%==============================================================================
-\section{Time Synchronized Channel Hopping}
-\label{sec:tsch}
-
-% TSCH details
-
-The strength of the TSCH mechanism resides in the fact that it exploits both time and frequency diversity.
-In a network running with the TSCH mode, the devices share a schedule and each device knows when to: transmit, listen or sleep.
-This allows the devices to be sleeping most of the time (i.e $<1\%$ duty cycle in our networks) and increases the network lifetime.
-The schedule can be controlled by a central entity or distributed, although no explicit implementation is given in the IEEE~802.15.4-2015 standard.
-
-Frequency diversity is obtained by changing the communication frequency at every transmission.
-The IEEE~802.15.4-2015 standard defines 16 channels, each channel is 2MHz large and separated by 5MHz from its adjacent channels.
-By ``hopping'' between the available channels, TSCH increases the probability of transmission as different channels are differently affected by multipath interferences~\cite{watteyne09reliability}.
 
 %==============================================================================
 \section{Statistics Collected}
@@ -763,6 +777,6 @@ Felipe Mor{\'{a}}n for his contributions in the interference analysis.
 %==============================================================================
 \section*{References}
 \bibliographystyle{elsarticle-num}
-\bibliography{brun17using}
+\bibliography{brun18using}
 
 \end{document}
