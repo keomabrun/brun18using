@@ -257,7 +257,7 @@ All communication is orchestrated by a schedule, which indicates to each node wh
 The result is that the devices sleep most of the time (i.e $<1\%$ duty cycle is common), which results in long battery lifetimes.
 On top of this mechanism, nodes ``channel hop''.
 That is, when node $A$ sends multiple frames to node $B$, each frame is transmitted on a different frequency, according to a pseuso-random hopping sequence.
-The result is that, if one frame isn't transmitted successfully (node $A$ does not receive a link-layer acknowledgement from node $B$), node $A$ retransmits \textit{on a different frequency}, thereby exploiting frequency diversity.
+The result is that, if one frame isn't transmitted successfully (node $A$ does not receive a link-layer acknowledgment from node $B$), node $A$ retransmits \textit{on a different frequency}, thereby exploiting frequency diversity.
 Channel hopping (which bluetooth and some cellular networks also exploits), is very good and combating multipath fading and external interference, the two main causes for a loss of end-to-end network reliability~\cite{watteyne09reliability}.
 In a nutshell,
     time synchronization yield ultra low-power operation,
@@ -495,7 +495,7 @@ Yet, despite the high external interference, the \building deployment exhibits 1
 
 \begin{figure}  
     \includegraphics[width=\columnwidth]{heatmap.png}
-    \caption{In the \building deployment, external inteference from nearby WiFi devices causes some retries (the PDR is lower) \textit{without} impacting end-to-end reliability which stays at 100\% (see Section~\ref{sec:net_reliability}).}
+    \caption{In the \building deployment, external interference from nearby WiFi devices causes some retries (the PDR is lower) \textit{without} impacting end-to-end reliability which stays at 100\% (see Section~\ref{sec:net_reliability}).}
     \label{fig:heatmap}
 \end{figure}
 
@@ -670,7 +670,7 @@ Results are presented in Fig.~\ref{fig:tab_symmetry}.
 
 % discussion
 
-In $99.6\%$ of the cases, the difference does not exceeds 7~dB.
+In $99.6\%$ of the cases, the difference does not exceed 7~dB.
 Looking at Fig.~\ref{fig:waterfall}, this translates into only a handful of percentage points difference in PDR.
 This means the links can be considered symmetric.
 This result is in-line with the physical phenomenon that the signal traveling from $A$ to $B$ undergoes the same attenuation as that from $B$ to $A$.
